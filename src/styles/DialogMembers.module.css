@@ -1,0 +1,33 @@
+.Dialog__members{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+.Dialog__member {
+    position: relative;
+    text-decoration: none;
+    padding: 10px 10px 10px 25px;
+    font-size: 20px;
+    border-bottom: 2px solid rgba(0, 60, 255, .2);
+    cursor: pointer;
+    color: black;
+    transition:0.5s;
+}
+.Dialog__member:hover{
+    background-color: rgba(0, 60, 255, .1);
+    border-bottom: 2px solid rgba(0, 60, 255, .5);
+    left: 3px;
+}
+.Dialog__member_settings{
+    position: absolute;
+    right: 5%;
+    top: 30%;
+    width: 20px;
+    height: 20px;
+    border: 1px solid rgb(225, 225, 231);
+    background-color: rgba(245, 238, 238, .5);
+    transition: 0.5s;
+}
+.Dialog__member_settings:hover{
+    background-color: rgb(225, 225, 231);
+}

@@ -1,0 +1,6 @@
+.Profile{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.25fr 1fr 1fr;
+    grid-gap: 15px;    
+}

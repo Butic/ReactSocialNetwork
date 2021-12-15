@@ -1,0 +1,22 @@
+.Input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.Input__area{
+    width: 60%;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.Add__post{
+    background: linear-gradient(white, gray);
+    border: 1px solid white;
+    border-radius: 7px;
+    padding: 7px;
+}
+.Add__post:hover{
+    border: 1px solid black;
+    background: linear-gradient(gray, white);
+}

@@ -1,0 +1,28 @@
+.Nav{
+    grid-column: 1 / 2;
+    list-style: none;
+}
+.NL{
+    text-decoration: none;
+}
+.Nav__link {
+    padding: 10px 10px 10px 20px;
+    font-size: 20px;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    color: black;
+}
+.Nav__link_space{
+    height: 300px;
+    border-bottom: 1px solid black;
+}
+.Nav__link:hover{
+    background: linear-gradient(lightgray, white);
+    font-weight: bold;
+    border-bottom: 2px solid black;
+}
+.active{
+    position: relative;
+    font-weight: bold;  
+    font-style: italic;
+}

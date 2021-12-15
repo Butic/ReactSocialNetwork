@@ -1,0 +1,68 @@
+.Post{
+    position: relative;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    margin:15px;
+    border: 1px solid black;
+    background-color: azure;
+    min-height: 75px;
+    margin-bottom: 40px;
+}
+.Post__avatar{
+    position: absolute;
+    background-color: aqua;
+    top:-15px;
+    left:-10px;
+    width: 40px;
+    border-radius: 50%;
+}
+.Post__content{
+    position: relative;
+    padding: 10px 0 15px 35px;
+    width: 90%;
+}
+.Post__number{
+    position: absolute;
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 50px;
+    background-color: floralwhite;
+    left:-13px;
+    bottom: -14px;
+    color: black;
+    font-weight: 900;
+}
+.Post__remove{
+    padding:7px 10px 7px 10px;
+    background-color: rgba(255, 0, 0, 0.85);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.Post__remove:hover{
+    background-color: rgba(255, 0, 0, 1);
+}
+.Post__likes{
+    position: absolute;
+    display: inline-block;
+    bottom: -8px;
+    right: 0;
+    text-align: center;
+    color:red;
+    border-radius: 5px;
+    font-size: 30px;
+    cursor: pointer;
+}
+.Post__likesNum{
+    position: absolute;
+    left: -42px;
+    bottom:10px;
+    text-align: end;
+    min-width:40px;
+    color: black;
+    font-size: 14px;
+    cursor: default;
+}

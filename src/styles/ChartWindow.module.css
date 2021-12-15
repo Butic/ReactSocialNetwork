@@ -1,0 +1,30 @@
+.ChartWindow{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+.ChartWidow__head{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.Chart__text{
+    align-self: flex-start;
+    margin-left: 10px;
+    background-color: rgb(160, 166, 248);
+    border-radius: 15px 15px 15px 0;
+    padding: 5px;
+    margin-bottom: 10px;
+    max-width: 60%;
+}
+.me{
+    align-self: flex-end;
+    margin-right: 15px;
+    background-color: rgb(80, 90, 134);
+    text-align: end;
+    border-radius: 15px 0 15px 15px;
+    padding: 5px;
+    margin-bottom: 10px;
+    max-width: 60%;
+}

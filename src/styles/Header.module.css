@@ -1,0 +1,13 @@
+.Header{
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(16, 56, 129, 0.5);
+}
+.Header__logo{
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    background-color: blueviolet;
+}
