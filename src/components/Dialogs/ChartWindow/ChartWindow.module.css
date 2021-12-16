@@ -1,0 +1,14 @@
+.ChartWindow{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 71vh;
+    border-bottom: 1px solid rgba(0, 60, 255, .25);
+}
+.ChartWidow__head{
+    display: flex;
+    justify-content: space-around;   
+}

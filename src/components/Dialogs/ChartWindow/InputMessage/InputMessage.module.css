@@ -1,0 +1,31 @@
+.Input__form{
+    position: fixed;
+    width: 100%;
+    max-height: 10vh;
+    margin: 0 5px 5px 5px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.Input__area{
+    resize: none;
+    width: 85%;
+    height: 5vh;
+    padding: 5px;
+    border-radius: 10px;
+}
+.Input__button{
+    height: 50px;
+    border:none;
+    background: none;
+    transition: 0.5s;
+    font-size: 18px;
+    font-weight: 600;
+    background-color: rgba(0, 60, 255, .25);
+    border-radius: 50%;
+}
+.Input__button:hover{
+    border-top: 1px solid olive;
+    border-bottom:1px solid violet;
+    background-color: rgba(0, 60, 255, .5);
+}

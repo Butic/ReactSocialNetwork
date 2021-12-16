@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 import {Route} from 'react-router-dom';
 import './styles/App.css';
-import Header from './components/Header';
-import Nav from './components/Nav';
-import Profile from './components/Profile';
-import Dialogs from './components/Dialogs';
+import Header from './components/Header/Header';
+import Nav from './components/Navbar/Nav';
+import Profile from './components/Profile/Profile';
+import Dialogs from './components/Dialogs/Dialogs';
 
 function App() {
 

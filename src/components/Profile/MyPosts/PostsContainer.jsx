@@ -1,7 +1,7 @@
 import React from "react";
 import PostInput from "./PostInput";
 import PostItem from "./PostItem";
-import classes from '../styles/PostsContainer.module.css';
+import classes from './PostsContainer.module.css';
 const PostsContainer = () =>{
     const lorem = 'dolor sit amet consectetur adipisicing elit. Minima accusantium maxime magni atque deserunt? Doloribus unde dolores, molestias, suscipit enim molestiae dignissimos dolorum quidem aliquid soluta incidunt officiis dolor nihil.';
     const postData = [

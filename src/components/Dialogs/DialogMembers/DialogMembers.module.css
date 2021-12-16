@@ -1,5 +1,4 @@
 .Dialog__members{
-    list-style: none;
     display: flex;
     flex-direction: column;
 }

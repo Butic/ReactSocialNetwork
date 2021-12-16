@@ -1,7 +1,7 @@
 import React from 'react';
-import classes from '../styles/Dialogs.module.css';
-import DialogMembers from './DialogMembers';
-import ChartWindow from './ChartWindow';
+import classes from './Dialogs.module.css';
+import DialogMembers from './DialogMembers/DialogMembers';
+import ChartWindow from './ChartWindow/ChartWindow';
 const Dialogs = () =>{
 
     return(

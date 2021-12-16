@@ -1,5 +1,5 @@
-import react from "react";
-import classes from '../styles/PostInput.module.css';
+import React from "react";
+import classes from './PostInput.module.css';
 const PostInput = () =>{
     return(
         <div className={classes.Input}>

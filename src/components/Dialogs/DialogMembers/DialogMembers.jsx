@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import classes from '../styles/DialogMembers.module.css';
-import active from '../styles/Nav.module.css';
-import Avatar from './Avatar';
+import classes from './DialogMembers.module.css';
+import active from '../../Navbar/Nav.module.css';
+import Avatar from '../../Profile/Avatar';
 
 const DialogItems=(props)=>{
     return(
