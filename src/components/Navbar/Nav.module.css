@@ -11,10 +11,6 @@
     cursor: pointer;
     color: black;
 }
-.Nav__link_space{
-    height: 300px;
-    border-bottom: 1px solid black;
-}
 .Nav__link:hover{
     background: linear-gradient(lightgray, white);
     font-weight: bold;

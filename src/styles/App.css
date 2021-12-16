@@ -1,20 +1,15 @@
 *{
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
-body{
-    overflow: hidden;
-}
 .App{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: 15px;
 }
 .Body{
     margin: 0;
     padding: 0;
     grid-column: 2 / -1;
     background-color: rgb(206, 211, 197);
-
 }
 input{
     outline: none;

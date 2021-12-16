@@ -2,3 +2,6 @@
     grid-column: 1/4;
     grid-row: 3/4;
 }
+.last{
+    background-color: black;
+}

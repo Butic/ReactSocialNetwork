@@ -6,7 +6,7 @@ import Nav from './components/Navbar/Nav';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 
-function App() {
+function App(props) {
 
   return (
     
@@ -14,8 +14,8 @@ function App() {
         <Header />
         <Nav />
         <div className="Body">
-            <Route path='/profile' component={Profile}/>
-            <Route path='/dialogs' component={Dialogs}/>
+            <Route path='/profile' render={()=><Profile postData={props.postData} />}/>
+            <Route path='/dialogs' render={()=><Dialogs messagesData={props.messagesData} dialogData={props.dialogData}/>}/>
         </div>
       </div>
     

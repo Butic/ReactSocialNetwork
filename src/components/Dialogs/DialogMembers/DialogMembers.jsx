@@ -11,20 +11,9 @@ const DialogItems=(props)=>{
 }
 
 const DialogMembers = (props) =>{
-
-    const dialogData = [
-        {id:1, name:'Andrew'},
-        {id:2, name:'Alena'},
-        {id:3, name:'Dimas'},
-        {id:4, name:'Artem'},
-        {id:5, name:'Elena'},
-        {id:6, name:'Alexey'},
-        {id:7, name:'Yurok'}
-    ];
-
     return(
         <ul className={classes.Dialog__members}>
-            {dialogData.map(el=><DialogItems id={el.id} name={el.name}/>)}
+            {props.dialogData.map(el=><DialogItems id={el.id} name={el.name}/>)}
           </ul>
     );
 };
