@@ -5,9 +5,9 @@ import classes from './PostsContainer.module.css';
 const PostsContainer = (props) =>{
     return(
         <div className={classes.PostsContainer}>
-            <PostInput/>
+            <PostInput newPost={props.profileData.newPost} addPost={props.addPost} onPostChange={props.onPostChange}/>
 
-            {props.postData.map(el=><PostItem number={el.number} title={el.title} text={el.text} likes={el.likes}/>)}
+            {props.profileData.posts.map(el=><PostItem number={el.number} title={el.title} text={el.text} likes={el.likes}/>)}
             <div className={classes.last}></div>
         </div>
     );

@@ -8,10 +8,10 @@ const Dialogs = (props) =>{
         <div className={classes.Dialogs}>
             <div className={classes.Dialogs__left_side}>
             <input type="search" placeholder="Search..." className={classes.Dialog__search} />
-                <DialogMembers dialogData={props.dialogData}/>
+                <DialogMembers dialogData={props.dialogData.chartMembers}/>
             </div>
             <div className={classes.Dialogs__right_side}>
-                <ChartWindow messagesData={props.messagesData} />
+                <ChartWindow messagesData={props.dialogData.messages} />
             </div>
         </div>
     );

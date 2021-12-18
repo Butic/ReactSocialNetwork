@@ -21,3 +21,7 @@
     font-weight: bold;  
     font-style: italic;
 }
+
+.Nav__friendsField__header{
+    text-align: center;
+}

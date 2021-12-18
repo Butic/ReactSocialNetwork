@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Nav from './components/Navbar/Nav';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
+import Friends from './components/Friends/Friends';
 
 function App(props) {
 
@@ -14,8 +15,9 @@ function App(props) {
         <Header />
         <Nav />
         <div className="Body">
-            <Route path='/profile' render={()=><Profile postData={props.postData} />}/>
-            <Route path='/dialogs' render={()=><Dialogs messagesData={props.messagesData} dialogData={props.dialogData}/>}/>
+            <Route path='/profile' render={()=><Profile profileData={props.state.profileData}  addPost={props.addPost} onPostChange={props.onPostChange}/>}/>
+            <Route path='/dialogs' render={()=><Dialogs dialogData={props.state.dialogData} />}/>
+            <Route path='/friends' render={()=><Friends friendData={props.state.friendData} />}/>
         </div>
       </div>
     

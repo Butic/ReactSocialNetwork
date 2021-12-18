@@ -1,0 +1,12 @@
+.Friend__list{
+    list-style: none;
+    width: 100%;
+}
+.Friend__search{
+    display: flex;
+    margin: 15px auto;
+    padding: 10px 20px;
+    position: relative;
+    width: 80%;
+    border-radius: 10px;
+}

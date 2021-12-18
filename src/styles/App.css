@@ -9,7 +9,7 @@
     margin: 0;
     padding: 0;
     grid-column: 2 / -1;
-    background-color: rgb(206, 211, 197);
+    background-color: rgba(0, 60, 255, .1);
 }
 input{
     outline: none;

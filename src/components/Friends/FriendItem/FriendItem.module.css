@@ -1,0 +1,10 @@
+.FriendItem{
+    padding: 10px 10px 25px 25px;
+    background-color: rgba(0, 60, 255, .2);
+    border-bottom: 1px solid rgba(0, 60, 255, .5);
+    font-size: 18px;
+    transition: 0.5s;
+}
+.FriendItem:hover{
+    background-color: rgba(0, 60, 255, .1);
+}
