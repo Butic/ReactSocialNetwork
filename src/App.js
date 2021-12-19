@@ -15,9 +15,9 @@ function App(props) {
         <Header />
         <Nav />
         <div className="Body">
-            <Route path='/profile' render={()=><Profile profileData={props.state.profileData}  addPost={props.addPost} onPostChange={props.onPostChange}/>}/>
-            <Route path='/dialogs' render={()=><Dialogs dialogData={props.state.dialogData} />}/>
-            <Route path='/friends' render={()=><Friends friendData={props.state.friendData} />}/>
+            <Route path='/profile' render={()=><Profile profileData={props.state.profileData} onPostChange={props.onPostChange} addPost={props.addPost} />}/>
+            <Route path='/dialogs' render={()=><Dialogs dialogData={props.state.dialogData } />}/>
+            <Route path='/friends' render={()=><Friends friendData={props.state.friendData } />}/>
         </div>
       </div>
     
