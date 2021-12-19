@@ -1,9 +1,7 @@
-import { renderDom } from "../render";
-
+let run;
 const lorem = 'dolor sit amet consectetur adipisicing elit. Minima accusantium maxime magni atque deserunt? Doloribus unde dolores, molestias, suscipit enim molestiae dignissimos dolorum quidem aliquid soluta incidunt officiis dolor nihil.';
-
 const State = {
-    
+
     profileData:{
         posts: [
             {number: 1, title:'JS', text: lorem, likes:411},
@@ -69,7 +67,12 @@ export const addPost = () =>{
 export const onPostChange=(title, text)=>{
     State.profileData.newPost.newPostTitle=title;
     State.profileData.newPost.newPostText=text;
-    renderDom(State);
+    run();
+}
+
+export const renderDom = (renderD) =>{
+    run=renderD;
+    renderD();
 }
 
 export default State;
