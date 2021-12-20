@@ -1,5 +1,5 @@
 import React from "react";
-import { addPostActionCreator, onPostChangeActionCreator } from "../../../redux/State";
+import { addPostActionCreator, onPostChangeActionCreator } from "../../../redux/profileReducer";
 import classes from './PostInput.module.css';
 
 const PostInput = (props) =>{
@@ -8,6 +8,7 @@ const PostInput = (props) =>{
 
     const addPost=()=>{
         props.dispatch(addPostActionCreator());
+        props.dispatch(onPostChangeActionCreator('',''));
     }
 
     const onPostChange=()=>{
@@ -17,7 +18,7 @@ const PostInput = (props) =>{
     return(
         <div className={classes.Input}>
             <input onChange={onPostChange} ref={newTitle} type="text" className={classes.Input__area} placeholder="Add Title" value={props.newPost.newPostTitle}/>
-            <input onChange={onPostChange} ref={newText} type="text" className={classes.Input__area} placeholder="Add text" value={props.newPost.newPostText}/>
+            <input onChange={onPostChange} ref={newText} type="text" className={classes.Input__area} placeholder="Add Text" value={props.newPost.newPostText}/>
             <button onClick={addPost} className={classes.Add__post}>Add Post</button>
         </div>
     );

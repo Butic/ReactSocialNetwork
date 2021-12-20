@@ -1,6 +1,8 @@
+import dialogsReducer from "./dialogsReducer";
+import friendsReducer from "./friendsReducer";
+import profileReducer from "./profileReducer";
+
 let run;
-const ADD_POST = 'ADD-POST';
-const ON_POST_CHANGE = 'ON-POST-CHANGE';
 const lorem = 'dolor sit amet consectetur adipisicing elit. Minima accusantium maxime magni atque deserunt? Doloribus unde dolores, molestias, suscipit enim molestiae dignissimos dolorum quidem aliquid soluta incidunt officiis dolor nihil.';
 
 const store = {
@@ -17,16 +19,16 @@ const store = {
         },           
         dialogData:{
             messages: [
-                {id:1, me:true, message:lorem},
-                {id:1, me:false, message:lorem+lorem},
-                {id:1, me:true, message:lorem+lorem},
-                {id:1, me:true, message:lorem+lorem+lorem},
-                {id:1, me:false, message:lorem+lorem},
-                {id:1, me:false, message:lorem+lorem},
-                {id:1, me:true, message:lorem+lorem},
-                {id:1, me:false, message:lorem+lorem+lorem},
-                {id:1, me:true, message:lorem+lorem},
-                {id:1, me:false, message:lorem+lorem}
+                {id:1, me:true, message:lorem, date:116735615},
+                {id:1, me:false, message:lorem+lorem, date:117581851},
+                {id:1, me:true, message:lorem+lorem, date:135177123},
+                {id:1, me:true, message:lorem+lorem+lorem, date:1156813123},
+                {id:1, me:false, message:lorem+lorem, date:1525561253},
+                {id:1, me:false, message:lorem+lorem, date:53743517651},
+                {id:1, me:true, message:lorem+lorem, date:86535128521},
+                {id:1, me:false, message:lorem+lorem+lorem, date:1113123151},
+                {id:1, me:true, message:lorem+lorem, date:1127275162},
+                {id:1, me:false, message:lorem+lorem, date:1341216651}
               ],
             chartMembers: [
                 {id:1, name:'Andrew'},
@@ -36,7 +38,8 @@ const store = {
                 {id:5, name:'Elena'},
                 {id:6, name:'Alexey'},
                 {id:7, name:'Yurok'}
-              ]
+              ],
+              newMessage:'Hello',
         },
         friendData:{
             friends:[
@@ -65,23 +68,11 @@ const store = {
         return this._state
     },
     dispatch(action){
-        if(action.type === ADD_POST){
-            this._state.profileData.posts.push({
-                number: this._state.profileData.posts.length+1, 
-                title: this._state.profileData.newPost.newPostTitle, 
-                text: this._state.profileData.newPost.newPostText, 
-                likes: 0})
-            this.dispatch({type:'ON-POST-CHANGE', title:'', text:''});
-        }
-        else if(action.type===ON_POST_CHANGE){
-            this._state.profileData.newPost.newPostTitle=action.title;
-            this._state.profileData.newPost.newPostText=action.text;
-            run();
-        }
+        this._state.profileData = profileReducer(this._state.profileData, action);
+        this._state.dialogData = dialogsReducer(this._state.dialogData, action);
+        this._state.friendData = friendsReducer(this._state.friendData, action);
+        run();
     }
 } 
-
-export const addPostActionCreator=()=>({type: ADD_POST});
-export const onPostChangeActionCreator=(title,text)=>({type:ON_POST_CHANGE, title:title, text:text});
 
 export default store;

@@ -13,7 +13,7 @@ const DialogItems=(props)=>{
 const DialogMembers = (props) =>{
     return(
         <ul className={classes.Dialog__members}>
-            {props.dialogData.map(el=><DialogItems id={el.id} name={el.name}/>)}
+            {props.chartMembers.map(el=><DialogItems id={el.id} name={el.name}/>)}
           </ul>
     );
 };

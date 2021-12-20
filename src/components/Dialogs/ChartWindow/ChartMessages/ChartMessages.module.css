@@ -1,19 +1,35 @@
-.Chart__text{
+.Chart__oponent{
+    position: relative;
     align-self: flex-start;
     margin-left: 10px;
     background-color: rgb(160, 166, 248);
     border-radius: 15px 15px 15px 0;
     padding: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     max-width: 60%;
 }
-.me{
+.Chart__me{
+    position: relative;
     align-self: flex-end;
     margin-right: 15px;
     background-color: rgb(80, 90, 134);
     text-align: end;
     border-radius: 15px 0 15px 15px;
     padding: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     max-width: 60%;
+}
+.Date__oponent{
+    position: absolute;
+    color: gray;
+    font-size: 12px;
+    bottom: -17px;
+    left:0;
+}
+.Date__me{
+    position: absolute;
+    color: gray;
+    font-size: 12px;
+    bottom: -17px;
+    right: 0;
 }

@@ -1,19 +1,21 @@
 import React from 'react';
 import classes from './InputMessage.module.css';
+import { changeMessageAreaCreator, addMyMessageCreator } from '../../../../redux/dialogsReducer';
+const InputMessage = (props) =>{
 
-const InputMessage = () =>{
-
-    const newMessage = React.useRef();
-
+    const newMessageText = React.useRef();
+    const onTextAreaChange = () => {
+        props.dispatch(changeMessageAreaCreator(newMessageText.current.value));
+    }
     const addMessage = (e) =>{
         e.preventDefault();
-        const text = newMessage.current.value;
-        if(text)alert('New messege is:\n'+text)
+        props.dispatch(addMyMessageCreator());
+        props.dispatch(changeMessageAreaCreator(''));
     }
 
     return(
         <form action="" className={classes.Input__form}>
-            <textarea ref={newMessage} className={classes.Input__area}></textarea>
+            <textarea ref={newMessageText}  onChange={onTextAreaChange} className={classes.Input__area} placeholder='Enter Your Message Here...' value={props.dialogData.newMessage}></textarea>
             <button onClick={addMessage} className={classes.Input__button}>Send</button>
         </form>
     );
