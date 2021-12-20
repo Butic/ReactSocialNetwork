@@ -7,7 +7,7 @@ import store from './redux/State'
 export const renderD=()=>{
   ReactDOM.render(
     <BrowserRouter>
-      <App state={store.getState()} onPostChange={store.onPostChange.bind(store)} addPost={store.addPost.bind(store)}/>
+      <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
     </BrowserRouter>
     ,
     document.getElementById('root'));

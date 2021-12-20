@@ -1,4 +1,6 @@
 let run;
+const ADD_POST = 'ADD-POST';
+const ON_POST_CHANGE = 'ON-POST-CHANGE';
 const lorem = 'dolor sit amet consectetur adipisicing elit. Minima accusantium maxime magni atque deserunt? Doloribus unde dolores, molestias, suscipit enim molestiae dignissimos dolorum quidem aliquid soluta incidunt officiis dolor nihil.';
 
 const store = {
@@ -59,22 +61,27 @@ const store = {
         run=renderD;
         renderD();
     },
-    onPostChange(title, text){
-        this._state.profileData.newPost.newPostTitle=title;
-        this._state.profileData.newPost.newPostText=text;
-        run();
-    },
-    addPost(){
-        this._state.profileData.posts.push({
-            number: this._state.profileData.posts.length+1, 
-            title: this._state.profileData.newPost.newPostTitle, 
-            text: this._state.profileData.newPost.newPostText, 
-            likes: 0})
-        this.onPostChange('','');
-    },
     getState(){
         return this._state
+    },
+    dispatch(action){
+        if(action.type === ADD_POST){
+            this._state.profileData.posts.push({
+                number: this._state.profileData.posts.length+1, 
+                title: this._state.profileData.newPost.newPostTitle, 
+                text: this._state.profileData.newPost.newPostText, 
+                likes: 0})
+            this.dispatch({type:'ON-POST-CHANGE', title:'', text:''});
+        }
+        else if(action.type===ON_POST_CHANGE){
+            this._state.profileData.newPost.newPostTitle=action.title;
+            this._state.profileData.newPost.newPostText=action.text;
+            run();
+        }
     }
 } 
+
+export const addPostActionCreator=()=>({type: ADD_POST});
+export const onPostChangeActionCreator=(title,text)=>({type:ON_POST_CHANGE, title:title, text:text});
 
 export default store;

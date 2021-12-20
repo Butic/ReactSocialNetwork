@@ -1,15 +1,17 @@
 import React from "react";
+import { addPostActionCreator, onPostChangeActionCreator } from "../../../redux/State";
 import classes from './PostInput.module.css';
+
 const PostInput = (props) =>{
     const newTitle = React.useRef();
     const newText = React.useRef();
 
     const addPost=()=>{
-        props.addPost();
+        props.dispatch(addPostActionCreator());
     }
 
     const onPostChange=()=>{
-        props.onPostChange(newTitle.current.value, newText.current.value);
+        props.dispatch(onPostChangeActionCreator(newTitle.current.value, newText.current.value));
     }
 
     return(
