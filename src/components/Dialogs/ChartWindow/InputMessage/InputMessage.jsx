@@ -5,18 +5,17 @@ const InputMessage = (props) =>{
 
     const newMessageText = React.useRef();
     const onTextAreaChange = () => {
-        props.dispatch(changeMessageAreaCreator(newMessageText.current.value));
+        props.changeText(newMessageText.current.value);
     }
-    const addMessage = (e) =>{
+    const onAddMessage = (e) =>{
         e.preventDefault();
-        props.dispatch(addMyMessageCreator());
-        props.dispatch(changeMessageAreaCreator(''));
+        props.addMessage();
     }
 
     return(
         <form action="" className={classes.Input__form}>
-            <textarea ref={newMessageText}  onChange={onTextAreaChange} className={classes.Input__area} placeholder='Enter Your Message Here...' value={props.dialogData.newMessage}></textarea>
-            <button onClick={addMessage} className={classes.Input__button}>Send</button>
+            <textarea ref={newMessageText}  onChange={onTextAreaChange} className={classes.Input__area} placeholder='Enter Your Message Here...' value={props.newMessage}></textarea>
+            <button onClick={onAddMessage} className={classes.Input__button}>Send</button>
         </form>
     );
 }

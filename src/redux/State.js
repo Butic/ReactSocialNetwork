@@ -60,9 +60,9 @@ const store = {
             ]
         },
     },
-    renderDom(renderD){
-        run=renderD;
-        renderD();
+    subscribe(renderDom){
+        run=renderDom;
+        renderDom();
     },
     getState(){
         return this._state

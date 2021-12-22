@@ -8,9 +8,7 @@ import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 
 function App(props) {
-
   return (
-    
       <div className="App">
         <Header />
         <Nav />
@@ -20,8 +18,6 @@ function App(props) {
             <Route path='/friends' render={()=><Friends friendData={props.state.friendData } />}/>
         </div>
       </div>
-    
   );
-}
-
+};
 export default App;

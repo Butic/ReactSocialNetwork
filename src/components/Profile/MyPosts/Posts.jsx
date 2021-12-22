@@ -1,11 +1,11 @@
 import React from "react";
-import PostInput from "./PostInput";
+import PostInputContainer from "./PostInputContainer";
 import PostItem from "./PostItem";
 import classes from './PostsContainer.module.css';
-const PostsContainer = (props) =>{
+const Posts = (props) =>{
     return(
         <div className={classes.PostsContainer}>
-            <PostInput newPost={props.profileData.newPost} dispatch={props.dispatch} />
+            <PostInputContainer newPost={props.profileData.newPost} dispatch={props.dispatch} />
 
             {props.profileData.posts.map(el=><PostItem number={el.number} title={el.title} text={el.text} likes={el.likes}/>)}
             <div className={classes.last}></div>
@@ -13,4 +13,4 @@ const PostsContainer = (props) =>{
     );
 };
 
-export default PostsContainer;
+export default Posts;
