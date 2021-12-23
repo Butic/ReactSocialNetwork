@@ -1,7 +1,7 @@
 import React from "react";
 import StoreContext from "../../../redux/StoreContext";
 import PostInputContainer from "./PostInputContainer";
-import PostItem from "./PostItem";
+import PostItemContainer from "./PostItemContainer";
 import classes from './PostsContainer.module.css';
 
 const Posts = () =>{
@@ -10,8 +10,8 @@ const Posts = () =>{
             { store=>{
                 return (
                     <div className={classes.PostsContainer}>
-                        <PostInputContainer newPost={store.getState().profileData.newPost} dispatch={store.dispatch}/>
-                        <PostItem posts={store.getState().profileData.posts} />
+                        <PostInputContainer />
+                        <PostItemContainer />
                     </div>
                 );
                 }

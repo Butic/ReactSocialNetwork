@@ -3,8 +3,15 @@ import Avatar from '../../Profile/Avatar';
 
 const FriendItem = (props) =>{
     return(
-        <li className={classes.FriendItem}><Avatar/> {props.name}</li>
+        props.friends.map(el=>{
+            return (
+                <li className={classes.FriendItem}><Avatar/> {el.name}</li>
+            )
+        })
     );
+    // return(
+    //     <li className={classes.FriendItem}><Avatar/> {props.name}</li>
+    // );
 }
 
 export default FriendItem;

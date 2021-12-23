@@ -1,7 +1,7 @@
 import React from "react";
 import Posts from "./MyPosts/Posts";
 import ProfileInfo from "./PropfileInfo";
-const Profile = (props) =>{
+const Profile = () =>{
     return(
         <div>
             <ProfileInfo />

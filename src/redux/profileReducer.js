@@ -23,6 +23,7 @@ const profileReducer = (state=initalState, action) =>{
             likes: 0});
         state.newPost.newPostTitle='';
         state.newPost.newPostText='';
+        console.log(state.posts)
     }
     else if(action.type === ON_POST_CHANGE){
         state.newPost.newPostTitle=action.title;

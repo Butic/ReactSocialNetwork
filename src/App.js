@@ -7,7 +7,7 @@ import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 
-function App(props) {
+function App() {
   return (
       <div className="App">
         <Header />
