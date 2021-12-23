@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './InputMessage.module.css';
-import { changeMessageAreaCreator, addMyMessageCreator } from '../../../../redux/dialogsReducer';
+
 const InputMessage = (props) =>{
 
     const newMessageText = React.useRef();

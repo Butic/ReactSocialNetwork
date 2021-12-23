@@ -1,9 +1,9 @@
 import React from 'react';
 import { changeMessageAreaCreator, addMyMessageCreator } from '../../../../redux/dialogsReducer';
 import InputMessage from './InputMessage';
+
 const InputMessageContainer = (props) =>{
 
-    const newMessageText = React.useRef();
     const changeText = (text) => {
         props.dispatch(changeMessageAreaCreator(text));
     }

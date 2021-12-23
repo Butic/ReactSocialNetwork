@@ -1,15 +1,23 @@
 import React from "react";
+import StoreContext from "../../../redux/StoreContext";
 import PostInputContainer from "./PostInputContainer";
 import PostItem from "./PostItem";
 import classes from './PostsContainer.module.css';
-const Posts = (props) =>{
+const Posts = () =>{
     return(
-        <div className={classes.PostsContainer}>
-            <PostInputContainer newPost={props.profileData.newPost} dispatch={props.dispatch} />
+        <StoreContext.Consumer>
+            { store=>{
+                return (
+                    <div className={classes.PostsContainer}>
+                        <PostInputContainer newPost={store.getState().profileData.newPost} dispatch={store.dispatch} />
 
-            {props.profileData.posts.map(el=><PostItem number={el.number} title={el.title} text={el.text} likes={el.likes}/>)}
-            <div className={classes.last}></div>
-        </div>
+                        {store.getState().profileData.posts.map(el=><PostItem number={el.number} title={el.title} text={el.text} likes={el.likes}/>)}
+                        <div className={classes.last}></div>
+                    </div>
+                );
+                }
+            }
+        </StoreContext.Consumer>
     );
 };
 
