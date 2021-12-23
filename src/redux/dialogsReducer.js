@@ -29,14 +29,21 @@ const initialState = {
 };
 
 const dialogsReducer = (state=initialState, action) =>{
-    if(action.type === CHANGE_MESSAGE_AREA){
-        state.newMessage = action.text;
+    switch (action.type){
+        case CHANGE_MESSAGE_AREA:{
+            const newState = {...state};
+            newState.newMessage = action.text;
+            return newState;
+        }
+        case ADD_MY_MESSAGE:{
+            const newState = {...state};
+            newState.messages=[...state.messages];
+            newState.messages.unshift({id:1, me:true, message:newState.newMessage, date:Date.now()});
+            newState.newMessage='';
+            return newState;
+        }
+        default: return state
     }
-    else if(action.type === ADD_MY_MESSAGE){
-        state.messages.unshift({id:1, me:true, message:state.newMessage, date:Date.now()});
-        state.newMessage='';
-    }
-    return state;
 }
 
 export const changeMessageAreaCreator=(text)=>({type:CHANGE_MESSAGE_AREA, text:text});

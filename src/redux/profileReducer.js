@@ -15,21 +15,32 @@ const initalState = {
 };
 
 const profileReducer = (state=initalState, action) =>{
-    if(action.type === ADD_POST){
-        state.posts.push({
-            number: state.posts.length+1, 
-            title: state.newPost.newPostTitle, 
-            text: state.newPost.newPostText, 
-            likes: 0});
-        state.newPost.newPostTitle='';
-        state.newPost.newPostText='';
-        console.log(state.posts)
+    switch (action.type){
+        case ADD_POST:{
+            const newState={...state};
+            newState.posts=[...state.posts];
+            newState.newPost={...state.newPost};
+            const newPost={
+                number: newState.posts.length+1, 
+                title: newState.newPost.newPostTitle, 
+                text: newState.newPost.newPostText, 
+                likes: 0
+            };
+            newState.posts.push(newPost);
+            newState.newPost.newPostTitle='';
+            newState.newPost.newPostText='';
+        return newState;
+        }
+        case ON_POST_CHANGE:{
+            const newState={...state};
+            newState.newPost={...state.newPost};
+            newState.newPost.newPostTitle=action.title;
+            newState.newPost.newPostText=action.text;
+        return newState;
+        }
+        default: return state;
     }
-    else if(action.type === ON_POST_CHANGE){
-        state.newPost.newPostTitle=action.title;
-        state.newPost.newPostText=action.text;
-    }
-    return state;
+    
 }
 
 export const addPostActionCreator=()=>({type: ADD_POST});
