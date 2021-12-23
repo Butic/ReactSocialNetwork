@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom';
 import store from './redux/reduxStore'
-import StoreContext from './redux/StoreContext';
+import {Provider} from './redux/StoreContext';
 
-export const renderDom=(state)=>{
+export const renderDom=()=>{
   ReactDOM.render(
     <BrowserRouter>
-    <StoreContext.Provider value={store}>
-      <App />
-    </StoreContext.Provider>
+      <Provider store={store}>
+       <App />
+      </Provider>
     </BrowserRouter>
     ,
     document.getElementById('root'));
