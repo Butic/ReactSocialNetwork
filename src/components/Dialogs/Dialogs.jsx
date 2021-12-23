@@ -3,6 +3,7 @@ import classes from './Dialogs.module.css';
 import DialogMembers from './DialogMembers/DialogMembers';
 import ChartWindow from './ChartWindow/ChartWindow';
 import StoreContext from '../../redux/StoreContext';
+
 const Dialogs = () =>{
     return(
         <StoreContext.Consumer>
