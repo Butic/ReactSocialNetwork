@@ -30,3 +30,8 @@
 .Dialog__member_settings:hover{
     background-color: rgb(225, 225, 231);
 }
+.active{
+    position: relative;
+    font-weight: bold;  
+    font-style: italic;
+}

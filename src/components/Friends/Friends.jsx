@@ -1,5 +1,4 @@
 import classes from './Friends.module.css';
-import StoreContext from '../../redux/StoreContext';
 import FriendItemContainer from './FriendItem/FriendItemContainer';
 
 const Friends = () =>{

@@ -3,19 +3,6 @@ import { connect } from "react-redux";
 import { addPostActionCreator, onPostChangeActionCreator } from "../../../redux/profileReducer";
 import PostInput from "./PostInput";
 
-// const PostInputContainer = (props) =>{
-
-//     const addPost=()=>{
-//         props.dispatch(addPostActionCreator());
-//     }
-
-//     const changeInput=(title, text)=>{
-//         props.dispatch(onPostChangeActionCreator(title, text));
-//     }
-
-//     return <PostInput newPost={props.newPost} addPost={addPost} changeInput={changeInput}/>;
-// };
-
 const mapStateToProps=(state)=>{
     return{
         newPost: state.profileData.newPost
