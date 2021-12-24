@@ -6,6 +6,7 @@ import Nav from './components/Navbar/Nav';
 import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
+import UsersList from './components/Users/UsersList';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
             <Route path='/profile' render={()=><Profile />}/>
             <Route path='/dialogs' render={()=><Dialogs />}/>
             <Route path='/friends' render={()=><Friends />}/>
+            <Route path='/users' render={()=><UsersList />}/>
         </div>
       </div>
   );

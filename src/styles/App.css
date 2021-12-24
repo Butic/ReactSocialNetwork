@@ -4,6 +4,7 @@
 .App{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    overflow-x: hidden;
 }
 .Body{
     margin: 0;

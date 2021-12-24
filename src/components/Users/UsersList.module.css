@@ -1,0 +1,14 @@
+.Users__list{
+    list-style: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.Users__search{
+    display: flex;
+    margin: 15px auto;
+    padding: 10px 20px;
+    position: relative;
+    width: 80%;
+    border-radius: 10px;
+}

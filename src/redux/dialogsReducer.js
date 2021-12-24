@@ -31,9 +31,7 @@ const initialState = {
 const dialogsReducer = (state=initialState, action) =>{
     switch (action.type){
         case CHANGE_MESSAGE_AREA:{
-            const newState = {...state};
-            newState.newMessage = action.text;
-            return newState;
+            return {...state, newMessage:action.text};
         }
         case ADD_MY_MESSAGE:{
             const newState = {...state};
