@@ -21,6 +21,11 @@
     cursor: pointer;
     transition: 0.5s;
 }
+.User__friend{
+    color: gray;
+    font-style: italic;
+    margin: 0;
+}
 .User__unfollow__button{
     background-color: rgba(255, 2, 2, 0.75);
     padding: 5px;
@@ -45,22 +50,32 @@
     padding: 10px;
     display: flex;
     justify-content: space-around;
-    background-color: rgb(230, 232, 235);
+    background-color: rgb(224, 228, 233);
     transition: 0.5s;
     cursor: pointer;
 }
+.User__subscribed{
+    width: 70%;
+    background-color: rgb(240, 243, 247);
+    border: 1px solid rgba(0, 60, 255, .5);
+}
+
 .User__about:hover{
-    background-color: rgb(206, 213, 235);
-    border: 1px solid rgba(0, 60, 255, .75);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 60, 255);
 }
 .User__description{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
+}
+.User__description__name{
+    margin: 0;
 }
 .User__description__status{
     font-size: 13px;
     color: gray;
+    margin: 0;
 }
 .User__location{
     display: flex;

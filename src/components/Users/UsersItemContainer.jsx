@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import UsersItem from './UsersItem';
-import { followActionCreator } from "../../redux/usersReducer";
+import { followActionCreator, userListActionCreator } from "../../redux/usersReducer";
 
 const mapStateToProps=(state)=>{
     return{
@@ -12,6 +12,9 @@ const mapDispatchToProps=(dispatch)=>{
     return{
         follow(id){
             dispatch(followActionCreator(id))
+        },
+        usersList(users){
+            dispatch(userListActionCreator(users))
         }
     }
 }

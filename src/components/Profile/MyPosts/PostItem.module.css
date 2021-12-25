@@ -41,9 +41,13 @@
     background-color: rgba(255, 0, 0, 0.85);
     border: 1px solid black;
     border-radius: 5px;
+    color: white;
+    margin-left: 1%;
+    transition: 0.5s;
 }
 .Post__remove:hover{
     background-color: rgba(255, 0, 0, 1);
+    border: 1px solid white;
 }
 .Post__likes{
     position: absolute;
