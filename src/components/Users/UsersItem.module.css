@@ -1,3 +1,22 @@
+.Users__list{
+    list-style: none;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column: 1/-1;
+}
+.find{
+    grid-column: 1/-1;
+    width: 10%;
+    justify-self: center;
+    background-color: rgba(0, 60, 255, .75);
+    padding: 5px;
+    border:none;
+    border-radius: 5px;
+    color:wheat;
+    font-size: 16px;
+    cursor: pointer;
+}
 .User__container{
     width: 100%;
     margin-left: 2.5%;
