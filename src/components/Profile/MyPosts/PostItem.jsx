@@ -1,12 +1,13 @@
 import React from "react";
 import classes from './PostItem.module.css';
+import avatar from '../../UI/img/1283.png_860.png';
 
 const PostItem = (props) =>{
     return(
         props.posts.map(el=>{
             return(
                 <div className={classes.Post}>
-                    <img src="https:img.lovepik.com/element/45006/1283.png_860.png" alt="Avatar" className={classes.Post__avatar} />
+                    <img src={avatar} alt="Avatar" className={classes.Post__avatar} />
                     <div className={classes.Post__content}>
                         <span className={classes.Post__number}>{el.number}</span>
                         <h3 className={classes.Post__header}>{el.title}</h3>

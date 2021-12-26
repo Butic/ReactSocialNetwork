@@ -1,5 +1,5 @@
 .Header{
-    grid-column: 1 / -1;
+    grid-column: 1 / 6;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,5 +9,4 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
-    background-color: blueviolet;
 }

@@ -1,10 +1,11 @@
 import React from 'react';
 import classes from'./ProfileInfo.module.css';
+import avatar from '../UI/img/1283.png_860.png'
 
 const ProfileInfo=()=>{
     return(
         <div className={classes.Profile}>
-            <img className={classes.Profile__person_avatar} src="https://img.lovepik.com/element/45006/1283.png_860.png" alt="avatar" />
+            <img className={classes.Profile__person_avatar} src={avatar} alt="avatar" />
             <h2 className={classes.Profile__person_nm}>just_simple_name</h2>
             <ul className={classes.Profile__person_info}>
                 <li className={classes.Profile__some}>Date Of Birth: <span>18.06.1992</span></li>

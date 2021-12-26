@@ -1,8 +1,10 @@
 import React from 'react';
 import classes from './Avatar.module.css';
-const Avatar = () =>{
+import avatar from '../UI/img/1283.png_860.png';
+import plugImage from '../UI/img/Plug.png';
+const Avatar = (props) =>{
     return(
-        <img src="https://img.lovepik.com/element/45006/1283.png_860.png" alt="Avatar" className={classes.avatar} />
+        <img src={props.avatar != null ? avatar : plugImage} alt="Avatar" className={classes.avatar} />
     );
 }
 
