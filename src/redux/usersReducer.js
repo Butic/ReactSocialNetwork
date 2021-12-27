@@ -1,22 +1,15 @@
+import axios from "axios";
+
 const FOLLOW = 'FOLLOW';
 const USERS = 'USERS';
+const GO_TO_PAGE = 'GO_TO_PAGE';
+const NUMBER_OF_USERS = 'NUMBER_OF_USERS';
+const TOTAL_PAGES = 'TOTAL_PAGES';
+
 const initialState = {
-    users:[
-        // {id:1, followed:false, name:'Andrew', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:2, followed:true, name:'Alena', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:3, followed:true, name:'Dimas', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:4, followed:false, name:'Artem', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:5, followed:true, name:'Elena', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:6, followed:false, name:'Alexey', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:7, followed:false, name:'Yurok', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:8, followed:true, name:'Andrew', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:9, followed:false, name:'Alena', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:10, followed:true, name:'Dimas', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:11, followed:true, name:'Artem', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:12, followed:false, name:'Elena', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:13, followed:false, name:'Alexey', status:'some status here', location:{country:'Country', sity:'Sity'}},
-        // {id:14, followed:false, name:'Yurok', status:'some status here', location:{country:'Country', sity:'Sity'}}
-    ]
+    users:[],
+    totalPages:0,
+    currentPage:1
 };
 
 const usersReducer = (state=initialState, action) =>{
@@ -34,24 +27,17 @@ const usersReducer = (state=initialState, action) =>{
             return newState;
         }
         case USERS:{
-            return {...state, users:[...state.users, ...action.users]}
+            return {...state, users:[...action.users]}
+        }
+        case GO_TO_PAGE:{
+            return {...state, currentPage:action.pageNum}
+        }
+        case TOTAL_PAGES:{
+            return{...state, totalPages:action.totalPages}
         }
         default: 
             return state;
     }
-
-    // if(action.type===FOLLOW){
-    //     let newState={...state, users: state.users.map(el=>{
-    //         if(el.id==action.id){
-    //             const newEl = {...el, followed:!el.followed};
-    //             return newEl;
-    //         }else{
-    //             return el;
-    //         }
-    //     })};
-    //     return newState;
-    // }
-    // return state;
 }
 
 export const followActionCreator=(id)=>{
@@ -62,4 +48,11 @@ export const userListActionCreator=(users)=>{
     return {type:USERS, users:users};
 }
 
+export const goToPageActionCreator=(pageNum)=>{
+    return {type:GO_TO_PAGE, pageNum:pageNum};
+}
+
+export const totalPagesCounterActionCreator=(totalPages)=>{
+    return {type:TOTAL_PAGES, totalPages:totalPages};
+}
 export default usersReducer;

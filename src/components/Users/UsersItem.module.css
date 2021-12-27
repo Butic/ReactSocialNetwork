@@ -1,3 +1,11 @@
+.cover{
+    grid-column: 1/-1;
+    width: 100%;
+    
+}
+.current__page{
+    font-weight: bold;
+}
 .Users__list{
     list-style: none;
     width: 100%;
@@ -67,6 +75,7 @@
     border-radius: 10px;
     transition: 0.5s;
     padding: 10px;
+    margin-left: 15px;
     display: flex;
     justify-content: space-around;
     background-color: rgb(224, 228, 233);

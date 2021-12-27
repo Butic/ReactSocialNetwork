@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import UsersItem from './UsersItem';
-import { followActionCreator, userListActionCreator } from "../../redux/usersReducer";
+import { followActionCreator, goToPageActionCreator, totalPagesCounterActionCreator, userListActionCreator } from "../../redux/usersReducer";
 
 const mapStateToProps=(state)=>{
     return{
-        users: state.usersData.users
+        users: state.usersData.users,
+        currentPage: state.usersData.currentPage,
+        totalPagesNumber: state.usersData.totalPages
     }
 }
 const mapDispatchToProps=(dispatch)=>{
@@ -15,6 +17,12 @@ const mapDispatchToProps=(dispatch)=>{
         },
         usersList(users){
             dispatch(userListActionCreator(users))
+        },
+        goToPage(pageNum){
+            dispatch(goToPageActionCreator(pageNum))
+        },
+        totalPages(totalPages){
+            dispatch(totalPagesCounterActionCreator(totalPages))
         }
     }
 }

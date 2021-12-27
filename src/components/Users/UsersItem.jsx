@@ -5,20 +5,36 @@ import classes from './UsersItem.module.css';
 import avatar from '../UI/img/1283.png_860.png';
 
 class UsersItem extends React.Component{
-    constructor(props){
-        super(props);
-        axios.get('http://localhost:8000/users').then(responce=>{
-                this.props.usersList(responce.data);
-            })
-    }
 
     follow=(e)=>{
         this.props.follow(e.target.id);
     }
-    
+
+    componentDidMount(){
+        axios.get(`http://localhost:8000/users?_page=${this.props.currentPage}`).then(responce=>{
+                this.props.totalPages(Math.ceil(responce.headers["x-total-count"]/10));
+                this.props.usersList(responce.data);
+            })
+    }
+    goToPage(pageNum){
+        this.props.goToPage(pageNum);
+        axios.get(`http://localhost:8000/users?_page=${pageNum}`).then(responce=>{
+            this.props.usersList(responce.data);
+        })
+    }
     render(){
+        const pages=[];
+        for(let i=1; i<=this.props.totalPagesNumber; i++){
+            pages.push(i);
+        }
         return(
-                this.props.users.map(el=>{
+                <div className={classes.cover}>
+                    {pages.map(num=>{
+                        return <span className={this.props.currentPage == num && classes.current__page} onClick={()=>{
+                            this.goToPage(num);
+                        }}> {num} </span>
+                    })}
+                    {this.props.users.map(el=>{
                     if(el.followed){
                         return(
                             <div className={classes.User__container}>
@@ -60,7 +76,8 @@ class UsersItem extends React.Component{
                             </div>
                         )
                     }
-                })
+                })}
+                </div>
         )
     }
 }
