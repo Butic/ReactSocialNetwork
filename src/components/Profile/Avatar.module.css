@@ -2,6 +2,9 @@
     max-width: 50px;
     border-radius: 50%;
     cursor: pointer;
-    background-color: olivedrab;
     margin-left: 12px;
+    transition: 0.5s;
+}
+.avatar:hover{
+    box-shadow: 0 0 25px #587f91;
 }

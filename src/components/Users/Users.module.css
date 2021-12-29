@@ -1,10 +1,30 @@
-.cover{
+.pages__cover{
     grid-column: 1/-1;
+    display: flex;
     width: 100%;
-    
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15px;
 }
 .current__page{
+    display: inline-block;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+    background-color: rgba(0, 60, 255, .2);
+    border: 1px solid black;
     font-weight: bold;
+    cursor: pointer;
+}
+.__page{
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+    border: 1px solid black;
 }
 .Users__list{
     list-style: none;
@@ -34,7 +54,9 @@
 }
 .User__follow{
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;   
+    justify-content: space-around;
+    height: 80%; 
 }
 .User__follow__button{
     background-color: rgba(0, 60, 255, .75);
@@ -70,6 +92,8 @@
     background-color: rgba(255, 2, 2, 0.95);
 }
 .User__about{
+    text-decoration: none;
+    color: black;
     width: 70%;
     border: 1px solid rgba(0, 60, 255, .5);
     border-radius: 10px;

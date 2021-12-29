@@ -4,6 +4,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: rgba(16, 56, 129, 0.5);
+    padding-right: 25px;
 }
 .Header__logo{
     width: 100px;

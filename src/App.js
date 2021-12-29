@@ -3,10 +3,10 @@ import {Route} from 'react-router-dom';
 import './styles/App.css';
 import Header from './components/Header/Header';
 import Nav from './components/Navbar/Nav';
-import Profile from './components/Profile/Profile';
 import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 import UsersList from './components/Users/UsersList';
+import ProfileContainer from './components/Profile/ProfileContainer';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Header />
         <Nav />
         <div className="Body">
-            <Route path='/profile' render={()=><Profile />}/>
+            <Route path='/profile' render={()=><ProfileContainer />}/>
             <Route path='/dialogs' render={()=><Dialogs />}/>
             <Route path='/friends' render={()=><Friends />}/>
             <Route path='/users' render={()=><UsersList />}/>

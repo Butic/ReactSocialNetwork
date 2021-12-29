@@ -3,10 +3,10 @@ import Posts from "./MyPosts/Posts";
 import ProfileInfo from "./PropfileInfo";
 const Profile = () =>{
     return(
-        <div>
+        <>
             <ProfileInfo />
             <Posts />
-        </div>
+        </>
         );
 }
 
