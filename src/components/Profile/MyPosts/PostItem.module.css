@@ -22,11 +22,11 @@
     padding: 10px 0 15px 35px;
     width: 90%;
 }
-.Post__number{
+.Post__date{
     position: absolute;
     display: inline-block;
-    width: 26px;
-    height: 26px;
+    width: 168px;
+    height: 24px;
     text-align: center;
     border: 1px solid black;
     border-radius: 50px;
@@ -34,7 +34,7 @@
     left:-13px;
     bottom: -14px;
     color: black;
-    font-weight: 900;
+    font-weight: 500;
 }
 .Post__remove{
     padding:7px 10px 7px 10px;

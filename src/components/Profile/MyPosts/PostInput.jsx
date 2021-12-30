@@ -16,7 +16,7 @@ const PostInput = (props) =>{
     return(
         <div className={classes.Input}>
             <input onChange={onPostChange} ref={newTitle} type="text" className={classes.Input__area} placeholder="Add Title" value={props.newPost.newPostTitle}/>
-            <input onChange={onPostChange} ref={newText} type="text" className={classes.Input__area} placeholder="Add Text" value={props.newPost.newPostText}/>
+            <input onChange={onPostChange} ref={newText} type="text" className={classes.Input__area} placeholder="Add Text" value={props.newPost.newPostText} />
             <button onClick={onAddPost} className={classes.Add__post}>Add Post</button>
         </div>
     );

@@ -39,7 +39,7 @@ class UsersItem extends React.Component {
         return (
             <>
                 {this.props.isFetching && <PreLoader />}
-                <Users subscribesArray={this.subscribesArray} subscribes={this.props.subscribes} current_id={this.props.current_id} follow={this.props.follow} goToPage={this.goToPage} users={this.props.users} totalPagesNumber={this.props.totalPagesNumber} currentPage={this.props.currentPage} />
+                <Users  subscribes={this.props.subscribes} current_id={this.props.current_id} follow={this.props.follow} goToPage={this.goToPage} users={this.props.users} totalPagesNumber={this.props.totalPagesNumber} currentPage={this.props.currentPage} />
             </>
         )
     }

@@ -9,7 +9,7 @@ const PostItem = (props) =>{
                 <div className={classes.Post}>
                     <img src={avatar} alt="Avatar" className={classes.Post__avatar} />
                     <div className={classes.Post__content}>
-                        <span className={classes.Post__number}>{el.number}</span>
+                        <span className={classes.Post__date}>{el.date}</span>
                         <h3 className={classes.Post__header}>{el.title}</h3>
                         <p className={classes.Post__texts}>{el.text}</p>
                     </div>

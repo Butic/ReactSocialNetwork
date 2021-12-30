@@ -8,6 +8,6 @@ const mapStateToProps = (state) =>{
     }
 }
 
-const PostItemContainer = connect(mapStateToProps,{})(PostItem);
+const PostItemContainer = connect(mapStateToProps)(PostItem);
 
 export default PostItemContainer;
