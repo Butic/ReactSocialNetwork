@@ -4,11 +4,10 @@ import classes from './Users.module.css';
 import { NavLink } from "react-router-dom";
 
 const Users = (props) => {
-
+    let subscribes=props.subscribes?props.subscribes:[];
     const follow = (e) => {
-        props.follow(e.target.id);
+        props.followUser(e.target.id);
     }
-
     const pages = [];
     for (let i = 1; i <= props.totalPagesNumber; i++) {
         pages.push(i);
@@ -29,9 +28,9 @@ const Users = (props) => {
                             <div className={classes.User__follow}>
                                 <NavLink to={`/profile/${el.id}`}> <Avatar /> </NavLink>
                                 {
-                                    props.subscribes.includes(el.id)
-                                        ? <button id={el.id} onClick={follow} className={classes.User__unfollow__button}>Unfollow</button>
-                                        : <button id={el.id} onClick={follow} className={classes.User__follow__button}>Follow</button>
+                                    subscribes.includes(el.id)
+                                        ? <button disabled={props.isFollowing.includes(el.id)?true:false} id={el.id} onClick={follow} className={classes.User__unfollow__button}>Unfollow</button>
+                                        : <button disabled={props.isFollowing.includes(el.id)?true:false} id={el.id} onClick={follow} className={classes.User__follow__button}>Follow</button>
                                 }
                             </div>
                             <NavLink to={`/profile/${el.id}`} className={classes.User__about}>
@@ -40,7 +39,7 @@ const Users = (props) => {
                                     <p className={classes.User__description__status}>{el.status}</p>
                                 </div>
                                 <div className={classes.User__location}>
-                                    <h4 className={classes.User__location__country}>{el.location.country},</h4>
+                                    <h4 className={classes.User__location__country}>{el.location.country}</h4>
                                     <p className={classes.User__location__sity}>{el.location.sity}</p>
                                 </div>
                             </NavLink>

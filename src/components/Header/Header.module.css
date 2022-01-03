@@ -11,3 +11,65 @@
     height: 100px;
     cursor: pointer;
 }
+.Header__title{
+    color: white;
+    float: right;
+    font-style: italic;
+    font-size: 52px;
+    margin: 0;
+}
+.Header__V{
+    display: inline-block;
+    font-size: 52px;
+    font-style: normal;
+    width: 75px;
+    height: 75px;;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    margin: 0;
+}
+.Header__profile{
+    position: relative;
+}
+.Header__profile_list{
+    position: absolute;
+    right: 25px;
+    top:15px;
+    display: none;
+    background-color: rgba(255, 255, 255, 0.85);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px 0 15px 15px;
+    z-index: 11;
+}
+.Header__profile:hover .Header__profile_list{
+    display: flex;
+}
+
+.Header__profile_list li{
+    display: inline-block;
+    right: 0;
+    width: 150px;
+    text-align: center;
+    font-size: 15px;
+    padding-top: 15px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.5s;
+}
+.Header__MyProfile{
+    border-bottom: 1px solid dimgray;
+    border-radius: 15px 0 0 0;
+}
+
+.Header__profile_list li:hover{
+    background-color: rgba(16, 56, 129, 0.5);
+    box-shadow: 0 0 25px #587f91;
+}
+.Header__exit{
+    border-radius: 0 0 15px 15px;
+}

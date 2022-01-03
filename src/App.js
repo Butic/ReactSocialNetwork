@@ -7,6 +7,7 @@ import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 import UsersList from './components/Users/UsersList';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import { LoginWindowContainer } from './components/LoginWindow/LoginWindowContainer';
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
         <Header />
         <Nav />
         <div className="Body">
+            <Route path='/login' render={()=><LoginWindowContainer />}/>
             <Route path='/profile/:userID?' render={()=><ProfileContainer />}/>
-            <Route path='/dialogs' render={()=><Dialogs />}/>
+            <Route path='/dialogs/:userID?' render={()=><Dialogs />}/>
             <Route path='/friends' render={()=><Friends />}/>
             <Route path='/users' render={()=><UsersList />}/>
         </div>
