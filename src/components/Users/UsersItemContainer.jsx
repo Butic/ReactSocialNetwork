@@ -1,67 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMyDataActionCreator, disableButtonActionCreator, followActionCreator, goToPageActionCreator, toggleFetchingActionCreator, totalPagesCounterActionCreator, userListActionCreator } from "../../redux/usersReducer";
-import * as axios from "axios";
+import { addMyDataActionCreator, disableButtonThunk, followUserThunk, getUsersThunk, goToPageThunk, toggleFetchingActionCreator, totalPagesCounterActionCreator, userListActionCreator } from "../../redux/usersReducer";
 import Users from "./Users";
 import PreLoader from '../UI/PreLoader';
-import { addMyData, usersList } from '../API/usersAPI';
 
 class UsersItem extends React.Component {
 
     componentDidMount() {
         if (this.props.users.length == 0) {
-            this.props.toggleFetching(true);
-            setTimeout(() => {
-                addMyData(this.props.current_id).then(response1=>{
-                    this.props.addMyData(response1.data)
-                }).then(usersList(this.props.currentPage)
-                .then(responce2 => {
-                    this.props.toggleFetching(false);
-                    this.props.totalPages(Math.ceil(responce2.headers["x-total-count"] / 10));
-                    this.props.usersList(responce2.data);
-                })
-                )
-            }, 2000);
+            this.props.getUsers(this.props.current_id, this.props.currentPage)
         }
     }
     followUser=(target_id)=>{
-        this.isFollowing(target_id);
-        if (!this.props.myData.subscribes.includes(Number(target_id))) {
-            const newData = { ...this.props.myData, subscribes: [...this.props.myData.subscribes, Number(target_id)] };
-            return axios.delete('http://localhost:8000/users/' + this.props.current_id).then(() => {
-                return axios.post('http://localhost:8000/users/', newData).then((responce)=>{
-                    this.props.follow(responce.data);
-                    this.isFollowing(target_id);
-                })
-            })
-        }
-        else {
-            const newData = { ...this.props.myData, subscribes: [...this.props.myData.subscribes.filter(el => el != Number(target_id))] }
-            return axios.delete('http://localhost:8000/users/' + this.props.current_id).then(() => {
-                return axios.post('http://localhost:8000/users/', newData).then((responce)=>{
-                    this.props.follow(responce.data);
-                    this.isFollowing(target_id);
-                })
-            })
-        }
+        this.isFollowing(target_id)
+        
+        this.props.follow(this.props.myData, target_id)
+        setTimeout(()=>{
+            this.isFollowing(target_id)
+        },5000);
+        
     }
     goToPage = (pageNum) => {
-        this.props.toggleFetching(true);
         this.props.goToPage(pageNum);
-        setTimeout(() => {
-            axios.get(`http://localhost:8000/users/?_page=${pageNum}`).then(responce => {
-                this.props.toggleFetching(false);
-                this.props.usersList(responce.data);
-            })
-        }, 2000);
     }
+
     isFollowing=(target_id)=>{
-        if(this.props.isFollowing.includes(Number(target_id))){
-            this.props.disableButton([...this.props.isFollowing.filter(el=>el!=Number(target_id))])
-        }
-        else{
-            this.props.disableButton([...this.props.isFollowing, Number(target_id)])
-        }
+        this.props.disableButton(this.props.isFollowing, target_id);
     }
     render() {
         return (
@@ -88,14 +52,14 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        follow(id) {
-            dispatch(followActionCreator(id))
+        follow(myData, target_id) {
+            dispatch(followUserThunk(myData, target_id))
         },
         usersList(users) {
             dispatch(userListActionCreator(users))
         },
         goToPage(pageNum) {
-            dispatch(goToPageActionCreator(pageNum))
+            dispatch(goToPageThunk(pageNum))
         },
         totalPages(totalPages) {
             dispatch(totalPagesCounterActionCreator(totalPages))
@@ -106,8 +70,11 @@ const mapDispatchToProps = (dispatch) => {
         addMyData(data){
             dispatch(addMyDataActionCreator(data))
         },
-        disableButton(isFollowingArray){
-            dispatch(disableButtonActionCreator(isFollowingArray))
+        getUsers(current_id, currentPage){
+            dispatch(getUsersThunk(current_id, currentPage))
+        },
+        disableButton(isFollowing, target_id){
+            dispatch(disableButtonThunk(isFollowing, target_id))
         }
     }
 }

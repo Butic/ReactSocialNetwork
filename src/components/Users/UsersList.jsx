@@ -1,3 +1,4 @@
+import store from '../../redux/reduxStore';
 import UsersItemContainer from './UsersItemContainer';
 import classes from './UsersList.module.css';
 
