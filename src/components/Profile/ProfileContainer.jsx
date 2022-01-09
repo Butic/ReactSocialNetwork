@@ -1,8 +1,7 @@
-import axios from "axios";
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { setUserProfileActionCreator } from "../../redux/profileReducer";
+import { setUserProfileThunk } from "../../redux/profileReducer";
 import Profile from './Profile';
 
 class ProfileContainer extends React.Component{
@@ -10,9 +9,7 @@ class ProfileContainer extends React.Component{
 componentDidMount(){
     let userID = this.props.match.params.userID;
     if(!userID)userID=localStorage.getItem('VReacte');
-    axios.get(`http://localhost:8000/users/`+ userID).then(responce=>{
-        this.props.setUserProfile(responce.data);
-    })
+    this.props.setUserProfile(userID);
 }
     render(){
         return <Profile {...this.props.profileData}/>
@@ -28,7 +25,7 @@ const mapStateToProps=(state)=>{
 const mapDispatchToProps=(dispatch)=>{
     return{
         setUserProfile(data){
-            dispatch(setUserProfileActionCreator(data))
+            dispatch(setUserProfileThunk(data))
         }
     }
 }

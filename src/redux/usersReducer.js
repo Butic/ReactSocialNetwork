@@ -94,8 +94,9 @@ export const goToPageThunk = (pageNum) => {
         dispatch(toggleFetchingActionCreator(true));
         goToPageActionCreator(pageNum);
         usersAPI.getPage(pageNum).then(responce => {
-            dispatch(toggleFetchingActionCreator(false));
             dispatch(userListActionCreator(responce.data));
+            dispatch(toggleFetchingActionCreator(false));
+            dispatch(goToPageActionCreator(pageNum));
         })
     }
 }
@@ -111,18 +112,20 @@ export const disableButtonThunk = (isFollowing, target_id) => {
     }
 }
 
-export const followUserThunk = (myData, target_id) => {
+export const followUserThunk = (myData, target_id, isFollowing) => {
     return (dispatch) => {
         if (!myData.subscribes.includes(Number(target_id))) {
             const newData = { ...myData, subscribes: [...myData.subscribes, Number(target_id)] };
             usersAPI.updateUser(myData.id, newData).then((responce) => {
                 dispatch(followActionCreator(responce.data));
+                dispatch(disableButtonActionCreator([...isFollowing.filter(el => el != Number(target_id))]));
             })
         }
         else {
             const newData = { ...myData, subscribes: [...myData.subscribes.filter(el => el != Number(target_id))] }
             usersAPI.updateUser(myData.id, newData).then((responce) => {
                 dispatch(followActionCreator(responce.data));
+                dispatch(disableButtonActionCreator([...isFollowing.filter(el => el != Number(target_id))]));
             })
         }
     }

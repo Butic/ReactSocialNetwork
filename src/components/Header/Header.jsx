@@ -2,9 +2,10 @@ import React from "react";
 import classes from './Header.module.css';
 import Avatar from '../Profile/Avatar';
 import logo from '../UI/img/logo.png';
-import axios from "axios";
+import { connect } from "react-redux";
+import { onLogOutActionCreator } from "../../redux/loginReducer";
 
-const Header = () =>{
+const Header = (props) =>{
     
     return(
         <header className={classes.Header}>
@@ -14,11 +15,19 @@ const Header = () =>{
             <Avatar/>
             <ul className={classes.Header__profile_list}>
                 <li className={classes.Header__MyProfile}>My profile</li>
-                <li className={classes.Header__exit}>Exit</li>
+                <li className={classes.Header__exit} onClick={()=>{ localStorage.removeItem('VReacte'); props.logOut() }}>Exit</li>
             </ul>
             </div>
         </header>
     );
 }
 
-export default Header;
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        logOut(){
+            dispatch(onLogOutActionCreator());
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Header);

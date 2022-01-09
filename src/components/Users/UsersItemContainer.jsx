@@ -8,17 +8,12 @@ class UsersItem extends React.Component {
 
     componentDidMount() {
         if (this.props.users.length == 0) {
-            this.props.getUsers(this.props.current_id, this.props.currentPage)
+            this.props.getUsers(this.props.current_id, this.props.currentPage);
         }
     }
     followUser=(target_id)=>{
-        this.isFollowing(target_id)
-        
-        this.props.follow(this.props.myData, target_id)
-        setTimeout(()=>{
-            this.isFollowing(target_id)
-        },5000);
-        
+        this.isFollowing(target_id);
+        this.props.follow(this.props.myData, target_id, this.props.isFollowing);
     }
     goToPage = (pageNum) => {
         this.props.goToPage(pageNum);
@@ -52,8 +47,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        follow(myData, target_id) {
-            dispatch(followUserThunk(myData, target_id))
+        follow(myData, target_id, isFollowing) {
+            dispatch(followUserThunk(myData, target_id, isFollowing))
         },
         usersList(users) {
             dispatch(userListActionCreator(users))

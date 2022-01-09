@@ -6,7 +6,8 @@ const PostInput = (props) =>{
     const newText = React.useRef();
 
     const onAddPost=()=>{
-        props.addPost();        
+        const newPost={title:newTitle.current.value, text:newText.current.value}
+        props.addPost(newPost);        
     }
 
     const onPostChange=()=>{

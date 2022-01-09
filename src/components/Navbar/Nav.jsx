@@ -2,6 +2,7 @@ import React from "react";
 import classes from './Nav.module.css';
 import { NavLink } from "react-router-dom";
 import Avatar from '../Profile/Avatar';
+
 const Nav = () =>{
     return(
         <ul className={classes.Nav}>
