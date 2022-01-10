@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addMyDataActionCreator, disableButtonThunk, followUserThunk, getUsersThunk, goToPageThunk, toggleFetchingActionCreator, totalPagesCounterActionCreator, userListActionCreator } from "../../redux/usersReducer";
 import Users from "./Users";
-import PreLoader from '../UI/PreLoader';
 
 class UsersItem extends React.Component {
 
@@ -23,12 +22,7 @@ class UsersItem extends React.Component {
         this.props.disableButton(this.props.isFollowing, target_id);
     }
     render() {
-        return (
-            <>
-                {this.props.isFetching && <PreLoader />}
-                <Users isFollowing={this.props.isFollowing} subscribes={this.props.myData.subscribes} current_id={this.props.current_id} followUser={this.followUser} goToPage={this.goToPage} users={this.props.users} totalPagesNumber={this.props.totalPagesNumber} currentPage={this.props.currentPage} />
-            </>
-        )
+        return <Users isFollowing={this.props.isFollowing} subscribes={this.props.myData.subscribes} current_id={this.props.current_id} followUser={this.followUser} goToPage={this.goToPage} users={this.props.users} totalPagesNumber={this.props.totalPagesNumber} currentPage={this.props.currentPage} />
     }
 }
 

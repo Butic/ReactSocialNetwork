@@ -8,6 +8,4 @@ const mapStateToProps=(state)=>{
     }
 }
 
-const ChartMessagesContainer = connect(mapStateToProps)(ChartMessages);
-
-export default ChartMessagesContainer;
+export default connect(mapStateToProps)(ChartMessages);

@@ -8,6 +8,4 @@ const mapStateToProps=(state)=>{
     }
 }
 
-const FriendItemContainer=connect(mapStateToProps)(FriendItem);
-
-export default FriendItemContainer;
+export default connect(mapStateToProps)(FriendItem);

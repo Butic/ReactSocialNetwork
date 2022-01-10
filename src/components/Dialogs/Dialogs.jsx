@@ -2,11 +2,9 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import ChartWindow from './ChartWindow/ChartWindow';
 import DialogMembersContainer from './DialogMembers/DialogMembersContainer';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 
-const Dialogs = (props) =>{
-    if(!props.isAuth) return <Redirect to={"/login"}/>
+const Dialogs = () =>{
     return(
         <div className={classes.Dialogs}>
             <div className={classes.Dialogs__left_side}>
@@ -20,10 +18,4 @@ const Dialogs = (props) =>{
     );
 };
 
-const mapStateToProps=(state)=>{
-    return{
-        isAuth:state.loginData.isAuth
-    }
-}
-
-export default connect(mapStateToProps)(Dialogs);
+export default withAuthRedirect(Dialogs);

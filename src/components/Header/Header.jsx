@@ -4,9 +4,11 @@ import Avatar from '../Profile/Avatar';
 import logo from '../UI/img/logo.png';
 import { connect } from "react-redux";
 import { onLogOutActionCreator } from "../../redux/loginReducer";
+import { NavLink} from "react-router-dom";
+import { compose } from "redux";
+import withAuthRedirect from "../../hoc/withAuthRedirect";
 
 const Header = (props) =>{
-    
     return(
         <header className={classes.Header}>
             <img className={classes.Header__logo} src={logo} alt="Header Logo" />
@@ -14,7 +16,7 @@ const Header = (props) =>{
             <div className={classes.Header__profile}>
             <Avatar/>
             <ul className={classes.Header__profile_list}>
-                <li className={classes.Header__MyProfile}>My profile</li>
+                <NavLink to={`/profile/${props.loggedID}`}><li className={classes.Header__MyProfile}>My profile</li></NavLink> 
                 <li className={classes.Header__exit} onClick={()=>{ localStorage.removeItem('VReacte'); props.logOut() }}>Exit</li>
             </ul>
             </div>
@@ -30,4 +32,4 @@ const mapDispatchToProps=(dispatch)=>{
     }
 }
 
-export default connect(null, mapDispatchToProps)(Header);
+export default compose(connect(null, mapDispatchToProps), withAuthRedirect)(Header);

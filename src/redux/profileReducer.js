@@ -5,6 +5,7 @@ const ON_POST_CHANGE = 'ON-POST-CHANGE';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_SENDER_NAME = 'SET_SENDER_NAME';
 const DELETE_POST = 'DELETE_POST';
+const CHANGE_STATUS = 'CHANGE_STATUS';
 
 const lorem = 'dolor sit amet consectetur adipisicing elit. Minima accusantium maxime magni atque deserunt? Doloribus unde dolores, molestias, suscipit enim molestiae dignissimos dolorum quidem aliquid soluta incidunt officiis dolor nihil.';
 
@@ -28,7 +29,8 @@ const initalState = {
     avatar: '',
     posts: [],
     newPost: { newPostTitle: 'Andrey', newPostText: 'Web Developer' },
-    senderName: ""
+    senderName: "",
+    isFetching: false
 };
 
 const profileReducer = (state = initalState, action) => {
@@ -61,6 +63,9 @@ const profileReducer = (state = initalState, action) => {
         case SET_SENDER_NAME: {
             return { ...state, senderName: action.senderName }
         }
+        case CHANGE_STATUS:{
+            return { ...state, status:action.newStatus }
+        }
         default: return state;
     }
 
@@ -71,6 +76,7 @@ export const deletePostActionCreator = (target_post_ID) => ({ type: DELETE_POST,
 export const onPostChangeActionCreator = (title, text) => ({ type: ON_POST_CHANGE, title: title, text: text });
 export const setUserProfileActionCreator = (data) => ({ type: SET_USER_PROFILE, data: data });
 export const setSenderNameActionCreator = (senderName) => ({ type: SET_SENDER_NAME, senderName: senderName });
+export const changeStatusActionCreator = (newStatus) => ({type:CHANGE_STATUS, newStatus:newStatus});
 
 export const setUserProfileThunk = (userID) => {
     return (dispatch) => {
@@ -122,6 +128,18 @@ export const deletePostThunk = (targetID, target_post_ID) => {
                         dispatch(deletePostActionCreator(target_post_ID))
                     })
             })
+    }
+}
+
+export const changeStatusThunk=(newStatus, id)=>{
+    return (dispatch)=>{
+        usersAPI.addMyData(id)
+        .then(responce=>{
+            usersAPI.updateUser(id, {...responce.data, status:newStatus})
+            .then(()=>{
+                dispatch(changeStatusActionCreator(newStatus));
+            })
+        })
     }
 }
 

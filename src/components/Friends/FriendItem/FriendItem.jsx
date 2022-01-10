@@ -9,9 +9,6 @@ const FriendItem = (props) =>{
             )
         })
     );
-    // return(
-    //     <li className={classes.FriendItem}><Avatar/> {props.name}</li>
-    // );
 }
 
 export default FriendItem;

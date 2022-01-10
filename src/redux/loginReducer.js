@@ -7,7 +7,8 @@ const ON_LOGOUT = 'ON_LOGOUT';
 const initialState = {
     email: "",
     password: "",
-    isAuth: Number(localStorage.getItem('VReacte'))?true:false
+    isAuth: Number(localStorage.getItem('VReacte'))?true:false,
+    loggedID: localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):""
 }
 
 const loginReducer = (state = initialState, action) => {

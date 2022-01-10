@@ -1,5 +1,6 @@
 import classes from './Friends.module.css';
 import FriendItemContainer from './FriendItem/FriendItemContainer';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 
 const Friends = () =>{
     return(
@@ -11,4 +12,4 @@ const Friends = () =>{
         </div>
     );
 };
-export default Friends;
+export default withAuthRedirect(Friends);

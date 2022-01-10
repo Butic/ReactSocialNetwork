@@ -8,6 +8,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-const DialogMembersContainer = connect(mapStateToProps)(DialogMembers);
-
-export default DialogMembersContainer;
+export default connect(mapStateToProps)(DialogMembers);

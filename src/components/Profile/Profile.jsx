@@ -1,13 +1,16 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
+import withAuthRedirect from "../../hoc/withAuthRedirect";
 import Posts from "./MyPosts/Posts";
-import ProfileInfo from "./PropfileInfo";
+import ProfileInfoContainer from "./PropfileInfoContainer";
 const Profile = (props) =>{
     return(
         <>
-            <ProfileInfo name={props.name} DOB={props.DOB} location={props.location} status={props.status} links={props.links} avatar={props.avatar}/>
+            <ProfileInfoContainer paramsID={props.match.params.userID} loggedID={props.loggedID}/>
             <Posts />
         </>
         );
 }
 
-export default Profile;
+export default compose(withRouter, withAuthRedirect)(Profile);

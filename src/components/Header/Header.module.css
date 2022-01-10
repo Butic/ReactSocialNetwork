@@ -54,6 +54,7 @@
     width: 150px;
     text-align: center;
     font-size: 15px;
+    color: black;
     padding-top: 15px;
     height: 30px;
     cursor: pointer;
@@ -62,7 +63,7 @@
     transition: 0.5s;
 }
 .Header__MyProfile{
-    border-bottom: 1px solid dimgray;
+    border-bottom: 1px solid rgba(16, 56, 129, 0.25);
     border-radius: 15px 0 0 0;
 }
 

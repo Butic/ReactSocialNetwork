@@ -1,16 +1,12 @@
 import React from "react";
 import classes from './PostItem.module.css';
 import avatar from '../../UI/img/1283.png_860.png';
-import { Redirect } from "react-router-dom";
 
 const PostItem = (props) =>{
 
     const deletePost=(target_post_ID)=>{
         props.deletePost(target_post_ID)
     }
-
-    if (!props.isAuth) return <Redirect to={"/login"}/>
-
     return(
         props.posts.map(el=>{
             return(

@@ -16,7 +16,6 @@ class PostItemContainer extends React.Component{
 const mapStateToProps = (state) =>{
     return{
         posts: state.profileData.posts,
-        isAuth: state.loginData.isAuth
     }
 }
 const mapDispatchToProps=(dispatch)=>{

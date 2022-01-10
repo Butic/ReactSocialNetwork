@@ -20,6 +20,4 @@ const mapDispatchToProps=(dispatch)=>{
     }
 }
 
-const InputMessageContainer=connect(mapStateToProps, mapDispatchToProps)(InputMessage);
-
-export default InputMessageContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(InputMessage);

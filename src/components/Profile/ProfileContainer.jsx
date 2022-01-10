@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 import { setUserProfileThunk } from "../../redux/profileReducer";
 import Profile from './Profile';
 
@@ -12,14 +13,8 @@ componentDidMount(){
     this.props.setUserProfile(userID);
 }
     render(){
-        return <Profile {...this.props.profileData}/>
+        return <Profile />
     } 
-}
-
-const mapStateToProps=(state)=>{
-    return{
-        profileData:state.profileData
-    }
 }
 
 const mapDispatchToProps=(dispatch)=>{
@@ -30,5 +25,5 @@ const mapDispatchToProps=(dispatch)=>{
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProfileContainer));
+export default compose(withRouter, connect(null, mapDispatchToProps))(ProfileContainer);
 
