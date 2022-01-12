@@ -29,3 +29,12 @@
 .Add__post:hover{
     box-shadow: 0 0 15px black;
 }
+.Add__post:disabled{
+    background-color: rgba(0, 60, 255, .0);
+}
+.error__text{
+    position: absolute;
+    color: red;
+    font-style: italic;
+    font-weight: 500;
+}

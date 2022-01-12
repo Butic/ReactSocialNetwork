@@ -1,26 +1,30 @@
 import React from "react";
+import { Field, reduxForm } from "redux-form";
+import { required } from "../../../validators/validators";
 import classes from './PostInput.module.css';
 
-const PostInput = (props) =>{
-    const newTitle = React.useRef();
-    const newText = React.useRef();
-
-    const onAddPost=()=>{
-        const newPost={title:newTitle.current.value, text:newText.current.value}
-        props.addPost(newPost);        
+const PostInput = (props) => {
+    const onAddPost = (value) => {
+        const newPost = { title: value.title, text: value.text }
+        props.addPost(newPost);
+        value.title = "";
+        value.text = "";
     }
 
-    const onPostChange=()=>{
-        props.changeInput(newTitle.current.value, newText.current.value);
-    }
-
-    return(
-        <div className={classes.Input}>
-            <input onChange={onPostChange} ref={newTitle} type="text" className={classes.Input__area} placeholder="Add Title" value={props.newPost.newPostTitle}/>
-            <input onChange={onPostChange} ref={newText} type="text" className={classes.Input__area} placeholder="Add Text" value={props.newPost.newPostText} />
-            <button onClick={onAddPost} className={classes.Add__post}>Add Post</button>
-        </div>
-    );
+    return <PostInputReduxForm onSubmit={onAddPost} />
 };
+
+const PostInputForm = (props) => {
+    return (
+        <form className={classes.Input} onSubmit={props.handleSubmit}>
+            <Field component="input" name="title" type="text" className={classes.Input__area} placeholder="Add Title" />
+            <Field component="input" name="text" type="text"  className={classes.Input__area } placeholder="Add Text" validate={[required]} />
+            {props.submitFailed && !props.valid && <span className={classes.error__text} >Text field is required</span>}
+            <button className={classes.Add__post}>Add Post</button>
+        </form>
+    )
+}
+
+const PostInputReduxForm = reduxForm({ form: 'input_post' })(PostInputForm)
 
 export default PostInput;

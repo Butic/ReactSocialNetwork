@@ -1,13 +1,10 @@
 import { usersAPI } from "../API/api";
 
 const ADD_POST = 'ADD-POST';
-const ON_POST_CHANGE = 'ON-POST-CHANGE';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_SENDER_NAME = 'SET_SENDER_NAME';
 const DELETE_POST = 'DELETE_POST';
 const CHANGE_STATUS = 'CHANGE_STATUS';
-
-const lorem = 'dolor sit amet consectetur adipisicing elit. Minima accusantium maxime magni atque deserunt? Doloribus unde dolores, molestias, suscipit enim molestiae dignissimos dolorum quidem aliquid soluta incidunt officiis dolor nihil.';
 
 const initalState = {
     id: '',
@@ -28,7 +25,6 @@ const initalState = {
     },
     avatar: '',
     posts: [],
-    newPost: { newPostTitle: 'Andrey', newPostText: 'Web Developer' },
     senderName: "",
     isFetching: false
 };
@@ -38,17 +34,11 @@ const profileReducer = (state = initalState, action) => {
         case ADD_POST: {
             const newState = { ...state };
             newState.posts = [...state.posts];
-            newState.newPost = { ...state.newPost };
             newState.posts.unshift(action.newAddedPost);
-            newState.newPost.newPostTitle = '';
-            newState.newPost.newPostText = '';
             return newState;
         }
         case DELETE_POST: {
             return { ...state, posts: [...state.posts.filter(el => el.id != action.target_post_ID)] };
-        }
-        case ON_POST_CHANGE: {
-            return { ...state, newPost: { newPostTitle: action.title, newPostText: action.text } };
         }
         case SET_USER_PROFILE: {
             return {
@@ -73,7 +63,6 @@ const profileReducer = (state = initalState, action) => {
 
 export const addPostActionCreator = (newAddedPost) => ({ type: ADD_POST, newAddedPost: newAddedPost });
 export const deletePostActionCreator = (target_post_ID) => ({ type: DELETE_POST, target_post_ID: target_post_ID });
-export const onPostChangeActionCreator = (title, text) => ({ type: ON_POST_CHANGE, title: title, text: text });
 export const setUserProfileActionCreator = (data) => ({ type: SET_USER_PROFILE, data: data });
 export const setSenderNameActionCreator = (senderName) => ({ type: SET_SENDER_NAME, senderName: senderName });
 export const changeStatusActionCreator = (newStatus) => ({type:CHANGE_STATUS, newStatus:newStatus});

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { addPostThunk, onPostChangeActionCreator, setSenderNameThunk } from "../../../redux/profileReducer";
+import { addPostThunk, setSenderNameThunk } from "../../../redux/profileReducer";
 import PostInput from "./PostInput";
 import { withRouter } from "react-router-dom";
 
@@ -15,14 +15,13 @@ class PostInputContainer extends React.Component{
     }
 
     render(){
-        return <PostInput changeInput={this.props.changeInput} addPost={this.addNewPost} newPost={this.props.newPost}/>
+        return <PostInput addPost={this.addNewPost}/>
     }
 
 }
 
 const mapStateToProps=(state)=>{
     return{
-        newPost: state.profileData.newPost,
         senderName: state.profileData.senderName
     }
 }
@@ -30,9 +29,6 @@ const mapDispatchToProps=(dispatch)=>{
     return{
         addPost(targetID, senderName="Incognito", newPost){
             dispatch(addPostThunk(targetID, senderName, newPost));
-        },    
-        changeInput(title, text){
-            dispatch(onPostChangeActionCreator(title, text));
         },
         setSenderName(senderID){
             dispatch(setSenderNameThunk(senderID));

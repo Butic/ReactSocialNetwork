@@ -1,4 +1,3 @@
-const CHANGE_MESSAGE_AREA = 'CHANGE-MESSAGE-AREA';
 const ADD_MY_MESSAGE = 'ADD-MY-MESSAGE';
 
 const lorem = 'dolor sit amet consectetur adipisicing elit. Minima accusantium maxime magni atque deserunt? Doloribus unde dolores, molestias, suscipit enim molestiae dignissimos dolorum quidem aliquid soluta incidunt officiis dolor nihil.';
@@ -24,27 +23,21 @@ const initialState = {
         {id:5, name:'Elena'},
         {id:6, name:'Alexey'},
         {id:7, name:'Yurok'}
-      ],
-      newMessage:'Hello'
+      ]
 };
 
 const dialogsReducer = (state=initialState, action) =>{
     switch (action.type){
-        case CHANGE_MESSAGE_AREA:{
-            return {...state, newMessage:action.text};
-        }
         case ADD_MY_MESSAGE:{
             const newState = {...state};
             newState.messages=[...state.messages];
-            newState.messages.unshift({id:1, me:true, message:newState.newMessage, date:Date.now()});
-            newState.newMessage='';
+            newState.messages.unshift({id:1, me:true, message:action.message, date:Date.now()});
             return newState;
         }
         default: return state
     }
 }
 
-export const changeMessageAreaCreator=(text)=>({type:CHANGE_MESSAGE_AREA, text:text});
-export const addMyMessageCreator=()=>({type:ADD_MY_MESSAGE});
+export const addMyMessageCreator=(message)=>({type:ADD_MY_MESSAGE, message:message});
 
 export default dialogsReducer;

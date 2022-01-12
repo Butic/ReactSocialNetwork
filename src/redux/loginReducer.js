@@ -1,21 +1,15 @@
 import axios from "axios";
 
-const CHANGE_VALUE = 'CHANGE_VALUE';
 const ON_LOGIN = 'ON_LOGIN';
 const ON_LOGOUT = 'ON_LOGOUT';
 
 const initialState = {
-    email: "",
-    password: "",
     isAuth: Number(localStorage.getItem('VReacte'))?true:false,
     loggedID: localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):""
 }
 
 const loginReducer = (state = initialState, action) => {
     switch (action.type) {
-        case CHANGE_VALUE: {
-            return{ ...state, email:action.value.email, password:action.value.password }
-        }
         case ON_LOGIN:{
             return {...state, isAuth:true}
         }
@@ -28,7 +22,6 @@ const loginReducer = (state = initialState, action) => {
 
 export default loginReducer;
 
-export const changeValueActionCreator = (value) => ({ type: CHANGE_VALUE, value: value })
 const onLoginActionCreator = () => ({type:ON_LOGIN})
 export const onLogOutActionCreator= () => ({type:ON_LOGOUT})
 
