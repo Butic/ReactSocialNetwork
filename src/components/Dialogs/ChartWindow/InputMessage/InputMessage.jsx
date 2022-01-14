@@ -16,7 +16,7 @@ const InputMessageForm = (props) => {
     return(
         <form action="" className={classes.Input__form} onSubmit={props.handleSubmit} >
             <Field name="message" component="textarea" className={classes.Input__area} placeholder='Enter Your Message Here...' />
-            <button disabled="true" className={classes.Input__button}>Send</button>
+            <button className={classes.Input__button}>Send</button>
         </form>
     )
 }

@@ -1,41 +1,39 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import { addMyDataActionCreator, disableButtonThunk, followUserThunk, getUsersThunk, goToPageThunk, toggleFetchingActionCreator, totalPagesCounterActionCreator, userListActionCreator } from "../../redux/usersReducer";
+import { getCurrentPage, getCurrent_id, getIsFetching, getIsFollowing, getMyData, getSubscribes, getTotalPagesNumber, getUsers } from '../../selectors/usersSelectors';
 import Users from "./Users";
 
-class UsersItem extends React.Component {
+const UsersItem =(props)=> {
 
-    componentDidMount() {
-        if (this.props.users.length == 0) {
-            this.props.getUsers(this.props.current_id, this.props.currentPage);
-        }
+    useEffect(()=>{
+        props.getUsers(localStorage.getItem('VReacte'), props.currentPage);
+    },[]);
+
+    const followUser=(target_id)=>{
+        isFollowing(target_id);
+        props.follow(props.myData, target_id, props.isFollowing);
     }
-    followUser=(target_id)=>{
-        this.isFollowing(target_id);
-        this.props.follow(this.props.myData, target_id, this.props.isFollowing);
-    }
-    goToPage = (pageNum) => {
-        this.props.goToPage(pageNum);
+    const goToPage = (pageNum) => {
+        props.goToPage(pageNum);
     }
 
-    isFollowing=(target_id)=>{
-        this.props.disableButton(this.props.isFollowing, target_id);
+    const isFollowing=(target_id)=>{
+        props.disableButton(props.isFollowing, target_id);
     }
-    render() {
-        return <Users isFollowing={this.props.isFollowing} subscribes={this.props.myData.subscribes} current_id={this.props.current_id} followUser={this.followUser} goToPage={this.goToPage} users={this.props.users} totalPagesNumber={this.props.totalPagesNumber} currentPage={this.props.currentPage} />
-    }
+        return <Users isFollowing={props.isFollowing} subscribes={props.myData.subscribes} current_id={props.current_id} followUser={followUser} goToPage={goToPage} users={props.users} totalPagesNumber={props.totalPagesNumber} currentPage={props.currentPage} />
 }
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersData.users,
-        currentPage: state.usersData.currentPage,
-        totalPagesNumber: state.usersData.totalPages,
-        isFetching: state.usersData.isFetching,
-        current_id: state.usersData.current_id,
-        subscribes: state.usersData.subscribes,
-        isFollowing: state.usersData.isFollowing,
-        myData: state.usersData.myData
+        users: getUsers(state),
+        currentPage: getCurrentPage(state),
+        totalPagesNumber: getTotalPagesNumber(state),
+        isFetching: getIsFetching(state),
+        current_id: getCurrent_id(state),
+        subscribes: getSubscribes(state),
+        isFollowing: getIsFollowing(state),
+        myData: getMyData(state)
     }
 }
 

@@ -7,12 +7,12 @@ const ProfileInfo = (props) =>{
         <div className={classes.Profile}>
                 <img className={classes.Profile__person_avatar} src={props.avatar?props.avatar:avatar} alt="avatar" />
                 <h2 className={classes.Profile__person_nm}>{props.name}</h2>
-                {!props.state.editMode
+                {!props.editMode
                     ?   <span  className={classes.Profile__status} onClick={props.activateEditMode} >{props.status
                             ?   props.status
                             :   <input type="text" placeholder="Add your status here" className={classes.Profile__status_input}/>
                         }</span>
-                    :   <input autoFocus={true} type="text" onChange={props.changeStatus} value={props.state.status} placeholder="Add your status here" onBlur={props.deactivateEditMode} className={classes.Profile__status_input}/>
+                    :   <input autoFocus={true} type="text" onChange={props.setStatusValue} value={props.stateStatus} placeholder="Add your status here" onBlur={props.deactivateEditMode} className={classes.Profile__status_input}/>
                 }
                 
                 <ul className={classes.Profile__person_info}>

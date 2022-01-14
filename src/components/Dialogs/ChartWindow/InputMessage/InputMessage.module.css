@@ -12,6 +12,10 @@
     height: 5vh;
     padding: 5px;
     border-radius: 10px;
+    transition: 0.5s;
+}
+.Input__area:hover{
+    border: 1px solid black;
 }
 .Input__button{
     height: 50px;
@@ -24,7 +28,7 @@
     border-radius: 50%;
 }
 .Input__button:hover{
-    border-top: 1px solid olive;
-    border-bottom:1px solid violet;
+    border-top: 1px solid white;
+    border-bottom:1px solid white;
     background-color: rgba(0, 60, 255, .5);
 }

@@ -1,60 +1,45 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 import { changeStatusThunk } from '../../redux/profileReducer';
 import ProfileInfo from './ProfileInfo';
+import {getAvatar, getDOB, getId, getLinks, getLocation, getName, getStatus} from '../../selectors/profileSelector'
 
-class ProfileInfoContainer extends React.Component {
+const ProfileInfoContainer = (props)=> {
 
-    state={
-        editMode: false,
-        status: this.props.status
-    }
+    let [editMode, setEditMode] = useState(false);
+    let [status, setStatus] = useState(props.status);
 
-    activateEditMode=()=>{
-        if(!this.props.paramsID||Number(this.props.paramsID==Number(this.props.loggedID))){
-            this.setState({
-                editMode: true,
-                status: this.state.status
-            })   
+    useEffect(()=>{
+        setStatus(props.status);
+    },[props.status]);
+
+    const activateEditMode=()=>{
+        if(!props.paramsID||Number(props.paramsID==Number(props.loggedID))){
+            setEditMode(true);
         }
     }
 
-    changeStatus=(e)=>{
-        this.setState({
-            status: e.target.value
-        })
+    const setStatusValue=(e)=>{
+        setStatus(e.target.value);
     }
     
-    deactivateEditMode=()=>{
-        this.setState({
-            editMode: false
-        })
-        this.props.changeStatus(this.state.status, this.props.id)
+    const deactivateEditMode=()=>{
+        setEditMode(false);
+        props.changeStatus(status, props.id)
     }
 
-    componentDidUpdate(prevProps, prevState){
-        if(prevProps.status!=this.props.status){
-            this.setState({
-                status: this.props.status
-            });
-        }
-    }
-
-    render(){
-        return <ProfileInfo state={this.state} activateEditMode={this.activateEditMode} changeStatus={this.changeStatus} deactivateEditMode={this.deactivateEditMode} name={this.props.name} status={this.props.status} DOB={this.props.DOB} location={this.props.location} status={this.props.status} links={this.props.links} avatar={this.props.avatar} />
-    }
+    return <ProfileInfo editMode={editMode} stateStatus={status} activateEditMode={activateEditMode} setStatusValue={setStatusValue} deactivateEditMode={deactivateEditMode} name={props.name} status={props.status} DOB={props.DOB} location={props.location} status={props.status} links={props.links} avatar={props.avatar} />
 };
 
 const mapStateToProps=(state)=>{
     return{
-        id:state.profileData.id,
-        name:state.profileData.name,
-        status:state.profileData.status,
-        DOB:state.profileData.DOB,
-        location:state.profileData.location,
-        status:state.profileData.status,
-        links:state.profileData.links,
-        avatar:state.profileData.avatar
+        id: getId(state),
+        name: getName(state),
+        status: getStatus(state),
+        DOB: getDOB(state),
+        location: getLocation(state),
+        links: getLinks(state),
+        avatar: getAvatar(state)
     }
 }
 

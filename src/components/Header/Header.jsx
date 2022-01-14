@@ -17,7 +17,7 @@ const Header = (props) =>{
             <Avatar/>
             <ul className={classes.Header__profile_list}>
                 <NavLink to={`/profile/${props.loggedID}`}><li className={classes.Header__MyProfile}>My profile</li></NavLink> 
-                <li className={classes.Header__exit} onClick={()=>{ localStorage.removeItem('VReacte'); props.logOut() }}>Exit</li>
+                <li className={classes.Header__exit} onClick={()=>{ localStorage.removeItem('VReacte'); props.logOut() }}>Log Out</li>
             </ul>
             </div>
         </header>

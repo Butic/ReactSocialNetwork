@@ -12,7 +12,7 @@ const initialState = {
     users: [],
     totalPages: 0,
     currentPage: 1,
-    current_id: localStorage.getItem('VReacte'),
+    current_id: null,
     myData: {},
     isFollowing: []
 };
@@ -36,7 +36,7 @@ const usersReducer = (state = initialState, action) => {
             return { ...state, isFetching: action.isFetching }
         }
         case ADD_MY_DATA: {
-            return { ...state, myData: { ...action.data } }
+            return { ...state, myData: { ...action.data }, current_id:action.data.id }
         }
         case DISABLE_BUTTON: {
             return { ...state, isFollowing: [...action.isFollowingArray] }

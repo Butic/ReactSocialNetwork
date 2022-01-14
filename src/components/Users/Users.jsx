@@ -25,7 +25,7 @@ const Users = (props) => {
                 })}
             </div>
             {props.users.map(el => {
-                if (props.current_id != el.id) {
+                if (Number(props.current_id) != Number(el.id)) {
                     return (
                         <div className={classes.User__container}>
                             <div className={classes.User__follow}>

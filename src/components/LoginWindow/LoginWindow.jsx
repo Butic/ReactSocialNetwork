@@ -16,9 +16,10 @@ const LoginWindow = (props) => {
     return (
         <div className={classes.LoginWindow__background}>
             <div className={classes.LoginWindow__container}>
-                <div className={classes.LoginWindow}>
+                <div className={!props.isLoginError?classes.LoginWindow:classes.LoginWindow+" "+classes.LoginWindow_error}>
                     <h1 className={classes.LoginWindow__header}>VReacte</h1>
                     <h2 className={classes.LoginWindow__description}>Login Window</h2>
+                    <span className={classes.LoginWindow__error}>{props.isLoginError&&"Incorrect E-mail or Password"}</span>
                     <LoginWindowReduxForm onSubmit={onLogin}/>
                 </div>
             </div>

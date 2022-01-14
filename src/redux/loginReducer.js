@@ -2,19 +2,24 @@ import axios from "axios";
 
 const ON_LOGIN = 'ON_LOGIN';
 const ON_LOGOUT = 'ON_LOGOUT';
+const LOGIN_ERROR = 'LOGIN_ERROR';
 
 const initialState = {
     isAuth: Number(localStorage.getItem('VReacte'))?true:false,
-    loggedID: localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):""
+    loggedID: localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):"",
+    isLoginError: false
 }
 
 const loginReducer = (state = initialState, action) => {
     switch (action.type) {
         case ON_LOGIN:{
-            return {...state, isAuth:true}
+            return {...state, isAuth:true, isLoginError:false}
         }
         case ON_LOGOUT:{
             return {...state, isAuth:false}
+        }
+        case LOGIN_ERROR:{
+            return {...state, isLoginError:true}
         }
     }
     return state
@@ -22,8 +27,9 @@ const loginReducer = (state = initialState, action) => {
 
 export default loginReducer;
 
-const onLoginActionCreator = () => ({type:ON_LOGIN})
-export const onLogOutActionCreator= () => ({type:ON_LOGOUT})
+const onLoginActionCreator = () => ({type:ON_LOGIN});
+export const onLogOutActionCreator= () => ({type:ON_LOGOUT});
+const loginErrorActionCreator = () => ({type:LOGIN_ERROR});
 
 export const onLoginThunk=(email, password)=>{
     return(dispatch)=>{
@@ -35,11 +41,11 @@ export const onLoginThunk=(email, password)=>{
                             dispatch(onLoginActionCreator());
                         }
                         else{
-                            alert('Password is incorrect')
+                            dispatch(loginErrorActionCreator());
                         }
                     }
                     else{
-                        alert('Current e-mail not exists')
+                        dispatch(loginErrorActionCreator());
                     }
                 })
     }

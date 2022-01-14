@@ -1,9 +1,8 @@
-import store from '../../redux/reduxStore';
 import UsersItemContainer from './UsersItemContainer';
 import classes from './UsersList.module.css';
 
 
-const UsersList = () =>{
+const UsersList = () => {
     return(
         <>
             <input type="search" name="" id="" placeholder="Find people here..." className={classes.Users__search}/>

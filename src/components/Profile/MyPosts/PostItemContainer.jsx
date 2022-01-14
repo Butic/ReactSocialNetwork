@@ -4,13 +4,11 @@ import { withRouter } from "react-router-dom";
 import { deletePostThunk } from '../../../redux/profileReducer';
 import PostItem from './PostItem';
 
-class PostItemContainer extends React.Component{
-    deletePost = (target_post_ID) =>{
-        this.props.deletePost(this.props.match.params.userID?this.props.match.params.userID:localStorage.getItem('VReacte'), target_post_ID);
+const PostItemContainer =(props)=>{
+    const deletePost = (target_post_ID) =>{
+        props.deletePost(props.match.params.userID?props.match.params.userID:localStorage.getItem('VReacte'), target_post_ID);
     }
-    render(){
-        return <PostItem posts={this.props.posts} deletePost={this.deletePost} isAuth={this.props.isAuth}/>
-    }
+    return <PostItem posts={props.posts} deletePost={deletePost} isAuth={props.isAuth}/>
 }
 
 const mapStateToProps = (state) =>{

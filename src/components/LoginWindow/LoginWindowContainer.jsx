@@ -5,7 +5,8 @@ import { onLoginThunk } from '../../redux/loginReducer';
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: state.loginData.isAuth
+        isAuth: state.loginData.isAuth,
+        isLoginError: state.loginData.isLoginError
     }
 }
 

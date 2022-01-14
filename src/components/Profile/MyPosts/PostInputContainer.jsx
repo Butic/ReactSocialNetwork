@@ -1,23 +1,19 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { connect } from "react-redux";
 import { addPostThunk, setSenderNameThunk } from "../../../redux/profileReducer";
 import PostInput from "./PostInput";
 import { withRouter } from "react-router-dom";
 
-class PostInputContainer extends React.Component{
+const PostInputContainer =(props)=>{
 
-    componentDidMount(){
-        this.props.setSenderName(localStorage.getItem('VReacte'));
+    useEffect(()=>{
+        props.setSenderName(localStorage.getItem('VReacte'));
+    },[props.senderName]);
+
+    const addNewPost=(newPost)=>{
+        props.addPost(props.match.params.userID?props.match.params.userID:localStorage.getItem('VReacte'), props.senderName, newPost)
     }
-
-    addNewPost=(newPost)=>{
-        this.props.addPost(this.props.match.params.userID?this.props.match.params.userID:localStorage.getItem('VReacte'), this.props.senderName, newPost)
-    }
-
-    render(){
-        return <PostInput addPost={this.addNewPost}/>
-    }
-
+        return <PostInput addPost={addNewPost}/>
 }
 
 const mapStateToProps=(state)=>{
