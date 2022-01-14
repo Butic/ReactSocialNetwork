@@ -1,25 +1,25 @@
 import axios from "axios";
 
-const ON_LOGIN = 'ON_LOGIN';
-const ON_LOGOUT = 'ON_LOGOUT';
-const LOGIN_ERROR = 'LOGIN_ERROR';
+const ON_LOGIN = 'login/ON_LOGIN';
+const ON_LOGOUT = 'login/ON_LOGOUT';
+const LOGIN_ERROR = 'login/LOGIN_ERROR';
 
 const initialState = {
-    isAuth: Number(localStorage.getItem('VReacte'))?true:false,
-    loggedID: localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):"",
+    isAuth: Number(localStorage.getItem('VReacte')) ? true : false,
+    loggedID: localStorage.getItem('VReacte') ? localStorage.getItem('VReacte') : "",
     isLoginError: false
 }
 
 const loginReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ON_LOGIN:{
-            return {...state, isAuth:true, isLoginError:false}
+        case ON_LOGIN: {
+            return { ...state, isAuth: true, isLoginError: false }
         }
-        case ON_LOGOUT:{
-            return {...state, isAuth:false}
+        case ON_LOGOUT: {
+            return { ...state, isAuth: false }
         }
-        case LOGIN_ERROR:{
-            return {...state, isLoginError:true}
+        case LOGIN_ERROR: {
+            return { ...state, isLoginError: true }
         }
     }
     return state
@@ -27,26 +27,24 @@ const loginReducer = (state = initialState, action) => {
 
 export default loginReducer;
 
-const onLoginActionCreator = () => ({type:ON_LOGIN});
-export const onLogOutActionCreator= () => ({type:ON_LOGOUT});
-const loginErrorActionCreator = () => ({type:LOGIN_ERROR});
+const onLoginActionCreator = () => ({ type: ON_LOGIN });
+export const onLogOutActionCreator = () => ({ type: ON_LOGOUT });
+const loginErrorActionCreator = () => ({ type: LOGIN_ERROR });
 
-export const onLoginThunk=(email, password)=>{
-    return(dispatch)=>{
-        axios.get(`http://localhost:8000/users/?email=${email}`)
-                .then((responce) => {
-                    if (responce.data.length!=0) {
-                        if(password==responce.data[0].password){
-                            localStorage.setItem('VReacte', responce.data[0].id);
-                            dispatch(onLoginActionCreator());
-                        }
-                        else{
-                            dispatch(loginErrorActionCreator());
-                        }
-                    }
-                    else{
-                        dispatch(loginErrorActionCreator());
-                    }
-                })
+export const onLoginThunk = (email, password) => {
+    return async (dispatch) => {
+        const responce = await axios.get(`http://localhost:8000/users/?email=${email}`)
+        if (responce.data.length != 0) {
+            if (password == responce.data[0].password) {
+                localStorage.setItem('VReacte', responce.data[0].id);
+                dispatch(onLoginActionCreator());
+            }
+            else {
+                dispatch(loginErrorActionCreator());
+            }
+        }
+        else {
+            dispatch(loginErrorActionCreator());
+        }
     }
 }

@@ -5,32 +5,34 @@ import { required } from '../../validators/validators';
 import { Input } from '../formControls/formControls';
 import classes from './LoginWindow.module.css';
 
-const LoginWindow = (props) => {
-    console.log(props.handleSubmit)
-    const onLogin = (value) => {
-        props.onLogin(value.email, value.password);
+const LoginWindow = ({isAuth, isLoginError, onLogin}) => {
+
+    const sendLoginData = (value) => {
+        onLogin(value.email, value.password);
         value.email="";
         value.password="";
     }
-    if (props.isAuth) return <Redirect to={"/profile"} />
+
+    if (isAuth) return <Redirect to={"/profile"} />
+
     return (
         <div className={classes.LoginWindow__background}>
             <div className={classes.LoginWindow__container}>
-                <div className={!props.isLoginError?classes.LoginWindow:classes.LoginWindow+" "+classes.LoginWindow_error}>
+                <div className={!isLoginError?classes.LoginWindow:classes.LoginWindow+" "+classes.LoginWindow_error}>
                     <h1 className={classes.LoginWindow__header}>VReacte</h1>
                     <h2 className={classes.LoginWindow__description}>Login Window</h2>
-                    <span className={classes.LoginWindow__error}>{props.isLoginError&&"Incorrect E-mail or Password"}</span>
-                    <LoginWindowReduxForm onSubmit={onLogin}/>
+                    <span className={classes.LoginWindow__error}>{isLoginError&&"Incorrect E-mail or Password"}</span>
+                    <LoginWindowReduxForm onSubmit={sendLoginData}/>
                 </div>
             </div>
         </div>
     );
 }
 
-const LoginWindowForm = (props) => {
+const LoginWindowForm = ({handleSubmit}) => {
     
     return (
-        <form action="" className={classes.LoginWindow__form} onSubmit={props.handleSubmit}>
+        <form action="" className={classes.LoginWindow__form} onSubmit={handleSubmit}>
             <Field name="email" component={Input} type="email" className={classes.LoginWindow__email} placeholder='E-mail' validate={[required]} />
             <Field name="password" component={Input} type="password" className={classes.LoginWindow__password} placeholder='Password' validate={[required]}/>
             <Field name="rememberMe" component="input" type="checkbox" className={classes.LoginWindow__remember} />

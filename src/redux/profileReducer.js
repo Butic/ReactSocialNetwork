@@ -1,10 +1,10 @@
 import { usersAPI } from "../API/api";
 
-const ADD_POST = 'ADD-POST';
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_SENDER_NAME = 'SET_SENDER_NAME';
-const DELETE_POST = 'DELETE_POST';
-const CHANGE_STATUS = 'CHANGE_STATUS';
+const ADD_POST = 'profile/ADD-POST';
+const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
+const SET_SENDER_NAME = 'profile/SET_SENDER_NAME';
+const DELETE_POST = 'profile/DELETE_POST';
+const CHANGE_STATUS = 'profile/CHANGE_STATUS';
 
 const initalState = {
     id: '',
@@ -53,31 +53,30 @@ const profileReducer = (state = initalState, action) => {
         case SET_SENDER_NAME: {
             return { ...state, senderName: action.senderName }
         }
-        case CHANGE_STATUS:{
-            return { ...state, status:action.newStatus }
+        case CHANGE_STATUS: {
+            return { ...state, status: action.newStatus }
         }
         default: return state;
     }
 
 }
 
-export const addPostActionCreator = (newAddedPost) => ({ type: ADD_POST, newAddedPost: newAddedPost });
-export const deletePostActionCreator = (target_post_ID) => ({ type: DELETE_POST, target_post_ID: target_post_ID });
-export const setUserProfileActionCreator = (data) => ({ type: SET_USER_PROFILE, data: data });
-export const setSenderNameActionCreator = (senderName) => ({ type: SET_SENDER_NAME, senderName: senderName });
-export const changeStatusActionCreator = (newStatus) => ({type:CHANGE_STATUS, newStatus:newStatus});
+export const addPostActionCreator = newAddedPost => ({ type: ADD_POST, newAddedPost});
+export const deletePostActionCreator = target_post_ID => ({ type: DELETE_POST, target_post_ID });
+export const setUserProfileActionCreator = data => ({ type: SET_USER_PROFILE, data });
+export const setSenderNameActionCreator = senderName => ({ type: SET_SENDER_NAME, senderName });
+export const changeStatusActionCreator = newStatus => ({ type: CHANGE_STATUS, newStatus });
 
 export const setUserProfileThunk = (userID) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         if (!userID) userID = localStorage.getItem('VReacte');
-        usersAPI.addMyData(userID).then(responce => {
-            dispatch(setUserProfileActionCreator(responce.data));
-        })
+        const responce = await usersAPI.addMyData(userID);
+        dispatch(setUserProfileActionCreator(responce.data));
     }
 }
 
 export const addPostThunk = (targetID, senderName, newPost) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         const newAddedPost = {
             id: new Date(),
             senderID: localStorage.getItem('VReacte'),
@@ -87,48 +86,34 @@ export const addPostThunk = (targetID, senderName, newPost) => {
             text: newPost.text,
             likes: 0
         };
-
-        usersAPI.addMyData(targetID)
-            .then(responce => {
-                const array1 = responce.data.posts;
-                array1.unshift(newAddedPost)
-                usersAPI.updateUser(targetID, { ...responce.data, posts: [...array1] })
-                    .then(() => {
-                        dispatch(addPostActionCreator(newAddedPost))
-                    })
-            })
+        const responce = await usersAPI.addMyData(targetID);
+        const array1 = responce.data.posts;
+        array1.unshift(newAddedPost);
+        await usersAPI.updateUser(targetID, { ...responce.data, posts: [...array1] });
+        dispatch(addPostActionCreator(newAddedPost));
     }
 }
 
 export const setSenderNameThunk = (senderID) => {
-    return (dispatch) => {
-        usersAPI.addMyData(senderID).then(responce => {
-            dispatch(setSenderNameActionCreator(responce.data.name));
-        })
+    return async (dispatch) => {
+        const responce = await usersAPI.addMyData(senderID)
+        dispatch(setSenderNameActionCreator(responce.data.name));
     }
 }
 
 export const deletePostThunk = (targetID, target_post_ID) => {
-    return (dispatch) => {
-        usersAPI.addMyData(targetID)
-            .then(responce => {
-                usersAPI.updateUser(targetID, { ...responce.data, posts: [...responce.data.posts.filter(el => el.id != target_post_ID)] })
-                    .then(() => {
-                        dispatch(deletePostActionCreator(target_post_ID))
-                    })
-            })
+    return async (dispatch) => {
+        const responce = await usersAPI.addMyData(targetID);
+        await usersAPI.updateUser(targetID, { ...responce.data, posts: [...responce.data.posts.filter(el => el.id != target_post_ID)] });
+        dispatch(deletePostActionCreator(target_post_ID));
     }
 }
 
-export const changeStatusThunk=(newStatus, id)=>{
-    return (dispatch)=>{
-        usersAPI.addMyData(id)
-        .then(responce=>{
-            usersAPI.updateUser(id, {...responce.data, status:newStatus})
-            .then(()=>{
-                dispatch(changeStatusActionCreator(newStatus));
-            })
-        })
+export const changeStatusThunk = (newStatus, id) => {
+    return async (dispatch) => {
+        const responce = await usersAPI.addMyData(id);
+        await usersAPI.updateUser(id, { ...responce.data, status: newStatus });
+        dispatch(changeStatusActionCreator(newStatus));
     }
 }
 

@@ -4,13 +4,14 @@ import { addMyDataActionCreator, disableButtonThunk, followUserThunk, getUsersTh
 import { getCurrentPage, getCurrent_id, getIsFetching, getIsFollowing, getMyData, getSubscribes, getTotalPagesNumber, getUsers } from '../../selectors/usersSelectors';
 import Users from "./Users";
 
-const UsersItem =(props)=> {
+const UsersItem = (props)=> {
 
     useEffect(()=>{
         props.getUsers(localStorage.getItem('VReacte'), props.currentPage);
     },[]);
 
     const followUser=(target_id)=>{
+        
         isFollowing(target_id);
         props.follow(props.myData, target_id, props.isFollowing);
     }
@@ -19,6 +20,7 @@ const UsersItem =(props)=> {
     }
 
     const isFollowing=(target_id)=>{
+        
         props.disableButton(props.isFollowing, target_id);
     }
         return <Users isFollowing={props.isFollowing} subscribes={props.myData.subscribes} current_id={props.current_id} followUser={followUser} goToPage={goToPage} users={props.users} totalPagesNumber={props.totalPagesNumber} currentPage={props.currentPage} />

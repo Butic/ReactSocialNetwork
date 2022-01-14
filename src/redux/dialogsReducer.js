@@ -1,4 +1,4 @@
-const ADD_MY_MESSAGE = 'ADD-MY-MESSAGE';
+const ADD_MY_MESSAGE = 'dialog/ADD-MY-MESSAGE';
 
 const lorem = 'dolor sit amet consectetur adipisicing elit. Minima accusantium maxime magni atque deserunt? Doloribus unde dolores, molestias, suscipit enim molestiae dignissimos dolorum quidem aliquid soluta incidunt officiis dolor nihil.';
 
@@ -38,6 +38,6 @@ const dialogsReducer = (state=initialState, action) =>{
     }
 }
 
-export const addMyMessageCreator=(message)=>({type:ADD_MY_MESSAGE, message:message});
+export const addMyMessageCreator=(message)=>({type:ADD_MY_MESSAGE, message});
 
 export default dialogsReducer;

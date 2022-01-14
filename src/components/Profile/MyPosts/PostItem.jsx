@@ -2,8 +2,7 @@ import React from "react";
 import classes from './PostItem.module.css';
 import avatar from '../../UI/img/1283.png_860.png';
 
-const PostItem = (props) =>{
-
+const PostItem = props =>{
     const deletePost=(target_post_ID)=>{
         props.deletePost(target_post_ID)
     }
@@ -25,7 +24,5 @@ const PostItem = (props) =>{
         })     
     );
 };
-
-
 
 export default PostItem;
