@@ -5,3 +5,5 @@ export const getDOB = state => state.profileData.DOB;
 export const getLocation = state => state.profileData.location;
 export const getLinks = state => state.profileData.links;
 export const getAvatar = state => state.profileData.avatar;
+export const getSubscribed = state => state.profileData.isSubscribed;
+export const getMyId = state => state.profileData.myData.id;

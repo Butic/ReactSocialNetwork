@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Avatar.module.css';
-import avatar from '../UI/img/1283.png_860.png';
 import plugImage from '../UI/img/Plug.png';
 const Avatar = (props) =>{
     return(

@@ -1,15 +1,15 @@
-import classes from './Friends.module.css';
-import FriendItemContainer from './FriendItem/FriendItemContainer';
+import classes from './Subscribes.module.css';
+import SubscribesItemContainer from './SubscribesItem/SubscribesItemContainer';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
 
-const Friends = () =>{
+const Subscribes = () =>{
     return(
         <div>
             <input type="search" name="" id="" placeholder="Search your friends here..." className={classes.Friend__search}/>
             <ul className={classes.Friend__list}>
-                <FriendItemContainer/>
+                <SubscribesItemContainer/>
             </ul>
         </div>
     );
 };
-export default withAuthRedirect(Friends);
+export default withAuthRedirect(Subscribes);

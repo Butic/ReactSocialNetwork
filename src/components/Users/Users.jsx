@@ -1,5 +1,5 @@
 import React from 'react';
-import Avatar from "../Profile/Avatar";
+import Avatar from "../Avatar/Avatar";
 import classes from './Users.module.css';
 import { NavLink } from "react-router-dom";
 

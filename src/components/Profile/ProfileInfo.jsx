@@ -1,11 +1,23 @@
 import React from "react";
 import classes from'./ProfileInfo.module.css';
 import avatar from '../UI/img/1283.png_860.png'
+import { NavLink } from "react-router-dom";
 
 const ProfileInfo = (props) =>{
     return(
         <div className={classes.Profile}>
                 <img className={classes.Profile__person_avatar} src={props.avatar?props.avatar:avatar} alt="avatar" />
+                {Number(props.myID)==Number(props.id)
+                ?   <div className={classes.Profile__followers_subscribes_container}>
+                <NavLink to="/followers" > <button className={classes.Profile__followers}>Followers</button> </NavLink>
+                <NavLink to="/subscribes" ><button className={classes.Profile__subscribes}>Subscribes</button> </NavLink>
+            </div>
+                :
+                <div className={classes.Profile__followers_subscribes_container}>
+                <button className={classes.Profile__followers}>{props.isSubscribed?"Unfollow":"Follow"}</button>
+                <NavLink to={`/dialogs/${props.id}`} ><button className={classes.Profile__subscribes}>Message</button> </NavLink>
+            </div>
+                }
                 <h2 className={classes.Profile__person_nm}>{props.name}</h2>
                 {!props.editMode
                     ?   <span  className={classes.Profile__status} onClick={props.activateEditMode} >{props.status

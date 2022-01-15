@@ -2,7 +2,7 @@ import React, {useState, useEffect, useMemo} from 'react';
 import { connect } from 'react-redux';
 import { changeStatusThunk } from '../../redux/profileReducer';
 import ProfileInfo from './ProfileInfo';
-import {getAvatar, getDOB, getId, getLinks, getLocation, getName, getStatus} from '../../selectors/profileSelector'
+import {getAvatar, getDOB, getId, getLinks, getLocation, getMyId, getName, getStatus, getSubscribed} from '../../selectors/profileSelector'
 
 const ProfileInfoContainer = (props)=> {
 
@@ -14,9 +14,7 @@ const ProfileInfoContainer = (props)=> {
     },[props.status]);
 
     const activateEditMode=()=>{
-        if(!props.paramsID||Number(props.paramsID==Number(props.loggedID))){
-            setEditMode(true);
-        }
+        Number(props.myID)==Number(props.id) && setEditMode(true);
     }
 
     const setStatusValue=(e)=>{
@@ -28,7 +26,7 @@ const ProfileInfoContainer = (props)=> {
         props.changeStatus(status, props.id)
     }
 
-    return <ProfileInfo editMode={editMode} stateStatus={status} activateEditMode={activateEditMode} setStatusValue={setStatusValue} deactivateEditMode={deactivateEditMode} name={props.name} status={props.status} DOB={props.DOB} location={props.location} status={props.status} links={props.links} avatar={props.avatar} />
+    return <ProfileInfo id={props.id} myID={props.myID} isSubscribed={props.isSubscribed} editMode={editMode} stateStatus={status} activateEditMode={activateEditMode} setStatusValue={setStatusValue} deactivateEditMode={deactivateEditMode} name={props.name} status={props.status} DOB={props.DOB} location={props.location} status={props.status} links={props.links} avatar={props.avatar} />
 };
 
 const mapStateToProps=(state)=>{
@@ -39,7 +37,9 @@ const mapStateToProps=(state)=>{
         DOB: getDOB(state),
         location: getLocation(state),
         links: getLinks(state),
-        avatar: getAvatar(state)
+        avatar: getAvatar(state),
+        isSubscribed: getSubscribed(state),
+        myID: getMyId(state)?getMyId(state):null
     }
 }
 

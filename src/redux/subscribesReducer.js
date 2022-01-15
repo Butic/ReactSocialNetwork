@@ -17,7 +17,7 @@ const initialState = {
     ]
 };
 
-const friendsReducer = (state=initialState, action) =>{
+const subscribesReducer = (state=initialState, action) =>{
     return state;
 }
-export default friendsReducer;
+export default subscribesReducer;

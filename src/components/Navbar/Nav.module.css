@@ -7,18 +7,19 @@
 .Nav__link {
     padding: 10px 10px 10px 20px;
     font-size: 20px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(135,155,192);
     cursor: pointer;
     color: black;
+    transition: 0.5s;
 }
 .Nav__link:hover{
-    background: linear-gradient(lightgray, white);
+    background: rgba(0, 60, 255, .1);
     font-weight: bold;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid rgb(89, 121, 180);
 }
 .active{
     position: relative;
-    font-weight: bold;  
+    font-weight: bold;
     font-style: italic;
 }
 .Nav__friendsField__header{

@@ -5,6 +5,7 @@ const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
 const SET_SENDER_NAME = 'profile/SET_SENDER_NAME';
 const DELETE_POST = 'profile/DELETE_POST';
 const CHANGE_STATUS = 'profile/CHANGE_STATUS';
+const GET_MY_SUBSCRIBES = 'profile/GET_MY_SUBSCRIBES';
 
 const initalState = {
     id: '',
@@ -26,7 +27,9 @@ const initalState = {
     avatar: '',
     posts: [],
     senderName: "",
-    isFetching: false
+    isFetching: false,
+    isSubscribed: false,
+    myData:{}
 };
 
 const profileReducer = (state = initalState, action) => {
@@ -47,7 +50,8 @@ const profileReducer = (state = initalState, action) => {
                 DOB: { ...state.DOB, date: action.data.DOB.date, month: action.data.DOB.month, year: action.data.DOB.year },
                 location: { ...state.location, country: action.data.location.country, sity: action.data.location.sity },
                 status: action.data.status, links: action.data.links, posts: [...action.data.posts], newPost: state.newPost,
-                avatar: action.data.photos.avatar
+                avatar: action.data.photos.avatar,
+                myData: action.isMe && action.data
             }
         }
         case SET_SENDER_NAME: {
@@ -56,6 +60,9 @@ const profileReducer = (state = initalState, action) => {
         case CHANGE_STATUS: {
             return { ...state, status: action.newStatus }
         }
+        case GET_MY_SUBSCRIBES: {
+            return {...state, isSubscribed:action.isSubscribed, myData:action.myData}
+        }
         default: return state;
     }
 
@@ -63,15 +70,15 @@ const profileReducer = (state = initalState, action) => {
 
 export const addPostActionCreator = newAddedPost => ({ type: ADD_POST, newAddedPost});
 export const deletePostActionCreator = target_post_ID => ({ type: DELETE_POST, target_post_ID });
-export const setUserProfileActionCreator = data => ({ type: SET_USER_PROFILE, data });
+export const setUserProfileActionCreator = (data, isMe) => ({ type: SET_USER_PROFILE, data, isMe });
 export const setSenderNameActionCreator = senderName => ({ type: SET_SENDER_NAME, senderName });
 export const changeStatusActionCreator = newStatus => ({ type: CHANGE_STATUS, newStatus });
+export const amISubscribedActionCreator = (isSubscribed, myData) => ({type:GET_MY_SUBSCRIBES, isSubscribed, myData});
 
-export const setUserProfileThunk = (userID) => {
+export const setUserProfileThunk = (userID, isMe) => {
     return async (dispatch) => {
-        if (!userID) userID = localStorage.getItem('VReacte');
         const responce = await usersAPI.addMyData(userID);
-        dispatch(setUserProfileActionCreator(responce.data));
+        dispatch(setUserProfileActionCreator(responce.data, isMe));
     }
 }
 
@@ -114,6 +121,13 @@ export const changeStatusThunk = (newStatus, id) => {
         const responce = await usersAPI.addMyData(id);
         await usersAPI.updateUser(id, { ...responce.data, status: newStatus });
         dispatch(changeStatusActionCreator(newStatus));
+    }
+}
+
+export const amISubscribedThunk = (id, myId) => {
+    return async (dispatch) => {
+        const responce = await usersAPI.addMyData(myId);
+        dispatch(amISubscribedActionCreator(responce.data.subscribes.includes(Number(id)), responce.data))
     }
 }
 

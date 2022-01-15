@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import classes from './DialogMembers.module.css';
 import active from '../../Navbar/Nav.module.css';
-import Avatar from '../../Profile/Avatar';
+import Avatar from '../../Avatar/Avatar';
 
 const DialogMembers = (props) =>{
     return(

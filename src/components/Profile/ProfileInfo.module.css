@@ -13,6 +13,29 @@
     border-radius: 50%;
     margin: 15px 0 0 15px;
 }
+.Profile__followers_subscribes_container{
+    grid-column: 1/2;
+    grid-row: 3/-1;
+}
+.Profile__subscribes, .Profile__followers{
+    border:none;
+    display: inline-block;
+    background-color: rgb(135,155,192);
+    color:white;
+    border-radius: 10px;
+    font-size: 15px;
+    width: 40%;
+    padding: 5px 0 5px 0;
+    transition: 0.5s;
+    margin-left: 15px;
+    margin-right: 0;
+    cursor: pointer;
+}
+.Profile__subscribes:hover, .Profile__followers:hover{
+    box-shadow: 0 0 25px #587f91;
+    background-color: rgb(229,235,255);
+    color:black;
+}
 .Profile__person_avatar::after{
     content: '';
     font-weight: 900;

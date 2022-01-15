@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './Header.module.css';
-import Avatar from '../Profile/Avatar';
+import Avatar from '../Avatar/Avatar';
 import logo from '../UI/img/logo.png';
 import { connect } from "react-redux";
 import { onLogOutActionCreator } from "../../redux/loginReducer";

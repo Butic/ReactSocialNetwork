@@ -1,7 +1,7 @@
-import classes from './FriendItem.module.css';
-import Avatar from '../../Profile/Avatar';
+import classes from './SubscribesItem.module.css';
+import Avatar from '../../Avatar/Avatar';
 
-const FriendItem = (props) =>{
+const SubscribesItem = (props) =>{
     return(
         props.friends.map(el=>{
             return (
@@ -11,4 +11,4 @@ const FriendItem = (props) =>{
     );
 }
 
-export default FriendItem;
+export default SubscribesItem;
