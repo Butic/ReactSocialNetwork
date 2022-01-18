@@ -7,3 +7,5 @@ export const getLinks = state => state.profileData.links;
 export const getAvatar = state => state.profileData.avatar;
 export const getSubscribed = state => state.profileData.isSubscribed;
 export const getMyId = state => state.profileData.myData.id;
+export const getMyData = state => state.profileData.myData;
+export const getIsDisabled = state => state.profileData.isDisabled;

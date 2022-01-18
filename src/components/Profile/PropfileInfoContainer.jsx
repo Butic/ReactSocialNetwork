@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
-import { changeStatusThunk } from '../../redux/profileReducer';
+import { changeStatusThunk, followUserThunk } from '../../redux/profileReducer';
 import ProfileInfo from './ProfileInfo';
 import {getAvatar, getDOB, getId, getLinks, getLocation, getMyId, getName, getStatus, getSubscribed} from '../../selectors/profileSelector'
 
@@ -25,8 +25,11 @@ const ProfileInfoContainer = (props)=> {
         setEditMode(false);
         props.changeStatus(status, props.id)
     }
+    const followUser=()=>{
+        props.followUser(props.id)
+    }
 
-    return <ProfileInfo id={props.id} myID={props.myID} isSubscribed={props.isSubscribed} editMode={editMode} stateStatus={status} activateEditMode={activateEditMode} setStatusValue={setStatusValue} deactivateEditMode={deactivateEditMode} name={props.name} status={props.status} DOB={props.DOB} location={props.location} status={props.status} links={props.links} avatar={props.avatar} />
+    return <ProfileInfo id={props.id} followUser={followUser} isFetching={props.isFetching} myID={props.myID} isSubscribed={props.isSubscribed} editMode={editMode} stateStatus={status} activateEditMode={activateEditMode} setStatusValue={setStatusValue} deactivateEditMode={deactivateEditMode} name={props.name} status={props.status} DOB={props.DOB} location={props.location} status={props.status} links={props.links} avatar={props.avatar} />
 };
 
 const mapStateToProps=(state)=>{
@@ -39,7 +42,8 @@ const mapStateToProps=(state)=>{
         links: getLinks(state),
         avatar: getAvatar(state),
         isSubscribed: getSubscribed(state),
-        myID: getMyId(state)?getMyId(state):null
+        myID: getMyId(state)?getMyId(state):null,
+        isDisabled: getIsDisabled(state)
     }
 }
 
@@ -47,6 +51,9 @@ const mapDispatchToProps=(dispatch)=>{
     return{
         changeStatus(newStatus, id){
             dispatch(changeStatusThunk(newStatus, id));
+        },
+        followUser(target_id){
+            dispatch(followUserThunk(state.profileData.myData, target_id));
         }
     }
 }

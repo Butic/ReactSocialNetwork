@@ -6,6 +6,8 @@ const SET_SENDER_NAME = 'profile/SET_SENDER_NAME';
 const DELETE_POST = 'profile/DELETE_POST';
 const CHANGE_STATUS = 'profile/CHANGE_STATUS';
 const GET_MY_SUBSCRIBES = 'profile/GET_MY_SUBSCRIBES';
+const FOLLOW = 'profile/FOLLOW';
+const DISABLE_BUTTON = 'profile/DISABLE_BUTTON';
 
 const initalState = {
     id: '',
@@ -27,7 +29,7 @@ const initalState = {
     avatar: '',
     posts: [],
     senderName: "",
-    isFetching: false,
+    isDisabled: false,
     isSubscribed: false,
     myData:{}
 };
@@ -63,6 +65,12 @@ const profileReducer = (state = initalState, action) => {
         case GET_MY_SUBSCRIBES: {
             return {...state, isSubscribed:action.isSubscribed, myData:action.myData}
         }
+        case FOLLOW:{
+            return { ...state, myData: { ...action.updatedUser } }
+        }
+        case DISABLE_BUTTON: {
+            return { ...state, isDisabled:!state.isDisabled }
+        }
         default: return state;
     }
 
@@ -74,6 +82,8 @@ export const setUserProfileActionCreator = (data, isMe) => ({ type: SET_USER_PRO
 export const setSenderNameActionCreator = senderName => ({ type: SET_SENDER_NAME, senderName });
 export const changeStatusActionCreator = newStatus => ({ type: CHANGE_STATUS, newStatus });
 export const amISubscribedActionCreator = (isSubscribed, myData) => ({type:GET_MY_SUBSCRIBES, isSubscribed, myData});
+export const followActionCreator = updatedUser => ({ type: FOLLOW, updatedUser });
+export const disableButtonActionCreator = () => ({ type: DISABLE_BUTTON });
 
 export const setUserProfileThunk = (userID, isMe) => {
     return async (dispatch) => {
@@ -128,6 +138,23 @@ export const amISubscribedThunk = (id, myId) => {
     return async (dispatch) => {
         const responce = await usersAPI.addMyData(myId);
         dispatch(amISubscribedActionCreator(responce.data.subscribes.includes(Number(id)), responce.data))
+    }
+}
+
+export const followUserThunk = (myData, target_id) => {
+    return async (dispatch) => {
+        if (!myData.subscribes.includes(Number(target_id))) {
+            const newData = { ...myData, subscribes: [...myData.subscribes, Number(target_id)] };
+            const responce = await usersAPI.updateUser(myData.id, newData);
+            dispatch(followActionCreator(responce.data));
+            dispatch(disableButtonActionCreator());
+        }
+        else {
+            const newData = { ...myData, subscribes: [...myData.subscribes.filter(el => el != Number(target_id))] };
+            const responce = await usersAPI.updateUser(myData.id, newData);
+            dispatch(followActionCreator(responce.data));
+            dispatch(disableButtonActionCreator());
+        }
     }
 }
 

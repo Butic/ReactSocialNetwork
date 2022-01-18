@@ -14,7 +14,7 @@ const ProfileInfo = (props) =>{
             </div>
                 :
                 <div className={classes.Profile__followers_subscribes_container}>
-                <button className={classes.Profile__followers}>{props.isSubscribed?"Unfollow":"Follow"}</button>
+                <button className={classes.Profile__followers} onClick={props.followUser} disabled={props.isFetching}>{props.isSubscribed?"Unfollow":"Follow"}</button>
                 <NavLink to={`/dialogs/${props.id}`} ><button className={classes.Profile__subscribes}>Message</button> </NavLink>
             </div>
                 }
