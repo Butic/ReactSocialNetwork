@@ -66,7 +66,7 @@ const profileReducer = (state = initalState, action) => {
             return {...state, isSubscribed:action.isSubscribed, myData:action.myData}
         }
         case FOLLOW:{
-            return { ...state, myData: { ...action.updatedUser } }
+            return { ...state, isSubscribed:!state.isSubscribed, myData: { ...action.updatedUser } }
         }
         case DISABLE_BUTTON: {
             return { ...state, isDisabled:!state.isDisabled }
@@ -143,6 +143,7 @@ export const amISubscribedThunk = (id, myId) => {
 
 export const followUserThunk = (myData, target_id) => {
     return async (dispatch) => {
+        dispatch(disableButtonActionCreator());
         if (!myData.subscribes.includes(Number(target_id))) {
             const newData = { ...myData, subscribes: [...myData.subscribes, Number(target_id)] };
             const responce = await usersAPI.updateUser(myData.id, newData);

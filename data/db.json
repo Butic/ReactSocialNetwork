@@ -1,51 +1,6 @@
 {
   "users": [
     {
-      "id": 17,
-      "email": "testEmail17@mail.ru",
-      "password": "1234217",
-      "name": "Some Person17",
-      "DOB": {
-        "date": 1,
-        "month": "January",
-        "year": 2001
-      },
-      "location": {
-        "country": "Country7",
-        "sity": "Sity7"
-      },
-      "status": "Some Status",
-      "links": {
-        "vk": "vk.com/some",
-        "instagram": "some"
-      },
-      "followers": [
-        1
-      ],
-      "subscribes": [
-        1
-      ],
-      "posts": [
-        {
-          "id": 845153248741,
-          "title": "Some Title",
-          "text": "Some Text",
-          "date": 845153248741,
-          "likes": 3
-        }
-      ],
-      "photos": {
-        "avatar": "https://photo.ru/18976",
-        "postedPhotos": [
-          {
-            "id": 845153248741,
-            "date": 845153248741,
-            "photo": "https://photo.ru/18975"
-          }
-        ]
-      }
-    },
-    {
       "id": 11,
       "email": "testEmail11@mail.ru",
       "password": "1234211",
@@ -198,69 +153,6 @@
             "id": 845153248741,
             "date": 845153248741,
             "photo": "https://photo.ru/18938"
-          }
-        ]
-      }
-    },
-    {
-      "id": 16,
-      "email": "testEmail16@mail.ru",
-      "password": "1234216",
-      "name": "Some Person16",
-      "DOB": {
-        "date": 1,
-        "month": "January",
-        "year": 2001
-      },
-      "location": {
-        "country": "Country",
-        "sity": "Sity"
-      },
-      "status": "Some Status",
-      "links": {
-        "vk": "vk.com/some",
-        "instagram": "some"
-      },
-      "followers": [
-        1
-      ],
-      "subscribes": [
-        1
-      ],
-      "posts": [
-        {
-          "id": "2022-01-09T13:50:03.510Z",
-          "senderID": "9",
-          "senderName": "Some Person9",
-          "date": "09.01.2022, 16:50:03",
-          "title": "123",
-          "text": "321",
-          "likes": 0
-        },
-        {
-          "id": "2022-01-09T13:49:47.796Z",
-          "senderID": "9",
-          "senderName": "Some Person9",
-          "date": "09.01.2022, 16:49:47",
-          "title": "Andrey",
-          "text": "Web Developer",
-          "likes": 0
-        },
-        {
-          "id": 845153248741,
-          "title": "Some Title",
-          "text": "Some Text",
-          "date": 845153248741,
-          "likes": 3
-        }
-      ],
-      "photos": {
-        "avatar": "https://photo.ru/18976",
-        "postedPhotos": [
-          {
-            "id": 845153248741,
-            "date": 845153248741,
-            "photo": "https://photo.ru/18975"
           }
         ]
       }
@@ -1522,6 +1414,130 @@
       }
     },
     {
+      "id": 16,
+      "email": "testEmail16@mail.ru",
+      "password": "1234216",
+      "name": "Some Person16",
+      "DOB": {
+        "date": 1,
+        "month": "January",
+        "year": 2001
+      },
+      "location": {
+        "country": "Country",
+        "sity": "Sity"
+      },
+      "status": "Some Status",
+      "links": {
+        "vk": "vk.com/some",
+        "instagram": "some"
+      },
+      "followers": [
+        1
+      ],
+      "subscribes": [
+        1
+      ],
+      "posts": [
+        {
+          "id": "2022-01-22T22:20:06.758Z",
+          "senderID": "1",
+          "senderName": "Butikov Andrey",
+          "date": "23.01.2022, 01:20:06",
+          "text": "Hello",
+          "likes": 0
+        },
+        {
+          "id": "2022-01-09T13:50:03.510Z",
+          "senderID": "9",
+          "senderName": "Some Person9",
+          "date": "09.01.2022, 16:50:03",
+          "title": "123",
+          "text": "321",
+          "likes": 0
+        },
+        {
+          "id": "2022-01-09T13:49:47.796Z",
+          "senderID": "9",
+          "senderName": "Some Person9",
+          "date": "09.01.2022, 16:49:47",
+          "title": "Andrey",
+          "text": "Web Developer",
+          "likes": 0
+        },
+        {
+          "id": 845153248741,
+          "title": "Some Title",
+          "text": "Some Text",
+          "date": 845153248741,
+          "likes": 3
+        }
+      ],
+      "photos": {
+        "avatar": "https://photo.ru/18976",
+        "postedPhotos": [
+          {
+            "id": 845153248741,
+            "date": 845153248741,
+            "photo": "https://photo.ru/18975"
+          }
+        ]
+      }
+    },
+    {
+      "id": 17,
+      "email": "testEmail17@mail.ru",
+      "password": "1234217",
+      "name": "Some Person17",
+      "DOB": {
+        "date": 1,
+        "month": "January",
+        "year": 2001
+      },
+      "location": {
+        "country": "Country7",
+        "sity": "Sity7"
+      },
+      "status": "Some Status",
+      "links": {
+        "vk": "vk.com/some",
+        "instagram": "some"
+      },
+      "followers": [
+        1
+      ],
+      "subscribes": [
+        1
+      ],
+      "posts": [
+        {
+          "id": "2022-01-22T22:47:27.923Z",
+          "senderID": "1",
+          "senderName": "Butikov Andrey",
+          "date": "23.01.2022, 01:47:27",
+          "text": "Ohaio",
+          "likes": 0
+        },
+        {
+          "id": 845153248741,
+          "title": "Some Title",
+          "text": "Some Text",
+          "date": 845153248741,
+          "likes": 3
+        }
+      ],
+      "photos": {
+        "avatar": "https://photo.ru/18976",
+        "postedPhotos": [
+          {
+            "id": 845153248741,
+            "date": 845153248741,
+            "photo": "https://photo.ru/18975"
+          }
+        ]
+      }
+    },
+    {
       "id": 1,
       "email": "test@test.test",
       "password": "test",
@@ -1535,7 +1551,7 @@
         "country": "Open Sea",
         "sity": "Tanker Vessel"
       },
-      "status": "At Sea, Hopefully will be at home 17th of January",
+      "status": "Finally at home))",
       "links": {
         "vk": "vk.com/butic_off",
         "instagram": "just_simple_name"
@@ -1550,10 +1566,12 @@
       "subscribes": [
         4,
         19,
-        16,
         21,
         10,
         15,
+        16,
+        2,
+        45,
         17
       ],
       "posts": [

@@ -31,6 +31,14 @@
     margin-right: 0;
     cursor: pointer;
 }
+.Profile__followers:disabled{
+    color:lightskyblue;
+    background-color: rgba(49, 49, 49, 0.95);
+}
+.Profile__followers:disabled:hover{
+    color:lightskyblue;
+    background-color: rgba(49, 49, 49, 0.95);
+}
 .Profile__subscribes:hover, .Profile__followers:hover{
     box-shadow: 0 0 25px #587f91;
     background-color: rgb(229,235,255);
