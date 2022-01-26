@@ -2,12 +2,13 @@ import { usersAPI } from "../API/api";
 
 const ADD_POST = 'profile/ADD-POST';
 const SET_USER_PROFILE = 'profile/SET_USER_PROFILE';
-const SET_SENDER_NAME = 'profile/SET_SENDER_NAME';
+const SET_SENDERS_DATA = 'profile/SET_SENDERS_DATA';
 const DELETE_POST = 'profile/DELETE_POST';
 const CHANGE_STATUS = 'profile/CHANGE_STATUS';
 const GET_MY_SUBSCRIBES = 'profile/GET_MY_SUBSCRIBES';
 const FOLLOW = 'profile/FOLLOW';
 const DISABLE_BUTTON = 'profile/DISABLE_BUTTON';
+const ADD_POST_LIKE = 'profile/ADD_POST_LIKE';
 
 const initalState = {
     id: '',
@@ -29,6 +30,7 @@ const initalState = {
     avatar: '',
     posts: [],
     senderName: "",
+    senderAvatar:"",
     isDisabled: false,
     isSubscribed: false,
     myData:{}
@@ -56,8 +58,8 @@ const profileReducer = (state = initalState, action) => {
                 myData: action.isMe && action.data
             }
         }
-        case SET_SENDER_NAME: {
-            return { ...state, senderName: action.senderName }
+        case SET_SENDERS_DATA: {
+            return { ...state, senderName: action.senderData.name, senderAvatar: action.senderData.photos.avatar }
         }
         case CHANGE_STATUS: {
             return { ...state, status: action.newStatus }
@@ -71,19 +73,22 @@ const profileReducer = (state = initalState, action) => {
         case DISABLE_BUTTON: {
             return { ...state, isDisabled:!state.isDisabled }
         }
+        case ADD_POST_LIKE: {
+            return { ...state, posts:action.likedPosts}
+        }
         default: return state;
     }
-
 }
 
 export const addPostActionCreator = newAddedPost => ({ type: ADD_POST, newAddedPost});
 export const deletePostActionCreator = target_post_ID => ({ type: DELETE_POST, target_post_ID });
 export const setUserProfileActionCreator = (data, isMe) => ({ type: SET_USER_PROFILE, data, isMe });
-export const setSenderNameActionCreator = senderName => ({ type: SET_SENDER_NAME, senderName });
+export const setSendersDataActionCreator = senderData => ({ type: SET_SENDERS_DATA, senderData });
 export const changeStatusActionCreator = newStatus => ({ type: CHANGE_STATUS, newStatus });
 export const amISubscribedActionCreator = (isSubscribed, myData) => ({type:GET_MY_SUBSCRIBES, isSubscribed, myData});
 export const followActionCreator = updatedUser => ({ type: FOLLOW, updatedUser });
 export const disableButtonActionCreator = () => ({ type: DISABLE_BUTTON });
+export const addPostLikesActionCreator = likedPosts => ({type: ADD_POST_LIKE, likedPosts});
 
 export const setUserProfileThunk = (userID, isMe) => {
     return async (dispatch) => {
@@ -92,19 +97,21 @@ export const setUserProfileThunk = (userID, isMe) => {
     }
 }
 
-export const addPostThunk = (targetID, senderName, newPost) => {
+export const addPostThunk = (targetID, senderName, senderAvatar, newPost) => {
     return async (dispatch) => {
         const newAddedPost = {
             id: new Date(),
             senderID: localStorage.getItem('VReacte'),
             senderName: senderName,
+            senderAvatar: senderAvatar,
             date: new Date().toLocaleString(),
             title: newPost.title,
             text: newPost.text,
-            likes: 0
+            likes: []
         };
         const responce = await usersAPI.addMyData(targetID);
         const array1 = responce.data.posts;
+        console.log(newAddedPost.senderAvatar)
         array1.unshift(newAddedPost);
         await usersAPI.updateUser(targetID, { ...responce.data, posts: [...array1] });
         dispatch(addPostActionCreator(newAddedPost));
@@ -114,7 +121,7 @@ export const addPostThunk = (targetID, senderName, newPost) => {
 export const setSenderNameThunk = (senderID) => {
     return async (dispatch) => {
         const responce = await usersAPI.addMyData(senderID)
-        dispatch(setSenderNameActionCreator(responce.data.name));
+        dispatch(setSendersDataActionCreator(responce.data));
     }
 }
 
@@ -156,6 +163,12 @@ export const followUserThunk = (myData, target_id) => {
             dispatch(followActionCreator(responce.data));
             dispatch(disableButtonActionCreator());
         }
+    }
+}
+
+export const addPostLikeThunk = (myID, posts, target_user_ID, target_post_ID) =>{
+    return async (dispatch) => {
+        
     }
 }
 

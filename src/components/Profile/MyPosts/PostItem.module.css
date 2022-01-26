@@ -11,10 +11,12 @@
 }
 .Post__avatar{
     position: absolute;
-    background-color: aqua;
+    background-color: white;
     top:-15px;
     left:-10px;
     width: 40px;
+    height: 40px;
+    border: 1px solid black;
     border-radius: 50%;
 }
 .Post__sender{
