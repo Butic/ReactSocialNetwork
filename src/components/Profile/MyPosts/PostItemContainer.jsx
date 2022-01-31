@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
-import { addAvatarThunk, deletePostThunk } from '../../../redux/profileReducer';
+import { addPostLikeThunk, deletePostThunk } from '../../../redux/profileReducer';
 import PostItem from './PostItem';
 
 const PostItemContainer =(props)=>{
@@ -11,7 +11,11 @@ const PostItemContainer =(props)=>{
         props.deletePost(myID, target_post_ID);
     }
 
-    return <PostItem posts={props.posts} deletePost={deletePost} isAuth={props.isAuth} />
+    const addLike = (post_id, senderID) =>{
+        props.addLike(myID, post_id, senderID);
+    }
+
+    return <PostItem posts={props.posts} addLike={addLike} deletePost={deletePost} isAuth={props.isAuth} myID={myID}/>
 }
 
 const mapStateToProps = (state) =>{
@@ -23,6 +27,9 @@ const mapDispatchToProps=(dispatch)=>{
     return{
         deletePost(targetID, target_post_ID){
             dispatch(deletePostThunk(targetID, target_post_ID))
+        },
+        addLike(myID, post_id, senderID){
+            dispatch(addPostLikeThunk(myID, post_id, senderID))
         }
     }
 }

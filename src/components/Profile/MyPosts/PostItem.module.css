@@ -74,23 +74,30 @@
     border: 1px solid white;
     box-shadow: 0 0 15px black;
 }
-.Post__likes{
+.Post__unliked, .Post__liked{
     position: absolute;
     display: inline-block;
-    bottom: -8px;
+    bottom: -5px;
     right: 2px;
     text-align: center;
-    color: black;
     border-radius: 5px;
-    font-size: 30px;
     transition: 0.5s;
-    transform: rotateX(35deg);
     cursor: pointer;
 }
-.Post__likes:hover{
-    color: red;
-    font-size: 35px;
+.Post__unliked:hover{
+    color: rgb(187, 49, 49);
+    font-size: 28px;
     transform: rotateX(0deg);
+}
+.Post__liked{
+    color: red;
+    font-size: 28px;
+    transform: rotateX(0deg);
+}
+.Post__unliked{
+    color: black;
+    font-size: 24px;
+    transform: rotateX(35deg);
 }
 .Post__likesNum{
     position: absolute;

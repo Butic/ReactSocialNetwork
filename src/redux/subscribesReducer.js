@@ -1,23 +1,33 @@
+import { usersAPI } from "../API/api";
+
+const ADD_SUBSCRIBES_DATA = "subscribes/ADD_SUBSCRIBES_DATA";
+
 const initialState = {
-    friends:[
-        {id:1, name:'Andrew'},
-        {id:2, name:'Alena'},
-        {id:3, name:'Dimas'},
-        {id:4, name:'Artem'},
-        {id:5, name:'Elena'},
-        {id:6, name:'Alexey'},
-        {id:7, name:'Yurok'},
-        {id:1, name:'Andrew'},
-        {id:2, name:'Alena'},
-        {id:3, name:'Dimas'},
-        {id:4, name:'Artem'},
-        {id:5, name:'Elena'},
-        {id:6, name:'Alexey'},
-        {id:7, name:'Yurok'}
-    ]
-};
+    subscribes:[]
+}
 
 const subscribesReducer = (state=initialState, action) =>{
-    return state;
+    switch (action.type) {
+        case ADD_SUBSCRIBES_DATA: {
+          return {...state, subscribes: action.subscribes}
+        }
+        default: return state;
+    } 
 }
+
+export const addSubscribesActionCreator=subscribes=>({type: ADD_SUBSCRIBES_DATA, subscribes})
+
+export const addSubscribesThunk=(id)=>{
+    return async (dispatch) => {
+        const responce = await usersAPI.addMyData(id);
+        const subscribesArray = responce.data.subscribes;
+        const newArray=[];
+        for (let i=0; i<subscribesArray.length; i++){
+            const userData = await usersAPI.addMyData(subscribesArray[i]);
+            newArray.push(userData.data);
+        }
+        dispatch(addSubscribesActionCreator(newArray))
+    }
+}
+
 export default subscribesReducer;

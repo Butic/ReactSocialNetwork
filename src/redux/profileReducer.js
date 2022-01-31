@@ -74,7 +74,7 @@ const profileReducer = (state = initalState, action) => {
             return { ...state, isDisabled:!state.isDisabled }
         }
         case ADD_POST_LIKE: {
-            return { ...state, posts:action.likedPosts}
+            return { ...state, posts:action.newPosts}
         }
         default: return state;
     }
@@ -88,7 +88,7 @@ export const changeStatusActionCreator = newStatus => ({ type: CHANGE_STATUS, ne
 export const amISubscribedActionCreator = (isSubscribed, myData) => ({type:GET_MY_SUBSCRIBES, isSubscribed, myData});
 export const followActionCreator = updatedUser => ({ type: FOLLOW, updatedUser });
 export const disableButtonActionCreator = () => ({ type: DISABLE_BUTTON });
-export const addPostLikesActionCreator = likedPosts => ({type: ADD_POST_LIKE, likedPosts});
+export const addPostLikesActionCreator = newPosts => ({type: ADD_POST_LIKE, newPosts});
 
 export const setUserProfileThunk = (userID, isMe) => {
     return async (dispatch) => {
@@ -166,9 +166,19 @@ export const followUserThunk = (myData, target_id) => {
     }
 }
 
-export const addPostLikeThunk = (myID, posts, target_user_ID, target_post_ID) =>{
+export const addPostLikeThunk = (myID, post_id) =>{
     return async (dispatch) => {
-        
+        const responce = await usersAPI.addMyData(myID);
+        const posts = responce.data.posts;
+        posts.map(el=>{
+            if(el.id==post_id){
+                if (el.likes.includes(myID)) el.likes=el.likes.filter(elem=>elem!=myID)
+                else el.likes.push(myID)
+            }
+        })
+        const newData = {...responce.data, posts:posts}
+        const responce2 = await usersAPI.updateUser(myID, newData)
+        dispatch(addPostLikesActionCreator(posts))
     }
 }
 

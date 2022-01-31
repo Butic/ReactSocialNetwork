@@ -12,7 +12,7 @@
     position: relative;
     align-self: flex-end;
     margin-right: 15px;
-    background-color: rgb(104, 111, 143);
+    background-color: rgba(104, 111, 143, 0.25);
     text-align: end;
     border-radius: 15px 0 15px 15px;
     padding: 5px;

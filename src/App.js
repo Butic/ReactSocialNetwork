@@ -8,6 +8,7 @@ import UsersList from './components/Users/UsersList';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import { LoginWindowContainer } from './components/LoginWindow/LoginWindowContainer';
 import Subscribes from './components/Subscribes/Subscribes';
+import Followers from './components/Followers/Followers';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path='/profile/:userID?' render={()=><ProfileContainer />}/>
             <Route path='/dialogs/:userID?' render={()=><Dialogs />}/>
             <Route path='/subscribes' render={()=><Subscribes />}/>
+            <Route path='/followers' render={()=><Followers />}/>
             <Route path='/users' render={()=><UsersList />}/>
         </div>
       </div>

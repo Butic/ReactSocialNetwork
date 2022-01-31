@@ -9,13 +9,14 @@ const ProfileInfo = (props) =>{
                 <img className={classes.Profile__person_avatar} src={props.avatar?props.avatar:avatar} alt="avatar" />
                 {Number(props.myID)==Number(props.id)
                 ?   <div className={classes.Profile__followers_subscribes_container}>
+                <NavLink to="/subscribes" > <button className={classes.Profile__subscribes}>Subscribes</button> </NavLink>
                 <NavLink to="/followers" > <button className={classes.Profile__followers}>Followers</button> </NavLink>
-                <NavLink to="/subscribes" ><button className={classes.Profile__subscribes}>Subscribes</button> </NavLink>
             </div>
                 :
                 <div className={classes.Profile__followers_subscribes_container}>
                 <button className={classes.Profile__followers} onClick={props.followUser} disabled={props.isDisabled}>{props.isSubscribed?"Unfollow":"Follow"}</button>
                 <NavLink to={`/dialogs/${props.id}`} ><button className={classes.Profile__subscribes}>Message</button> </NavLink>
+                <NavLink to={`/photo/${props.id}`} ><button className={classes.Profile__subscribes}>Photo</button> </NavLink>
             </div>
                 }
                 <h2 className={classes.Profile__person_nm}>{props.name}</h2>
