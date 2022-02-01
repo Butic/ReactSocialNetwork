@@ -28,3 +28,8 @@ export const usersAPI = {
     }
 }
 
+export const loginAPI = {
+    checkEmail(email){
+        return axios.get(usersURL+`?email=${email}`)
+    }
+} 

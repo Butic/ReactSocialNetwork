@@ -10,7 +10,7 @@ const Nav = () =>{
             <NavLink to="/dialogs" className={classes.NL} activeClassName={classes.active}><li className={classes.Nav__link}>Dialogs</li></NavLink>
             <NavLink to="/followers" className={classes.NL} activeClassName={classes.active}><li className={classes.Nav__link}>Followers</li></NavLink>
             <NavLink to="/subscribes" className={classes.NL} activeClassName={classes.active}><li className={classes.Nav__link}>Subscribes</li></NavLink>
-            <NavLink to="/photo" className={classes.NL} activeClassName={classes.active}><li className={classes.Nav__link}>Photo</li></NavLink>
+            <NavLink to="/photos" className={classes.NL} activeClassName={classes.active}><li className={classes.Nav__link}>Photos</li></NavLink>
             <NavLink to="/users" className={classes.NL} activeClassName={classes.active}><li className={classes.Nav__link}>Users</li></NavLink>
             <NavLink to="/settings" className={classes.NL} activeClassName={classes.active}><li className={classes.Nav__link}>Settings</li></NavLink>
             <div className={classes.Nav__friendsField}>

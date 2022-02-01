@@ -21,7 +21,7 @@ const LoginWindow = ({isAuth, isLoginError, onLogin}) => {
                 <div className={!isLoginError?classes.LoginWindow:classes.LoginWindow+" "+classes.LoginWindow_error}>
                     <h1 className={classes.LoginWindow__header}>VReacte</h1>
                     <h2 className={classes.LoginWindow__description}>Login Window</h2>
-                    <span className={classes.LoginWindow__error}>{isLoginError&&"Incorrect E-mail or Password"}</span>
+                    <span className={classes.LoginWindow__error}>{isLoginError&&"E-mail or Password is Incorrect"}</span>
                     <LoginWindowReduxForm onSubmit={sendLoginData}/>
                 </div>
             </div>

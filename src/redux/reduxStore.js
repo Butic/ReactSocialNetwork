@@ -7,6 +7,7 @@ import usersReducer from './usersReducer';
 import thunkMiddleware from "redux-thunk";
 import { reducer as formReducer } from 'redux-form';
 import followersReducer from './followersReducer';
+import { photosReducer } from './photosReducer';
 
 let reducers = combineReducers({
     loginData: loginReducer,
@@ -15,6 +16,7 @@ let reducers = combineReducers({
     subscribesData: subscribesReducer,
     usersData: usersReducer,
     followersData: followersReducer,
+    photosData: photosReducer,
     form: formReducer
 });
 

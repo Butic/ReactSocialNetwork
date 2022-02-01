@@ -1,4 +1,4 @@
-import axios from "axios";
+import { loginAPI } from "../API/api";
 
 const ON_LOGIN = 'login/ON_LOGIN';
 const ON_LOGOUT = 'login/ON_LOGOUT';
@@ -21,8 +21,9 @@ const loginReducer = (state = initialState, action) => {
         case LOGIN_ERROR: {
             return { ...state, isLoginError: true }
         }
+        default: return state
     }
-    return state
+    
 }
 
 export default loginReducer;
@@ -33,7 +34,7 @@ const loginErrorActionCreator = () => ({ type: LOGIN_ERROR });
 
 export const onLoginThunk = (email, password) => {
     return async (dispatch) => {
-        const responce = await axios.get(`http://localhost:8000/users/?email=${email}`)
+        const responce = await loginAPI.checkEmail(email)
         if (responce.data.length != 0) {
             if (password == responce.data[0].password) {
                 localStorage.setItem('VReacte', responce.data[0].id);

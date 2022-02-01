@@ -16,7 +16,7 @@ const ProfileInfo = (props) =>{
                 <div className={classes.Profile__followers_subscribes_container}>
                 <button className={classes.Profile__followers} onClick={props.followUser} disabled={props.isDisabled}>{props.isSubscribed?"Unfollow":"Follow"}</button>
                 <NavLink to={`/dialogs/${props.id}`} ><button className={classes.Profile__subscribes}>Message</button> </NavLink>
-                <NavLink to={`/photo/${props.id}`} ><button className={classes.Profile__subscribes}>Photo</button> </NavLink>
+                <NavLink to={`/photos/${props.id}`} ><button className={classes.Profile__subscribes}>Photos</button> </NavLink>
             </div>
                 }
                 <h2 className={classes.Profile__person_nm}>{props.name}</h2>
