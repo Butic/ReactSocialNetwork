@@ -8,6 +8,7 @@ import thunkMiddleware from "redux-thunk";
 import { reducer as formReducer } from 'redux-form';
 import followersReducer from './followersReducer';
 import { photosReducer } from './photosReducer';
+import headerReducer from './headerReducer';
 
 let reducers = combineReducers({
     loginData: loginReducer,
@@ -17,6 +18,7 @@ let reducers = combineReducers({
     usersData: usersReducer,
     followersData: followersReducer,
     photosData: photosReducer,
+    headerData: headerReducer,
     form: formReducer
 });
 

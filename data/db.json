@@ -605,94 +605,6 @@
       }
     },
     {
-      "id": 6,
-      "email": "testEmail@mail6.ru",
-      "password": "123426",
-      "name": "Sasuke",
-      "DOB": {
-        "date": 1,
-        "month": "July",
-        "year": 1993
-      },
-      "location": {
-        "country": "Open Sea",
-        "sity": "Tanker Vessel"
-      },
-      "status": "Narutooo!!!",
-      "links": {
-        "vk": "vk.com/uchiha",
-        "instagram": "uchiha"
-      },
-      "followers": [
-        3,
-        1,
-        8
-      ],
-      "subscribes": [
-        1,
-        11,
-        9
-      ],
-      "posts": [
-        {
-          "id": "2022-01-26T21:40:30.233Z",
-          "senderID": "16",
-          "senderName": "Temari",
-          "senderAvatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoUi2sVwpCExz20icUeCTqOFGHyJ4kX-56ZIxILkgRYzNLtNW2dUTKiw2M9ReMwimrypI&usqp=CAU",
-          "date": "27.01.2022, 00:40:30",
-          "title": "Where is Naruto&)",
-          "text": "))",
-          "likes": []
-        },
-        {
-          "id": "2022-01-26T21:31:11.476Z",
-          "senderID": "14",
-          "senderName": "Sai",
-          "senderAvatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxd0I3QZCtVMytS4q-1oQjWL2LdqQlnq0fvYnwzV8W6WNr3t8G1aKE4rxaR8NcrCpsRk4&usqp=CAU",
-          "date": "27.01.2022, 00:31:11",
-          "text": "Where is Naruto&)",
-          "likes": []
-        },
-        {
-          "id": "2022-01-14T00:26:25.192Z",
-          "senderID": "1",
-          "senderName": "Butikov Andrey",
-          "date": "14.01.2022, 03:26:25",
-          "title": "Hello",
-          "text": "Friend",
-          "likes": []
-        },
-        {
-          "id": "2022-01-08T16:44:36.399Z",
-          "senderID": "5",
-          "date": "08.01.2022, 19:44:36",
-          "title": "Andrey",
-          "text": "Web Developer",
-          "likes": []
-        }
-      ],
-      "photos": {
-        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUyQRirzWnJVL-33R9F0FPYai9HpssyYKepQ&usqp=CAU",
-        "postedPhotos": [
-          {
-            "id": 845153248741,
-            "date": 845153248741,
-            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbM7dcPsh_u_79KtrOqoESaYQBy_fL4kRgYiEJaw5Yh6xSUZ35G9NaIM5otJSwGiJEK8s&usqp=CAU"
-          },
-          {
-            "id": 845153248741,
-            "date": 845153248741,
-            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsMP4JjoUy6s2XReAI3X5f2yrFvlIhg-H7Qw8BHUZDXSvQ-CElxUTZb6pLqX6r52YSFZE&usqp=CAU"
-          },
-          {
-            "id": 845153248741,
-            "date": 845153248741,
-            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUyQRirzWnJVL-33R9F0FPYai9HpssyYKepQ&usqp=CAU"
-          }
-        ]
-      }
-    },
-    {
       "id": 13,
       "email": "testEmail13@mail.ru",
       "password": "1234213",
@@ -1513,14 +1425,14 @@
       ],
       "subscribes": [
         2,
-        4,
         45,
         3,
         44,
         10,
         17,
         20,
-        13
+        13,
+        4
       ],
       "posts": [
         {
@@ -1608,6 +1520,105 @@
             "id": 845153248741,
             "date": 845153248741,
             "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR56tbuRymzwLwQYApYIktkcRo-5aCbVogTh2JqBBUJd5Ms_aXhsQjEYE5DtBdyE2k7b8I&usqp=CAU"
+          }
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "email": "testEmail@mail6.ru",
+      "password": "123426",
+      "name": "Sasuke",
+      "DOB": {
+        "date": 1,
+        "month": "July",
+        "year": 1993
+      },
+      "location": {
+        "country": "Open Sea",
+        "sity": "Tanker Vessel"
+      },
+      "status": "Narutooo!!!",
+      "links": {
+        "vk": "vk.com/uchiha",
+        "instagram": "uchiha"
+      },
+      "followers": [
+        3,
+        1,
+        8
+      ],
+      "subscribes": [
+        1,
+        11,
+        9
+      ],
+      "posts": [
+        {
+          "id": "2022-02-03T18:56:01.077Z",
+          "senderID": "1",
+          "senderName": "Butikov Andrey",
+          "senderAvatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5iw2u4ji5ROOJhNtuz9H71y8k0qdHxe1B3ikwsqQYGw5gRz5deegM9RzoL9I-OpUGKTY&usqp=CAU",
+          "date": "03/02/2022, 21:56:01",
+          "text": "Hey",
+          "likes": []
+        },
+        {
+          "id": "2022-01-26T21:40:30.233Z",
+          "senderID": "16",
+          "senderName": "Temari",
+          "senderAvatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoUi2sVwpCExz20icUeCTqOFGHyJ4kX-56ZIxILkgRYzNLtNW2dUTKiw2M9ReMwimrypI&usqp=CAU",
+          "date": "27.01.2022, 00:40:30",
+          "title": "Where is Naruto&)",
+          "text": "))",
+          "likes": []
+        },
+        {
+          "id": "2022-01-26T21:31:11.476Z",
+          "senderID": "14",
+          "senderName": "Sai",
+          "senderAvatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxd0I3QZCtVMytS4q-1oQjWL2LdqQlnq0fvYnwzV8W6WNr3t8G1aKE4rxaR8NcrCpsRk4&usqp=CAU",
+          "date": "27.01.2022, 00:31:11",
+          "text": "Where is Naruto&)",
+          "likes": [
+            "6"
+          ]
+        },
+        {
+          "id": "2022-01-14T00:26:25.192Z",
+          "senderID": "1",
+          "senderName": "Butikov Andrey",
+          "date": "14.01.2022, 03:26:25",
+          "title": "Hello",
+          "text": "Friend",
+          "likes": []
+        },
+        {
+          "id": "2022-01-08T16:44:36.399Z",
+          "senderID": "5",
+          "date": "08.01.2022, 19:44:36",
+          "title": "Andrey",
+          "text": "Web Developer",
+          "likes": []
+        }
+      ],
+      "photos": {
+        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUyQRirzWnJVL-33R9F0FPYai9HpssyYKepQ&usqp=CAU",
+        "postedPhotos": [
+          {
+            "id": 845153248741,
+            "date": 845153248741,
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbM7dcPsh_u_79KtrOqoESaYQBy_fL4kRgYiEJaw5Yh6xSUZ35G9NaIM5otJSwGiJEK8s&usqp=CAU"
+          },
+          {
+            "id": 845153248741,
+            "date": 845153248741,
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsMP4JjoUy6s2XReAI3X5f2yrFvlIhg-H7Qw8BHUZDXSvQ-CElxUTZb6pLqX6r52YSFZE&usqp=CAU"
+          },
+          {
+            "id": 845153248741,
+            "date": 845153248741,
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUyQRirzWnJVL-33R9F0FPYai9HpssyYKepQ&usqp=CAU"
           }
         ]
       }
