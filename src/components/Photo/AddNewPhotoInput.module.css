@@ -1,0 +1,45 @@
+.AddNewPhoto__Form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgba(139, 139, 139, 0.35);
+    border-radius: 15px;
+}
+.AddNewPhoto__Buttons{
+    display: flex;
+    width: 75%;
+    justify-content: space-around;
+}
+.AddNewPhoto__Input{
+    position: relative;
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 15px;
+    transition: 0.5s;
+    height: 20%;
+    font-size: 13px;
+}
+.AddNewPhoto__Add, .AddNewPhoto__Cancel{
+    padding: 5px;
+    border:none;
+    border-radius: 5px;
+    color:wheat;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.5s;
+    width: 75px;
+    transition: 0.5s;
+}
+.AddNewPhoto__Add{
+    background-color: rgba(0, 60, 255, .75);
+}
+.AddNewPhoto__Cancel{
+    background-color: rgba(255, 2, 2, 0.75);
+}
+.AddNewPhoto__Add:hover{
+    background-color: rgba(0, 60, 255, .95);
+}
+.AddNewPhoto__Cancel:hover{
+    background-color: rgba(255, 2, 2, 0.95);
+}

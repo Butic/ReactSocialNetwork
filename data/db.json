@@ -110,67 +110,6 @@
       }
     },
     {
-      "id": 45,
-      "email": "testEmail@mail45.ru",
-      "password": "1234245",
-      "name": "Konan",
-      "DOB": {
-        "date": 1,
-        "month": "January",
-        "year": 2001
-      },
-      "location": {
-        "country": "",
-        "sity": "Sity"
-      },
-      "status": "Some Status",
-      "links": {
-        "vk": "vk.com/some",
-        "instagram": "some"
-      },
-      "followers": [
-        1
-      ],
-      "subscribes": [
-        1,
-        5,
-        6,
-        4,
-        7
-      ],
-      "posts": [
-        {
-          "id": "2022-01-26T21:12:20.692Z",
-          "senderID": "1",
-          "senderName": "Butikov Andrey",
-          "senderAvatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5iw2u4ji5ROOJhNtuz9H71y8k0qdHxe1B3ikwsqQYGw5gRz5deegM9RzoL9I-OpUGKTY&usqp=CAU",
-          "date": "27.01.2022, 00:12:20",
-          "title": "Hello",
-          "text": "Konan!)",
-          "likes": []
-        },
-        {
-          "id": "2022-01-10T18:26:41.892Z",
-          "senderID": "1",
-          "senderName": "Butikov Andrey",
-          "date": "10.01.2022, 21:26:41",
-          "title": "Hello",
-          "text": "",
-          "likes": []
-        }
-      ],
-      "photos": {
-        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYppuMYynDMS93OPqxocfrIsREecFMqK_lMNP8K55miqirodCAezvqztAk1A0JcVv8SHk&usqp=CAU",
-        "postedPhotos": [
-          {
-            "id": 845153248741,
-            "date": 845153248741,
-            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYppuMYynDMS93OPqxocfrIsREecFMqK_lMNP8K55miqirodCAezvqztAk1A0JcVv8SHk&usqp=CAU"
-          }
-        ]
-      }
-    },
-    {
       "id": 17,
       "email": "testEmail17@mail.ru",
       "password": "1234217",
@@ -1484,6 +1423,69 @@
       }
     },
     {
+      "id": 45,
+      "email": "testEmail@mail45.ru",
+      "password": "1234245",
+      "name": "Konan",
+      "DOB": {
+        "date": 1,
+        "month": "January",
+        "year": 2001
+      },
+      "location": {
+        "country": "",
+        "sity": "Sity"
+      },
+      "status": "Some Status",
+      "links": {
+        "vk": "vk.com/some",
+        "instagram": "some"
+      },
+      "followers": [
+        1
+      ],
+      "subscribes": [
+        1,
+        5,
+        6,
+        4,
+        7
+      ],
+      "posts": [
+        {
+          "id": "2022-01-26T21:12:20.692Z",
+          "senderID": "1",
+          "senderName": "Butikov Andrey",
+          "senderAvatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5iw2u4ji5ROOJhNtuz9H71y8k0qdHxe1B3ikwsqQYGw5gRz5deegM9RzoL9I-OpUGKTY&usqp=CAU",
+          "date": "27.01.2022, 00:12:20",
+          "title": "Hello",
+          "text": "Konan!)",
+          "likes": [
+            "45"
+          ]
+        },
+        {
+          "id": "2022-01-10T18:26:41.892Z",
+          "senderID": "1",
+          "senderName": "Butikov Andrey",
+          "date": "10.01.2022, 21:26:41",
+          "title": "Hello",
+          "text": "",
+          "likes": []
+        }
+      ],
+      "photos": {
+        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYppuMYynDMS93OPqxocfrIsREecFMqK_lMNP8K55miqirodCAezvqztAk1A0JcVv8SHk&usqp=CAU",
+        "postedPhotos": [
+          {
+            "id": 845153248741,
+            "date": 845153248741,
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYppuMYynDMS93OPqxocfrIsREecFMqK_lMNP8K55miqirodCAezvqztAk1A0JcVv8SHk&usqp=CAU"
+          }
+        ]
+      }
+    },
+    {
       "id": 1,
       "email": "test@test.test",
       "password": "test",
@@ -1497,7 +1499,7 @@
         "country": "Open Sea",
         "sity": "Tanker Vessel"
       },
-      "status": "Hello",
+      "status": "-> Click here to change status <-",
       "links": {
         "vk": "vk.com/butic_off",
         "instagram": "just_simple_name"
@@ -1510,16 +1512,15 @@
         4
       ],
       "subscribes": [
-        19,
-        21,
-        10,
-        16,
         2,
         4,
         45,
-        17,
         3,
-        44
+        44,
+        10,
+        17,
+        20,
+        13
       ],
       "posts": [
         {
@@ -1584,34 +1585,19 @@
         "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5iw2u4ji5ROOJhNtuz9H71y8k0qdHxe1B3ikwsqQYGw5gRz5deegM9RzoL9I-OpUGKTY&usqp=CAU",
         "postedPhotos": [
           {
-            "id": 845153248741,
-            "date": 845153248741,
-            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5iw2u4ji5ROOJhNtuz9H71y8k0qdHxe1B3ikwsqQYGw5gRz5deegM9RzoL9I-OpUGKTY&usqp=CAU"
+            "id": 1643891479936,
+            "date": "2022-02-03T12:31:19.936Z",
+            "src": "dispatch(isFetchingActionCreator()"
           },
           {
-            "id": 845153248741,
-            "date": 845153248741,
-            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR56tbuRymzwLwQYApYIktkcRo-5aCbVogTh2JqBBUJd5Ms_aXhsQjEYE5DtBdyE2k7b8I&usqp=CAU"
+            "id": 1643890706686,
+            "date": "2022-02-03T12:18:26.686Z",
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZAZ5x3UpA2r2ucm5B8zeNn12OeRlXvfMYUPtKlvNQElgQ176adnFyAyLSJmMuLrh0hBQ&usqp=CAU"
           },
           {
-            "id": 845153248741,
-            "date": 845153248741,
-            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5iw2u4ji5ROOJhNtuz9H71y8k0qdHxe1B3ikwsqQYGw5gRz5deegM9RzoL9I-OpUGKTY&usqp=CAU"
-          },
-          {
-            "id": 845153248741,
-            "date": 845153248741,
-            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR56tbuRymzwLwQYApYIktkcRo-5aCbVogTh2JqBBUJd5Ms_aXhsQjEYE5DtBdyE2k7b8I&usqp=CAU"
-          },
-          {
-            "id": 845153248741,
-            "date": 845153248741,
-            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5iw2u4ji5ROOJhNtuz9H71y8k0qdHxe1B3ikwsqQYGw5gRz5deegM9RzoL9I-OpUGKTY&usqp=CAU"
-          },
-          {
-            "id": 845153248741,
-            "date": 845153248741,
-            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR56tbuRymzwLwQYApYIktkcRo-5aCbVogTh2JqBBUJd5Ms_aXhsQjEYE5DtBdyE2k7b8I&usqp=CAU"
+            "id": 1643890558386,
+            "date": "2022-02-03T12:15:58.386Z",
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT--CJVRhhk5Jt541wXV24mpQZkRRVKNutfL7XNl4_WBfKzgFtyYR8IrPIrwcTltIY1LA&usqp=CAU"
           },
           {
             "id": 845153248741,

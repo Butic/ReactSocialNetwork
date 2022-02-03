@@ -177,7 +177,7 @@ export const addPostLikeThunk = (myID, post_id) =>{
             }
         })
         const newData = {...responce.data, posts:posts}
-        const responce2 = await usersAPI.updateUser(myID, newData)
+        await usersAPI.updateUser(myID, newData)
         dispatch(addPostLikesActionCreator(posts))
     }
 }
