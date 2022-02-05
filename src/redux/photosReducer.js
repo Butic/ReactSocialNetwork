@@ -1,8 +1,9 @@
 import { usersAPI } from "../API/api"
+import { getUserDataActionCreator } from "./headerReducer";
 
 const GET_PHOTOS = "photos/GET_PHOTOS";
 const IS_FETCHING = 'photos/IS_FETCHING';
-const ADD_PHOTO = 'photos/ADD_PHOTO';
+const CHANGE_AVATAR = 'photos/CHANGE_AVATAR';
 
 const initialState={
     photos:[],
@@ -10,7 +11,7 @@ const initialState={
     usersData:{}
 }
 
-export const photosReducer =(state=initialState, action) => {
+export const photosReducer = (state=initialState, action) => {
     switch(action.type){
         case GET_PHOTOS:{
             return {...state, photos: action.photos, usersData:action.usersData}
@@ -18,8 +19,8 @@ export const photosReducer =(state=initialState, action) => {
         case IS_FETCHING:{
             return {...state, isFetching:!state.isFetching}
         }
-        case ADD_PHOTO:{
-            return {...state, photos: action.photos}
+        case CHANGE_AVATAR:{
+            return {...state, usersData:action.usersData}
         }
         default: return state
     }
@@ -27,7 +28,7 @@ export const photosReducer =(state=initialState, action) => {
 
 export const getPhotosActionCreator = (photos, usersData) => ({type: GET_PHOTOS, photos, usersData});
 export const isFetchingActionCreator = () => ({type: IS_FETCHING});
-export const addNewPhotoActionCreator = photos => ({type: ADD_PHOTO, photos})
+export const changeAvatarActionCreator = usersData => ({type: CHANGE_AVATAR, usersData})
 
 export const getPhotosThunk=id=>{
     return async (dispatch)=>{
@@ -50,8 +51,33 @@ export const addNewPhotoThunk=(photo, myData)=>{
         updatedPhotos.unshift(newPhoto)
         const updatedData = {...myData}
         updatedData.photos={...updatedData.photos, postedPhotos:updatedPhotos}
-        usersAPI.updateUser(myData.id, updatedData)
+        await usersAPI.updateUser(myData.id, updatedData)
         dispatch(getPhotosActionCreator(updatedPhotos, updatedData))
         dispatch(isFetchingActionCreator())
+    }
+}
+
+export const deletePhotoThunk = (id, myData) => {
+    return async (dispatch) => {
+        dispatch(isFetchingActionCreator())
+        const photos = [...myData.photos.postedPhotos]
+        const updatedPhotos= photos.filter(el=>Number(el.id)!=Number(id))
+        const updatedData = {...myData}
+        updatedData.photos.postedPhotos=[...updatedPhotos]
+        await usersAPI.updateUser(myData.id, updatedData)
+        dispatch(getPhotosActionCreator(updatedPhotos, updatedData))
+        dispatch(isFetchingActionCreator())
+    }
+}
+
+export const changeAvatarThunk = (src, myData) => {
+    return async (dispatch) => {
+        dispatch(isFetchingActionCreator())
+        const updatedData = {...myData}
+        updatedData.photos.avatar=src
+        await usersAPI.updateUser(myData.id, updatedData)
+        dispatch(changeAvatarActionCreator(updatedData))
+        dispatch(isFetchingActionCreator())
+        dispatch(getUserDataActionCreator(updatedData))
     }
 }

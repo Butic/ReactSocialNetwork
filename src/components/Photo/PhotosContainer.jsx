@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { compose } from "redux"
 import withAuthRedirect from "../../hoc/withAuthRedirect"
-import { addNewPhotoThunk, getPhotosThunk, isFetchingActionCreator } from "../../redux/photosReducer"
+import { addNewPhotoThunk, changeAvatarThunk, deletePhotoThunk, getPhotosThunk, isFetchingActionCreator } from "../../redux/photosReducer"
 import PreLoader from "../UI/PreLoader"
 import AddNewPhotoInput from "./AddNewPhotoInput"
 import PhotoEditor from "./PhotoEditor"
@@ -11,7 +11,9 @@ import Photos from "./Photos"
 import classes from './PhotosContainer.module.css'
 
 const PhotosContainer = (props) => {
-    const currentID = props.match.params.userID?props.match.params.userID:localStorage.getItem('VReacte');
+
+    const myID = localStorage.getItem('VReacte');
+    const currentID = props.match.params.userID?props.match.params.userID:myID;
 
     const [addPhotoMode, setAddPhotoMode] = useState(false);
 
@@ -41,22 +43,34 @@ const PhotosContainer = (props) => {
     const openPhotoEditMode=id=>{
         setIdPhotoEdition(id)
     }
+
+    const closePhotoEditMode=()=>{
+        setIdPhotoEdition('')
+    }
+    const deletePhoto=id=>{
+        props.deletePhoto(id, props.usersData)
+    }
+    const changeAvatar=src=>{
+        props.changeAvatar(src, props.usersData)
+        closePhotoEditMode()
+    }
+
     return(
         <>
             {props.isFetching&&<PreLoader/>}
             <div className={classes.PhotosFrame}>
                 {
-                Number(props.usersData.id)===Number(localStorage.getItem('VReacte'))&&!addPhotoMode
+                Number(props.usersData.id)===Number(myID)&&!addPhotoMode
                 &&<button onClick={activateAddPhotoMode} className={classes.AddNewPhotoButton}/>
                 ||
-                Number(props.usersData.id)===Number(localStorage.getItem('VReacte'))&&addPhotoMode
+                Number(props.usersData.id)===Number(myID)&&addPhotoMode
                 &&<AddNewPhotoInput onInputChange={onInputChange} sendPhotoData={sendPhotoData} deactivateAddPhotoMode={deactivateAddPhotoMode}/>
                 }
 
                 {props.photos&&props.photos.map(el=>{
-                    return idPhotoEdition!=el.id
-                    ?<Photos photo={el} openPhotoEditMode={openPhotoEditMode}/>
-                    :<PhotoEditor el={el}/>
+                    return idPhotoEdition==el.id&&props.usersData.id==myID
+                    ?<PhotoEditor el={el} closePhotoEditMode={closePhotoEditMode} deletePhoto={deletePhoto} changeAvatar={changeAvatar}/>
+                    :<Photos photo={el} openPhotoEditMode={openPhotoEditMode}/>
                 })}
             </div>
         </>
@@ -81,6 +95,12 @@ const mapDispatchToProps=dispatch=>{
         },
         addNewPhoto(photo, myData){
             dispatch(addNewPhotoThunk(photo, myData))
+        },
+        deletePhoto(id, myData){
+            dispatch(deletePhotoThunk(id, myData))
+        },
+        changeAvatar(src, myData){
+            dispatch(changeAvatarThunk(src, myData))
         }
     }
 }

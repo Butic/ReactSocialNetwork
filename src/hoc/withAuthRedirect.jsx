@@ -11,7 +11,7 @@ const mapStateToProps=(state)=>{
 const withAuthRedirect=(Component)=>{
 
     const connectedAuthRedirect=(props)=>{
-        return !props.isAuth ? <Redirect to={"/login"}/> : <><Component {...props} /></>
+        return !props.isAuth ? <Redirect to={"/login"}/> : <Component {...props} />
     }
 
     return connect(mapStateToProps)(connectedAuthRedirect);
