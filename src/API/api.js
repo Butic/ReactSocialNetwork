@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const usersURL = 'http://localhost:8000/users/';
+const dialogsURL = 'http://localhost:8000/dialogs/';
 
 export const usersAPI = {
     addMyData(current_id){
@@ -32,4 +33,10 @@ export const loginAPI = {
     checkEmail(email){
         return axios.get(usersURL+`?email=${email}`)
     }
-} 
+}
+
+export const dialogsAPI = {
+    getAllDialogs(){
+        return axios.get(dialogsURL)
+    }
+}

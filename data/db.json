@@ -1,68 +1,6 @@
 {
   "users": [
     {
-      "id": 8,
-      "email": "testEmail@mail8.ru",
-      "password": "123428",
-      "name": "Orochimaru San",
-      "DOB": {
-        "date": 1,
-        "month": "January",
-        "year": 2001
-      },
-      "location": {
-        "country": "Country",
-        "sity": "Sity"
-      },
-      "status": "Some Status",
-      "links": {
-        "vk": "vk.com/some",
-        "instagram": "some"
-      },
-      "followers": [
-        1
-      ],
-      "subscribes": [
-        1
-      ],
-      "posts": [
-        {
-          "id": "2022-01-15T03:47:46.850Z",
-          "senderID": "1",
-          "senderName": "Butikov Andrey",
-          "date": "15.01.2022, 06:47:46",
-          "text": "Hello",
-          "likes": []
-        },
-        {
-          "id": "2022-01-08T16:44:55.282Z",
-          "senderID": "5",
-          "date": "08.01.2022, 19:44:55",
-          "title": "Hello",
-          "text": "My Friend",
-          "likes": []
-        },
-        {
-          "id": "2022-01-08T16:44:47.812Z",
-          "senderID": "5",
-          "date": "08.01.2022, 19:44:47",
-          "title": "",
-          "text": "",
-          "likes": []
-        }
-      ],
-      "photos": {
-        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP-dbri4tqHtYaRFUo6C96zsjqIJlcLQKecMUOBl7RWC2-5t8kClytOCZlc5MbJGKeNhc&usqp=CAU",
-        "postedPhotos": [
-          {
-            "id": 845153248741,
-            "date": 845153248741,
-            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-aO7ptZ1-SXThNdla6_Y2x8nIoNqCWIUWUZgkspne0oq6BDUyAYCHwqYXXWfS6fNtEXk&usqp=CAU"
-          }
-        ]
-      }
-    },
-    {
       "id": 18,
       "email": "testEmail18@mail.ru",
       "password": "1234218",
@@ -1617,13 +1555,84 @@
           }
         ]
       }
+    },
+    {
+      "id": 8,
+      "email": "testEmail@mail8.ru",
+      "password": "123428",
+      "name": "Orochimaru San",
+      "DOB": {
+        "date": 1,
+        "month": "January",
+        "year": 2001
+      },
+      "location": {
+        "country": "Country",
+        "sity": "Sity"
+      },
+      "status": "Some Status",
+      "links": {
+        "vk": "vk.com/some",
+        "instagram": "some"
+      },
+      "followers": [
+        1
+      ],
+      "subscribes": [
+        1
+      ],
+      "posts": [
+        {
+          "id": "2022-02-07T08:21:31.111Z",
+          "senderID": "1",
+          "senderName": "Butikov Andrey",
+          "senderAvatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQT--CJVRhhk5Jt541wXV24mpQZkRRVKNutfL7XNl4_WBfKzgFtyYR8IrPIrwcTltIY1LA&usqp=CAU",
+          "date": "07/02/2022, 11:21:31",
+          "text": "12",
+          "likes": []
+        },
+        {
+          "id": "2022-01-15T03:47:46.850Z",
+          "senderID": "1",
+          "senderName": "Butikov Andrey",
+          "date": "15.01.2022, 06:47:46",
+          "text": "Hello",
+          "likes": []
+        },
+        {
+          "id": "2022-01-08T16:44:55.282Z",
+          "senderID": "5",
+          "date": "08.01.2022, 19:44:55",
+          "title": "Hello",
+          "text": "My Friend",
+          "likes": []
+        },
+        {
+          "id": "2022-01-08T16:44:47.812Z",
+          "senderID": "5",
+          "date": "08.01.2022, 19:44:47",
+          "title": "",
+          "text": "",
+          "likes": [
+            "8"
+          ]
+        }
+      ],
+      "photos": {
+        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTP-dbri4tqHtYaRFUo6C96zsjqIJlcLQKecMUOBl7RWC2-5t8kClytOCZlc5MbJGKeNhc&usqp=CAU",
+        "postedPhotos": [
+          {
+            "id": 845153248741,
+            "date": 845153248741,
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-aO7ptZ1-SXThNdla6_Y2x8nIoNqCWIUWUZgkspne0oq6BDUyAYCHwqYXXWfS6fNtEXk&usqp=CAU"
+          }
+        ]
+      }
     }
   ],
   "dialogs": [
     {
-      "id": "1",
-      "firstKey": 1,
-      "secondKey": 2,
+      "id": "1and2",
       "lastMessageDate": 123713684,
       "dialog": [
         {
@@ -1649,9 +1658,33 @@
       ]
     },
     {
-      "id": "2",
-      "firstKey": 1,
-      "secondKey": 3,
+      "id": "2and1",
+      "lastMessageDate": 123713684,
+      "dialog": [
+        {
+          "id": 2316745127,
+          "sender_id": 1,
+          "text": "Hello, how are you?"
+        },
+        {
+          "id": 2316745127,
+          "sender_id": 2,
+          "text": "Fine and you?"
+        },
+        {
+          "id": 2316745127,
+          "sender_id": 1,
+          "text": "Also ok, thanks"
+        },
+        {
+          "id": 2316745127,
+          "sender_id": 2,
+          "text": "Ok..."
+        }
+      ]
+    },
+    {
+      "id": "1and3",
       "lastMessageDate": 123713685,
       "dialog": [
         {
@@ -1677,9 +1710,33 @@
       ]
     },
     {
-      "id": "3",
-      "firstKey": 1,
-      "secondKey": 4,
+      "id": "3and1",
+      "lastMessageDate": 123713685,
+      "dialog": [
+        {
+          "id": 2316745127,
+          "sender_id": 1,
+          "text": "Hello, are you deveoper?"
+        },
+        {
+          "id": 2316745127,
+          "sender_id": 3,
+          "text": "No"
+        },
+        {
+          "id": 2316745127,
+          "sender_id": 1,
+          "text": "No?"
+        },
+        {
+          "id": 2316745127,
+          "sender_id": 3,
+          "text": "No..."
+        }
+      ]
+    },
+    {
+      "id": "4and1",
       "lastMessageDate": 123713686,
       "dialog": [
         {
@@ -1705,9 +1762,59 @@
       ]
     },
     {
-      "id": "4",
-      "firstKey": 2,
-      "secondKey": 3,
+      "id": "1and4",
+      "lastMessageDate": 123713686,
+      "dialog": [
+        {
+          "id": 2316745127,
+          "sender_id": 1,
+          "text": "Hello, can you help me?"
+        },
+        {
+          "id": 2316745127,
+          "sender_id": 4,
+          "text": "Hi, with what?"
+        },
+        {
+          "id": 2316745127,
+          "sender_id": 4,
+          "text": "But wait... No"
+        },
+        {
+          "id": 2316745127,
+          "sender_id": 1,
+          "text": "Ok...("
+        }
+      ]
+    },
+    {
+      "id": "3and2",
+      "lastMessageDate": 123713687,
+      "dialog": [
+        {
+          "id": 2316745127,
+          "sender_id": 3,
+          "text": "Hello, how are you?"
+        },
+        {
+          "id": 2316745127,
+          "sender_id": 2,
+          "text": "Fine and you?"
+        },
+        {
+          "id": 2316745127,
+          "sender_id": 3,
+          "text": "Also ok, thanks"
+        },
+        {
+          "id": 2316745127,
+          "sender_id": 2,
+          "text": "No problem..."
+        }
+      ]
+    },
+    {
+      "id": "2and3",
       "lastMessageDate": 123713687,
       "dialog": [
         {

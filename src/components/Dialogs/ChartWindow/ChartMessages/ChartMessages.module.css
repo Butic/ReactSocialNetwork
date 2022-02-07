@@ -19,17 +19,17 @@
     margin-bottom: 30px;
     max-width: 60%;
 }
-.Date__oponent{
+.Date__oponent, .Date__me{
+    display: inline-block;
     position: absolute;
     color: gray;
     font-size: 12px;
     bottom: -17px;
+    width: 125px;
+}
+.Date__oponent{
     left:0;
 }
 .Date__me{
-    position: absolute;
-    color: gray;
-    font-size: 12px;
-    bottom: -17px;
     right: 0;
 }

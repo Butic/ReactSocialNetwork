@@ -12,6 +12,11 @@
     color: black;
     transition:0.5s;
 }
+.active{
+    position: relative;
+    font-weight: bold;
+    font-style: italic;
+}
 .Dialog__member:hover{
     background-color: rgba(0, 60, 255, .1);
     border-bottom: 2px solid rgba(0, 60, 255, .5);

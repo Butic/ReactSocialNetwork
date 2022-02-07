@@ -17,11 +17,6 @@
     font-weight: bold;
     border-bottom: 1px solid rgb(89, 121, 180);
 }
-.active{
-    position: relative;
-    font-weight: bold;
-    font-style: italic;
-}
 .Nav__friendsField__header{
     text-align: center;
 }

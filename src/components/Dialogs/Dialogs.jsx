@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import classes from './Dialogs.module.css';
 import ChartWindow from './ChartWindow/ChartWindow';
 import DialogMembersContainer from './DialogMembers/DialogMembersContainer';
 import withAuthRedirect from '../../hoc/withAuthRedirect';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { getAllDialogsThunk } from '../../redux/dialogsReducer';
 
-const Dialogs = () =>{
+const Dialogs = (props) =>{
+
+    useEffect(()=>{
+        props.getAllDialogs(props.loggedID);
+    },[]);    
+
     return(
         <div className={classes.Dialogs}>
             <div className={classes.Dialogs__left_side}>
@@ -18,4 +26,19 @@ const Dialogs = () =>{
     );
 };
 
-export default withAuthRedirect(Dialogs);
+const mapStateToProps = state =>{
+    return{
+        dialogs:state.dialogData.dialogs,
+        opponentsID:state.dialogData.opponentsID
+    }
+}
+
+const mapDispatchToProps = dispatch =>{
+    return{
+        getAllDialogs(myID){
+            dispatch(getAllDialogsThunk(myID))
+        }
+    }
+}
+
+export default compose(connect(null, mapDispatchToProps),withAuthRedirect)(Dialogs);
