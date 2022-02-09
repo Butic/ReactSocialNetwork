@@ -26,13 +26,6 @@ const Dialogs = (props) =>{
     );
 };
 
-const mapStateToProps = state =>{
-    return{
-        dialogs:state.dialogData.dialogs,
-        opponentsID:state.dialogData.opponentsID
-    }
-}
-
 const mapDispatchToProps = dispatch =>{
     return{
         getAllDialogs(myID){

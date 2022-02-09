@@ -1,14 +1,32 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addMyMessageCreator } from '../../../../redux/dialogsReducer';
+import { addMyMessageThunk } from '../../../../redux/dialogsReducer';
 import InputMessage from './InputMessage';
 
-const mapDispatchToProps=(dispatch)=>{
+const InputMessageContainer=(props)=>{
+    const isInputVisible = props.targetedUserId&&props.dialogs.length!=0?true:false;
+    const myID = localStorage.getItem('VReacte');
+    const addMessage=message=>{
+        props.addMessage(message, myID, props.targetedUserId, props.dialogs);
+    }
+
+    return <InputMessage isInputVisible={isInputVisible} addMessage={addMessage}/>
+}
+
+const mapStateToProps=state=>{
     return{
-        addMessage(message){
-            dispatch(addMyMessageCreator(message));
-        }
+        targetedUserId: state.dialogData.targetedUserId,
+        dialogs: state.dialogData.dialogs
     }
 }
 
-export default connect(null, mapDispatchToProps)(InputMessage);
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        addMessage(message, myID, opponentID, dialogs){
+            dispatch(addMyMessageThunk(message, myID, opponentID, dialogs));
+        }
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InputMessageContainer);

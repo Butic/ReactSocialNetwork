@@ -1,36 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import classes from './ChartMessages.module.css';
 import { withRouter } from "react-router-dom";
 import { compose } from 'redux';
+import { setTargetIdActionCreator } from '../../../../redux/dialogsReducer';
+import ChartMessages from './ChartMessages';
 
-const ChartMessages = (props) =>{
+const ChartMessagesConstainer = (props) =>{
     const userID = props.match.params.userID
     const myID = localStorage.getItem('VReacte')
-    console.log(userID)
+    if(props.targetedUserId!=userID) props.setTargetId(userID);
+    const targetedDialogId = `${myID}and${userID}`;
+    const targetedDialog = props.dialogs.filter(el=>el.id==targetedDialogId);
+   
     return(
-        props.messages.map(el=>{
-            if(el.me){
-                return(
-                    <span me={el.me} className={classes.Chart__me}>{el.message} 
-                        <span className={classes.Date__me}>{el.date}</span> 
-                    </span>);
-            }
-            else{
-                return(
-                    <span me={el.me} className={classes.Chart__oponent}>{el.message} 
-                        <span className={classes.Date__oponent}>{el.date}</span> 
-                    </span>);
-            }
-        })
+        <ChartMessages messages={props.messages} targetedDialog={targetedDialog[0]} myID={myID} userID={userID}/>
     )
 }
 
 const mapStateToProps=(state)=>{
     return{
-        messages: state.dialogData.messages,
         dialogs: state.dialogData.dialogs,
+        targetedUserId: state.dialogData.targetedUserId
     }
 }
 
-export default compose(connect(mapStateToProps), withRouter) (ChartMessages);
+const mapDispatchToProps = dispatch =>{
+    return{
+        setTargetId(targetedUserId){
+            dispatch(setTargetIdActionCreator(targetedUserId))
+        }
+    }
+}
+
+export default compose(connect(mapStateToProps, mapDispatchToProps), withRouter) (ChartMessagesConstainer);

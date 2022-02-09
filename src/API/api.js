@@ -25,7 +25,7 @@ export const usersAPI = {
     },
     
     updateUser(current_id, newData){
-        return this.deleteUser(current_id).then(()=>{return this.addUser(newData)})
+        return this.deleteUser(current_id).then(()=>this.addUser(newData))
     }
 }
 
@@ -38,5 +38,14 @@ export const loginAPI = {
 export const dialogsAPI = {
     getAllDialogs(){
         return axios.get(dialogsURL)
+    },
+    addDailog(newData){
+        return axios.post(dialogsURL, newData)
+    },
+    deleteDailog(current_id){
+        return axios.delete(dialogsURL + current_id)
+    },
+    updateDialog(current_id, newData){
+        return this.deleteDailog(current_id).then(()=>this.addDailog(newData))
     }
 }

@@ -4,12 +4,11 @@ import { Field, reduxForm } from 'redux-form';
 
 const InputMessage = (props) =>{
 
-    const onAddMessage = (value) =>{
+    const addMessage = (value) =>{
         props.addMessage(value.message);
         value.message="";
     }
-
-    return <InputMessageReduxForm onSubmit={onAddMessage}/>
+    return props.isInputVisible?<InputMessageReduxForm onSubmit={addMessage}/>:<></>
 }
 
 const InputMessageForm = (props) => {
@@ -21,6 +20,6 @@ const InputMessageForm = (props) => {
     )
 }
 
-const InputMessageReduxForm = reduxForm({form: 'chart_message'})(InputMessageForm)
+const InputMessageReduxForm = reduxForm({form:'chart_message'})(InputMessageForm)
 
 export default InputMessage;

@@ -3,35 +3,22 @@ import { dialogsAPI, usersAPI } from "../API/api";
 const ADD_MY_MESSAGE = 'dialogs/ADD_MY_MESSAGE';
 const GET_ALL_DIALOGS = 'dialogs/GET_ALL_DIALOGS';
 const GET_OPPONENTS_DATA = 'dialogs/GET_OPPONENTS_DATA';
+const SET_TARGETED_USER_ID = 'dialogs/SET_TARGETED_USER_ID';
 
 
 const lorem = 'dolor sit amet consectetur adipisicing elit. Minima accusantium maxime magni atque deserunt? Doloribus unde dolores, molestias, suscipit enim molestiae dignissimos dolorum quidem aliquid soluta incidunt officiis dolor nihil.';
 
 const initialState = {
-    messages: [
-        {id:1, me:true, message:lorem, date:116735615},
-        {id:1, me:false, message:lorem+lorem, date:117581851},
-        {id:1, me:true, message:lorem+lorem, date:135177123},
-        {id:1, me:true, message:lorem+lorem+lorem, date:1156813123},
-        {id:1, me:false, message:lorem+lorem, date:1525561253},
-        {id:1, me:false, message:lorem+lorem, date:53743517651},
-        {id:1, me:true, message:lorem+lorem, date:86535128521},
-        {id:1, me:false, message:lorem+lorem+lorem, date:1113123151},
-        {id:1, me:true, message:lorem+lorem, date:1127275162},
-        {id:1, me:false, message:lorem+lorem, date:1341216651}
-      ],
       dialogs:[],
       opponentsID:[],
-      opponents:[]
+      opponents:[],
+      targetedUserId: null
 };
 
 const dialogsReducer = (state=initialState, action) =>{
     switch (action.type){
         case ADD_MY_MESSAGE:{
-            const newState = {...state};
-            newState.messages=[...state.messages];
-            newState.messages.unshift({id:1, me:true, message:action.message, date:new Date().toLocaleString()});
-            return newState;
+            return {...state, dialogs:action.dialogs}
         }
         case GET_ALL_DIALOGS:{
             return {...state, dialogs:action.dialogs, opponentsID:action.opponentsID}
@@ -39,13 +26,17 @@ const dialogsReducer = (state=initialState, action) =>{
         case GET_OPPONENTS_DATA:{
             return {...state, opponents:action.opponents}
         }
+        case SET_TARGETED_USER_ID:{
+            return{...state, targetedUserId:action.targetedUserId}
+        }
         default: return state
     }
 }
 
-export const addMyMessageCreator=(message)=>({type:ADD_MY_MESSAGE, message});
+export const addMyMessageActionCreator=dialogs=>({type:ADD_MY_MESSAGE, dialogs});
 export const getAllDialogsActionCreator=(dialogs, opponentsID)=>({type:GET_ALL_DIALOGS, dialogs, opponentsID});
-export const getOpponentsDataActionCreator=opponents=>({type:GET_OPPONENTS_DATA, opponents})
+export const getOpponentsDataActionCreator=opponents=>({type:GET_OPPONENTS_DATA, opponents});
+export const setTargetIdActionCreator=targetedUserId=>({type: SET_TARGETED_USER_ID, targetedUserId});
 
 export const getAllDialogsThunk = (myID) => {
     return async dispatch => {
@@ -72,6 +63,32 @@ export const getOpponentsDataThunk = (opponentsID) =>{
             opponents.push(responce.data)
         }
         dispatch(getOpponentsDataActionCreator(opponents))
+    }
+}
+
+export const addMyMessageThunk = (message, myID, opponentID, dialogs)=>{
+    return async dispatch=>{
+        const newMessage = {
+            id: new Date().toLocaleString(),
+            sender_id: myID,
+            text: message
+        }
+        const myDialogID=`${myID}and${opponentID}`;
+        const opponentsDialogID=`${opponentID}and${myID}`;
+        const newDialogs = [...dialogs];
+        const updatedDialogs = [];
+        newDialogs.map(el=>{
+            if(el.id==opponentsDialogID||el.id==myDialogID){
+                const newDialog = [...el.dialog]
+                newDialog.unshift(newMessage)
+                el.dialog=newDialog
+                el.lastMessageDate=Number(new Date())
+                updatedDialogs.push(el)
+            }
+        })
+        await dialogsAPI.updateDialog(updatedDialogs[0].id, updatedDialogs[0]);
+        await dialogsAPI.updateDialog(updatedDialogs[1].id, updatedDialogs[1]);
+        dispatch(addMyMessageActionCreator(newDialogs))
     }
 }
 
