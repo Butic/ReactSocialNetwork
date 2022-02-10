@@ -10,7 +10,6 @@ const DialogMembers = (props) =>{
     useEffect(()=>{
         props.getOpponentsData(props.opponentsID)
     },[props.opponentsID])
-
     return(
         <ul className={classes.Dialog__members}>
             {props.opponents.map(el=><DialogItems id={el.id} name={el.name} avatar={el.photos.avatar}/>)}

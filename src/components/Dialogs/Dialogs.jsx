@@ -12,7 +12,7 @@ const Dialogs = (props) =>{
     useEffect(()=>{
         props.getAllDialogs(props.loggedID);
     },[]);    
-
+    
     return(
         <div className={classes.Dialogs}>
             <div className={classes.Dialogs__left_side}>

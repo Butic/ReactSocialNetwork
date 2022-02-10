@@ -33,14 +33,9 @@
 .Date__me{
     right: 0;
 }
-.Chart__Loading, .Chart__Choose{
+.Chart__Choose{
     position: absolute;
     color: gray;
     top: 50%;
-}
-.Chart__Choose{
     left: 40%;
-}
-.Chart__Loading{
-    left: 45%;
 }

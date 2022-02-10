@@ -55,7 +55,7 @@ const profileReducer = (state = initalState, action) => {
                 location: { ...state.location, country: action.data.location.country, sity: action.data.location.sity },
                 status: action.data.status, links: action.data.links, posts: [...action.data.posts], newPost: state.newPost,
                 avatar: action.data.photos.avatar,
-                myData: action.isMe && action.data
+                myData: action.isMe ? action.data : action.myData
             }
         }
         case SET_SENDERS_DATA: {
@@ -82,7 +82,7 @@ const profileReducer = (state = initalState, action) => {
 
 export const addPostActionCreator = newAddedPost => ({ type: ADD_POST, newAddedPost});
 export const deletePostActionCreator = target_post_ID => ({ type: DELETE_POST, target_post_ID });
-export const setUserProfileActionCreator = (data, isMe) => ({ type: SET_USER_PROFILE, data, isMe });
+export const setUserProfileActionCreator = (data, isMe, myData) => ({ type: SET_USER_PROFILE, data, isMe, myData });
 export const setSendersDataActionCreator = senderData => ({ type: SET_SENDERS_DATA, senderData });
 export const changeStatusActionCreator = newStatus => ({ type: CHANGE_STATUS, newStatus });
 export const amISubscribedActionCreator = (isSubscribed, myData) => ({type:GET_MY_SUBSCRIBES, isSubscribed, myData});
@@ -90,10 +90,14 @@ export const followActionCreator = updatedUser => ({ type: FOLLOW, updatedUser }
 export const disableButtonActionCreator = () => ({ type: DISABLE_BUTTON });
 export const addPostLikesActionCreator = newPosts => ({type: ADD_POST_LIKE, newPosts});
 
-export const setUserProfileThunk = (userID, isMe) => {
+export const setUserProfileThunk = (userID, isMe, myID) => {
     return async (dispatch) => {
         const responce = await usersAPI.addMyData(userID);
-        dispatch(setUserProfileActionCreator(responce.data, isMe));
+        if(isMe) dispatch(setUserProfileActionCreator(responce.data, isMe));
+        else {
+            const responce2 = await usersAPI.addMyData(myID);
+            dispatch(setUserProfileActionCreator(responce.data, isMe, responce2.data));
+        }
     }
 }
 
@@ -150,6 +154,7 @@ export const amISubscribedThunk = (id, myId) => {
 
 export const followUserThunk = (myData, target_id) => {
     return async (dispatch) => {
+        console.log(myData)
         dispatch(disableButtonActionCreator());
         if (!myData.subscribes.includes(Number(target_id))) {
             const newData = { ...myData, subscribes: [...myData.subscribes, Number(target_id)] };

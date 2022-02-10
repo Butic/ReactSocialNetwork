@@ -20,8 +20,10 @@ const ChartMessages = (props) =>{
             })
         )
     }
-    else if(props.userID) return <h2 className={classes.Chart__Loading}>Loading...</h2>
-    else return <h2 className={classes.Chart__Choose}>Choose any dialog</h2>
+    else if(props.userID&&!props.targetedDialog) return <h2 className={classes.Chart__Choose}>Write first messsage</h2>
+    else if(!props.userID) return <h2 className={classes.Chart__Choose}>Choose any dialog</h2>
+    else return <h2 className={classes.Chart__Choose}>Loading, please wiat</h2>
+
 }
 
 export default ChartMessages;

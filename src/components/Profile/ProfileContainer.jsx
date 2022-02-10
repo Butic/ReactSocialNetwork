@@ -12,7 +12,7 @@ componentDidMount(){
     const myId = localStorage.getItem('VReacte');
     
     if(!userID || Number(userID)==Number(myId)) this.props.setUserProfile(myId, true)
-    else this.props.setUserProfile(userID, false);
+    else this.props.setUserProfile(userID, false, myId);
         
     if(Number(userID) && Number(userID)!=Number(myId)) this.props.amISubscribed(userID, myId);
 }
@@ -23,8 +23,8 @@ componentDidMount(){
 
 const mapDispatchToProps=(dispatch)=>{
     return{
-        setUserProfile(data, isMe){
-            dispatch(setUserProfileThunk(data, isMe))
+        setUserProfile(data, isMe, myId){
+            dispatch(setUserProfileThunk(data, isMe, myId))
         },
         amISubscribed(id, myId){
             dispatch(amISubscribedThunk(id, myId))

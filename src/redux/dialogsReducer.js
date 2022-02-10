@@ -66,7 +66,7 @@ export const getOpponentsDataThunk = (opponentsID) =>{
     }
 }
 
-export const addMyMessageThunk = (message, myID, opponentID, dialogs)=>{
+export const addMyMessageThunk = (message, myID, opponentID, dialogs, isMyDialogExists, isOpponentsDialogExists)=>{
     return async dispatch=>{
         const newMessage = {
             id: new Date().toLocaleString(),
@@ -86,9 +86,21 @@ export const addMyMessageThunk = (message, myID, opponentID, dialogs)=>{
                 updatedDialogs.push(el)
             }
         })
-        await dialogsAPI.updateDialog(updatedDialogs[0].id, updatedDialogs[0]);
-        await dialogsAPI.updateDialog(updatedDialogs[1].id, updatedDialogs[1]);
-        dispatch(addMyMessageActionCreator(newDialogs))
+
+        if(isMyDialogExists&&isOpponentsDialogExists){
+            await dialogsAPI.updateDialog(updatedDialogs[0].id, updatedDialogs[0]);
+            await dialogsAPI.updateDialog(updatedDialogs[1].id, updatedDialogs[1]);
+            dispatch(addMyMessageActionCreator(newDialogs))
+        }
+        else if(isMyDialogExists&&!isOpponentsDialogExists){
+
+        }
+        else if(!isMyDialogExists&&isOpponentsDialogExists){
+
+        }
+        else{
+
+        }
     }
 }
 
