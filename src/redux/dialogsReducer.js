@@ -4,9 +4,7 @@ const ADD_MY_MESSAGE = 'dialogs/ADD_MY_MESSAGE';
 const GET_ALL_DIALOGS = 'dialogs/GET_ALL_DIALOGS';
 const GET_OPPONENTS_DATA = 'dialogs/GET_OPPONENTS_DATA';
 const SET_TARGETED_USER_ID = 'dialogs/SET_TARGETED_USER_ID';
-
-
-const lorem = 'dolor sit amet consectetur adipisicing elit. Minima accusantium maxime magni atque deserunt? Doloribus unde dolores, molestias, suscipit enim molestiae dignissimos dolorum quidem aliquid soluta incidunt officiis dolor nihil.';
+const ADD_NEW_OPPPONENT = 'dialogs/ADD_NEW_OPPPONENT';
 
 const initialState = {
       dialogs:[],
@@ -18,13 +16,16 @@ const initialState = {
 const dialogsReducer = (state=initialState, action) =>{
     switch (action.type){
         case ADD_MY_MESSAGE:{
-            return {...state, dialogs:action.dialogs}
+            return {...state, dialogs:action.dialogs, opponents:[...state.opponents]}
         }
         case GET_ALL_DIALOGS:{
             return {...state, dialogs:action.dialogs, opponentsID:action.opponentsID}
         }
         case GET_OPPONENTS_DATA:{
             return {...state, opponents:action.opponents}
+        }
+        case ADD_NEW_OPPPONENT:{
+            return {...state, opponents:[...state.opponents, action.opponent]}
         }
         case SET_TARGETED_USER_ID:{
             return{...state, targetedUserId:action.targetedUserId}
@@ -37,6 +38,7 @@ export const addMyMessageActionCreator=dialogs=>({type:ADD_MY_MESSAGE, dialogs})
 export const getAllDialogsActionCreator=(dialogs, opponentsID)=>({type:GET_ALL_DIALOGS, dialogs, opponentsID});
 export const getOpponentsDataActionCreator=opponents=>({type:GET_OPPONENTS_DATA, opponents});
 export const setTargetIdActionCreator=targetedUserId=>({type: SET_TARGETED_USER_ID, targetedUserId});
+export const addNewOpponentDataActionCreator=opponent=>({type: ADD_NEW_OPPPONENT, opponent})
 
 export const getAllDialogsThunk = (myID) => {
     return async dispatch => {
@@ -66,6 +68,13 @@ export const getOpponentsDataThunk = (opponentsID) =>{
     }
 }
 
+export const addNewOpponentDataThunk = (opponentID)=>{
+    return async dispatch =>{
+        const responce = await usersAPI.addMyData(opponentID)
+        dispatch(addNewOpponentDataActionCreator(responce.data))
+    }
+}
+
 export const addMyMessageThunk = (message, myID, opponentID, dialogs, isMyDialogExists, isOpponentsDialogExists)=>{
     return async dispatch=>{
         const newMessage = {
@@ -76,30 +85,68 @@ export const addMyMessageThunk = (message, myID, opponentID, dialogs, isMyDialog
         const myDialogID=`${myID}and${opponentID}`;
         const opponentsDialogID=`${opponentID}and${myID}`;
         const newDialogs = [...dialogs];
-        const updatedDialogs = [];
+        let myDialog = {};
+        let opponentsDialog = {};
         newDialogs.map(el=>{
-            if(el.id==opponentsDialogID||el.id==myDialogID){
+            if(el.id==myDialogID){
                 const newDialog = [...el.dialog]
                 newDialog.unshift(newMessage)
                 el.dialog=newDialog
                 el.lastMessageDate=Number(new Date())
-                updatedDialogs.push(el)
+                myDialog = el;
+            }
+            if(el.id==opponentsDialogID){
+                const newDialog = [...el.dialog]
+                newDialog.unshift(newMessage)
+                el.dialog=newDialog
+                el.lastMessageDate=Number(new Date())
+                opponentsDialog = el;
             }
         })
 
         if(isMyDialogExists&&isOpponentsDialogExists){
-            await dialogsAPI.updateDialog(updatedDialogs[0].id, updatedDialogs[0]);
-            await dialogsAPI.updateDialog(updatedDialogs[1].id, updatedDialogs[1]);
-            dispatch(addMyMessageActionCreator(newDialogs))
+            await dialogsAPI.updateDialog(myDialog.id, myDialog);
+            await dialogsAPI.updateDialog(opponentsDialog.id, opponentsDialog);
+            dispatch(addMyMessageActionCreator(newDialogs));
         }
         else if(isMyDialogExists&&!isOpponentsDialogExists){
-
+            const newOpponentsDialog = {
+                id: opponentsDialogID,
+                lastMessageDate: Number(new Date()),
+                dialog: [newMessage]
+            }
+            newDialogs.push(newOpponentsDialog);
+            await dialogsAPI.updateDialog(myDialog.id, myDialog);
+            await dialogsAPI.addDailog(newOpponentsDialog);
+            dispatch(addMyMessageActionCreator(newDialogs));
         }
         else if(!isMyDialogExists&&isOpponentsDialogExists){
-
+            const newMyDialog = {
+                id: myDialogID,
+                lastMessageDate: Number(new Date()),
+                dialog: [newMessage]
+            }
+            newDialogs.push(newMyDialog);
+            await dialogsAPI.updateDialog(opponentsDialog.id, opponentsDialog);
+            await dialogsAPI.addDailog(newMyDialog);
+            dispatch(addMyMessageActionCreator(newDialogs));
         }
         else{
-
+            const newMyDialog = {
+                id: myDialogID,
+                lastMessageDate: Number(new Date()),
+                dialog: [newMessage]
+            }
+            const newOpponentsDialog = {
+                id: opponentsDialogID,
+                lastMessageDate: Number(new Date()),
+                dialog: [newMessage]
+            }
+            newDialogs.push(newMyDialog);
+            newDialogs.push(newOpponentsDialog)
+            await dialogsAPI.addDailog(newMyDialog);
+            await dialogsAPI.addDailog(newOpponentsDialog);
+            dispatch(addMyMessageActionCreator(newDialogs));
         }
     }
 }
