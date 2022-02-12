@@ -5,6 +5,7 @@ const GET_ALL_DIALOGS = 'dialogs/GET_ALL_DIALOGS';
 const GET_OPPONENTS_DATA = 'dialogs/GET_OPPONENTS_DATA';
 const SET_TARGETED_USER_ID = 'dialogs/SET_TARGETED_USER_ID';
 const ADD_NEW_OPPPONENT = 'dialogs/ADD_NEW_OPPPONENT';
+const DELETE_DIALOG = 'dialogs/DELETE_DIALOG';
 
 const initialState = {
       dialogs:[],
@@ -16,7 +17,7 @@ const initialState = {
 const dialogsReducer = (state=initialState, action) =>{
     switch (action.type){
         case ADD_MY_MESSAGE:{
-            return {...state, dialogs:action.dialogs, opponents:[...state.opponents]}
+            return {...state, dialogs:action.dialogs, opponents:action.newOpponentData?[...state.opponents, action.newOpponentData]:[...state.opponents]}
         }
         case GET_ALL_DIALOGS:{
             return {...state, dialogs:action.dialogs, opponentsID:action.opponentsID}
@@ -30,15 +31,19 @@ const dialogsReducer = (state=initialState, action) =>{
         case SET_TARGETED_USER_ID:{
             return{...state, targetedUserId:action.targetedUserId}
         }
+        case DELETE_DIALOG:{
+            return {...state, dialogs:[...state.dialogs.filter(el=>el.id!=action.dialogID)], opponentsID:[...state.opponentsID.filter(el=>Number(el)!=Number(action.opponentID))], opponents:[...state.opponents.filter(el=>Number(el.id)!=Number(action.opponentID))]}
+        }
         default: return state
     }
 }
 
-export const addMyMessageActionCreator=dialogs=>({type:ADD_MY_MESSAGE, dialogs});
+export const addMyMessageActionCreator=(dialogs, newOpponentData)=>({type:ADD_MY_MESSAGE, dialogs, newOpponentData});
 export const getAllDialogsActionCreator=(dialogs, opponentsID)=>({type:GET_ALL_DIALOGS, dialogs, opponentsID});
 export const getOpponentsDataActionCreator=opponents=>({type:GET_OPPONENTS_DATA, opponents});
 export const setTargetIdActionCreator=targetedUserId=>({type: SET_TARGETED_USER_ID, targetedUserId});
-export const addNewOpponentDataActionCreator=opponent=>({type: ADD_NEW_OPPPONENT, opponent})
+export const addNewOpponentDataActionCreator=opponent=>({type: ADD_NEW_OPPPONENT, opponent});
+export const deleteDialogActionCreator=(dialogID, opponentID)=>({type: DELETE_DIALOG, dialogID, opponentID})
 
 export const getAllDialogsThunk = (myID) => {
     return async dispatch => {
@@ -129,7 +134,8 @@ export const addMyMessageThunk = (message, myID, opponentID, dialogs, isMyDialog
             newDialogs.push(newMyDialog);
             await dialogsAPI.updateDialog(opponentsDialog.id, opponentsDialog);
             await dialogsAPI.addDailog(newMyDialog);
-            dispatch(addMyMessageActionCreator(newDialogs));
+            const responce = await usersAPI.addMyData(opponentID)
+            dispatch(addMyMessageActionCreator(newDialogs, responce.data));
         }
         else{
             const newMyDialog = {
@@ -146,8 +152,16 @@ export const addMyMessageThunk = (message, myID, opponentID, dialogs, isMyDialog
             newDialogs.push(newOpponentsDialog)
             await dialogsAPI.addDailog(newMyDialog);
             await dialogsAPI.addDailog(newOpponentsDialog);
-            dispatch(addMyMessageActionCreator(newDialogs));
+            const responce = await usersAPI.addMyData(opponentID)
+            dispatch(addMyMessageActionCreator(newDialogs, responce.data));
         }
+    }
+}
+
+export const deleteDialogThunk = (dialogID, opponentID) =>{
+    return async dispatch=>{
+        await dialogsAPI.deleteDailog(dialogID);
+        dispatch(deleteDialogActionCreator(dialogID, opponentID));
     }
 }
 

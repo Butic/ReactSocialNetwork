@@ -12,7 +12,6 @@ const ChartMessagesConstainer = (props) =>{
     const targetedDialogId = `${myID}and${userID}`;
     const targetedDialog = props.dialogs.filter(el=>el.id==targetedDialogId);
     useEffect(()=>{
-        console.log(props.opponents)
         if(props.dialogs.length>2&&props.opponents.length>1){
             const sortedOpponents=[];
             const sortedOpponentsID=[];

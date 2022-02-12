@@ -30,10 +30,30 @@
     height: 20px;
     border: 1px solid rgb(225, 225, 231);
     background-color: rgba(245, 238, 238, .5);
+    opacity: 0.5;
     transition: 0.5s;
+}
+.Dialog__member_settings::after{
+    content: ' ';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: red;
+    transform: rotate(45deg);
+    top:50%;
+}
+.Dialog__member_settings::before{
+    content: ' ';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background-color: red;
+    transform: rotate(-45deg);
+    top:50%;
 }
 .Dialog__member_settings:hover{
     background-color: rgb(225, 225, 231);
+    opacity: 1;
 }
 .active{
     position: relative;
