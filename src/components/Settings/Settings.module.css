@@ -1,0 +1,23 @@
+.Settings__container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.Settings__links, .Settings__location{
+    position: relative;
+    margin-top: 35px;
+    display: grid;
+    grid-column: 1/-1;
+    grid-template-columns: 1fr 1fr;
+}
+.Settings__links::before{
+    content: 'Links';
+}
+.Settings__location::before{
+    content: 'Location';
+}
+.Settings__links::before, .Settings__location::before{
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    font-style: italic;
+}
