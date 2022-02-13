@@ -19,12 +19,14 @@ const PhotosContainer = (props) => {
 
     const [photoLink, setPhotoLink] = useState('');
 
-    const [idPhotoEdition, setIdPhotoEdition] = useState(1643891479936);
+    const [idPhotoEdition, setIdPhotoEdition] = useState('');
 
     useEffect(()=>{
-        props.fetching();
         props.getPhotos(currentID);
     },[])
+
+    if(props.usersData.id&&Number(props.usersData.id)!=Number(currentID)&&!props.match.params.userID) props.getPhotos(currentID);
+    
 
     const activateAddPhotoMode=()=>{
         setAddPhotoMode(true)

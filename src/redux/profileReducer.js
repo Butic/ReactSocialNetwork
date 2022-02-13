@@ -33,7 +33,8 @@ const initalState = {
     senderAvatar:"",
     isDisabled: false,
     isSubscribed: false,
-    myData:{}
+    myData:{},
+    currentID: ''
 };
 
 const profileReducer = (state = initalState, action) => {
@@ -55,7 +56,8 @@ const profileReducer = (state = initalState, action) => {
                 location: { ...state.location, country: action.data.location.country, sity: action.data.location.sity },
                 status: action.data.status, links: action.data.links, posts: [...action.data.posts], newPost: state.newPost,
                 avatar: action.data.photos.avatar,
-                myData: action.isMe ? action.data : action.myData
+                myData: action.isMe ? action.data : action.myData,
+                currentID: action.data.id
             }
         }
         case SET_SENDERS_DATA: {

@@ -35,7 +35,6 @@ export const getPhotosThunk=id=>{
         const responce = await usersAPI.addMyData(id);
         const photosArray = responce.data.photos.postedPhotos;
         dispatch(getPhotosActionCreator(photosArray, responce.data));
-        dispatch(isFetchingActionCreator());
     }
 }
 
