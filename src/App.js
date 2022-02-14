@@ -10,7 +10,7 @@ import { LoginWindowContainer } from './components/LoginWindow/LoginWindowContai
 import Subscribes from './components/Subscribes/Subscribes';
 import Followers from './components/Followers/Followers';
 import PhotosContainer from './components/Photo/PhotosContainer';
-import Settings from './components/Settings/Settings';
+import SettingsContainer from './components/Settings/SettingsContainer';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
             <Route path='/subscribes' render={()=><Subscribes />}/>
             <Route path='/followers' render={()=><Followers />}/>
             <Route path='/users' render={()=><UsersList />}/>
-            <Route path='/settings' render={()=><Settings />}/>
+            <Route path='/settings' render={()=><SettingsContainer />}/>
         </div>
       </div>
   );

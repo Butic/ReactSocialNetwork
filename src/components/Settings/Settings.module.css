@@ -1,16 +1,17 @@
 .Settings__container{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.5fr 1fr;
+    margin: 25px 0 25px 0;
 }
 .Settings__links, .Settings__location{
     position: relative;
     margin-top: 35px;
     display: grid;
     grid-column: 1/-1;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.5fr 1fr;
 }
 .Settings__links::before{
-    content: 'Links';
+    content: 'Socials';
 }
 .Settings__location::before{
     content: 'Location';
@@ -18,6 +19,37 @@
 .Settings__links::before, .Settings__location::before{
     position: absolute;
     top: -20px;
-    left: 50%;
+    left: 48%;
     font-style: italic;
+}
+.Settings__span{
+    justify-self: end;
+    padding: 5px;
+    margin: 5px;
+}
+.Settings__input{
+    width: 50%;
+    text-align: center;
+    font-size: 15px;
+}
+.Settings__button{
+    grid-column: 1/-1;
+    justify-self: center;
+    background-color: rgba(0, 60, 255, .75);
+    padding: 5px;
+    border:none;
+    border-radius: 5px;
+    color:wheat;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.5s;
+    width: 75px;
+    margin-top: 10px;
+}
+.Settings__button:hover{
+    background-color: rgba(0, 60, 255, 1);
+    color:white;
+}
+.Settings__input:disabled{
+    background-color: lightgrey;
 }

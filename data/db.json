@@ -1897,6 +1897,28 @@
           "text": "Test2"
         }
       ]
+    },
+    {
+      "id": "1and18",
+      "lastMessageDate": 1644863394372,
+      "dialog": [
+        {
+          "id": "14/02/2022, 21:29:54",
+          "sender_id": "1",
+          "text": "Hey!"
+        }
+      ]
+    },
+    {
+      "id": "18and1",
+      "lastMessageDate": 1644863394372,
+      "dialog": [
+        {
+          "id": "14/02/2022, 21:29:54",
+          "sender_id": "1",
+          "text": "Hey!"
+        }
+      ]
     }
   ]
 }

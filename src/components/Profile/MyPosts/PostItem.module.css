@@ -52,8 +52,8 @@
     border: 1px solid black;
     border-radius: 5px;
     color: white;
-    margin-left: 1%;
     transition: 0.5s;
+    font-size: 14px;
 }
 .Post__remove:hover{
     background-color: red;
@@ -66,7 +66,6 @@
     border: 1px solid black;
     border-radius: 5px;
     color: white;
-    margin-left: 1%;
     transition: 0.5s;
 }
 .Post__remove:disabled:hover{
