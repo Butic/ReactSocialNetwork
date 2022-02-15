@@ -53,3 +53,6 @@
 .Settings__input:disabled{
     background-color: lightgrey;
 }
+.Settings__incorrect_input{
+    border: 1px solid red;
+}

@@ -1,0 +1,27 @@
+.AlertMessage__container{
+    position: absolute;
+    background-color: rgba(0, 60, 255, .15);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+}
+.AlertMessage__frame{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    background-color: aliceblue;
+    padding: 25px;
+    border-radius: 25px;
+    left: 25%;
+    top: 25%;
+    border: 1px solid black;
+}
+.AlertMessage__text{
+    text-align: center;
+    line-height: 2;
+}
