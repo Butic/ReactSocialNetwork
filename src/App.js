@@ -11,6 +11,7 @@ import Subscribes from './components/Subscribes/Subscribes';
 import Followers from './components/Followers/Followers';
 import PhotosContainer from './components/Photo/PhotosContainer';
 import SettingsContainer from './components/Settings/SettingsContainer';
+import Registration from './components/Registration/Registration';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path='/followers' render={()=><Followers />}/>
             <Route path='/users' render={()=><UsersList />}/>
             <Route path='/settings' render={()=><SettingsContainer />}/>
+            <Route path='/registration' render={()=><Registration />}/>
         </div>
       </div>
   );

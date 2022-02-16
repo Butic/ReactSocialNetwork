@@ -69,3 +69,11 @@
     position: absolute;
     right: 25px;
 }
+.LoginWindow__button{
+    padding: 5px 15px;
+    font-size: 15px;
+    cursor: pointer;
+}
+.LoginWindow__register{
+    font-size: 12px;
+}

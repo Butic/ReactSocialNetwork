@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form';
 import { required } from '../../validators/validators';
 import { Input } from '../formControls/formControls';
@@ -37,6 +37,7 @@ const LoginWindowForm = ({handleSubmit}) => {
             <Field name="password" component={Input} type="password" className={classes.LoginWindow__password} placeholder='Password' validate={[required]}/>
             <Field name="rememberMe" component="input" type="checkbox" className={classes.LoginWindow__remember} />
             <button className={classes.LoginWindow__button}>Log In</button>
+            <NavLink className={classes.LoginWindow__register} to={'/registration'}>Register</NavLink>
         </form>
     )
 }

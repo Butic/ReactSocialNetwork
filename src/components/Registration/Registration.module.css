@@ -1,41 +1,41 @@
-.Settings__container{
+.Registration__container{
     display: grid;
     grid-template-columns: 0.5fr 1fr;
     margin: 25px 0 25px 0;
 }
-.Settings__links, .Settings__location, .Settings_dob{
+.Registration__links, .Registration__location, .Registration_dob{
     position: relative;
     margin-top: 35px;
     display: grid;
     grid-column: 1/-1;
     grid-template-columns: 0.5fr 1fr;
 }
-.Settings__links::before{
+.Registration__links::before{
     content: 'Socials';
 }
-.Settings__location::before{
+.Registration__location::before{
     content: 'Location';
 }
-.Settings_dob::before{
+.Registration_dob::before{
     content: 'Date Of Birth';
 }
-.Settings__links::before, .Settings__location::before, .Settings_dob::before{
+.Registration__links::before, .Registration__location::before, .Registration_dob::before{
     position: absolute;
     top: -20px;
     left: 48%;
     font-style: italic;
 }
-.Settings__span{
+.Registration__span{
     justify-self: end;
     padding: 5px;
     margin: 5px;
 }
-.Settings__input{
+.Registration__input{
     width: 50%;
     text-align: center;
     font-size: 15px;
 }
-.Settings__button{
+.Registration__button{
     grid-column: 1/-1;
     justify-self: center;
     background-color: rgba(0, 60, 255, .75);
@@ -49,13 +49,13 @@
     width: 75px;
     margin-top: 10px;
 }
-.Settings__button:hover{
+.Registration__button:hover{
     background-color: rgba(0, 60, 255, 1);
     color:white;
 }
-.Settings__input:disabled{
+.Registration__input:disabled{
     background-color: lightgrey;
 }
-.Settings__incorrect_input{
+.Registration__incorrect_input{
     border: 1px solid red;
 }

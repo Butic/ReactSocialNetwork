@@ -1517,13 +1517,13 @@
       "DOB": {
         "date": 18,
         "month": "June",
-        "year": 1992
+        "year": "1992"
       },
       "location": {
         "country": "Open Sea",
         "sity": "Tanker Vessel"
       },
-      "status": "-> Click here to change status <-",
+      "status": "-> Click here to change your status <-",
       "links": {
         "vk": "vk.com/butic_off",
         "instagram": "just_simple_name"
@@ -1884,17 +1884,6 @@
           "id": "13/02/2022, 00:44:37",
           "sender_id": "1",
           "text": "Test"
-        }
-      ]
-    },
-    {
-      "id": "1and20",
-      "lastMessageDate": 1644702297777,
-      "dialog": [
-        {
-          "id": "13/02/2022, 00:44:57",
-          "sender_id": "1",
-          "text": "Test2"
         }
       ]
     },

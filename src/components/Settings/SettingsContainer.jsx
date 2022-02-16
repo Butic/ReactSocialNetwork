@@ -1,12 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { updateDataThunk } from '../../redux/headerReducer';
 import Settings from './Settings';
 
 const SettingsContainer = (props) => {
 
-    const isLoggedIn = localStorage.getItem('VReacte')?true:false;
+    const updateData=(newData)=>{
+        props.updateData(props.userData, newData);
+    }
 
-    return <Settings userData={props.userData} isLoggedIn={isLoggedIn}/>
+    return <Settings userData={props.userData} updateData={updateData}/>
 }
 
 const mapStateToProps = state => {
@@ -17,10 +20,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return{
-        saveData(newData){
-            
+        updateData(previousData, newData){
+            dispatch(updateDataThunk(previousData, newData))
         }
     }
 }
 
-export default connect(mapStateToProps)(SettingsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(SettingsContainer);
