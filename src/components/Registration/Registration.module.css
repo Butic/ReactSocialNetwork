@@ -59,3 +59,7 @@
 .Registration__incorrect_input{
     border: 1px solid red;
 }
+.Registration__button:disabled{
+    color:lightskyblue;
+    background-color: rgba(49, 49, 49, 0.95);
+}

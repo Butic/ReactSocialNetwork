@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import onceLoggedInRedirect from '../../hoc/onceLoggedInRedirect';
 import { createNewUser } from '../../redux/headerReducer';
 import AlertMessage from '../Settings/AlertMessage';
 import classes from './Registration.module.css'
@@ -128,13 +130,18 @@ const Registration = (props) =>{
                     <span className={classes.Registration__span}>Facebook: </span><input type="text" className={classes.Registration__input} value={facebook} onChange={changeFacebook}/>
                     <span className={classes.Registration__span}>Instagram: </span><input type="text" className={classes.Registration__input} value={instagram} onChange={changeInstagram}/>
                 </div>
-                <button className={classes.Registration__button} onClick={saveData}>Register</button> 
+                <button className={classes.Registration__button} disabled={props.isFetching} onClick={saveData}>Register</button> 
             </form>
         </>
     )
 }
 
-const mapDispatchToProps = dispatch =>{
+const mapStateToProps = (state) =>{
+    return{
+        isFetching: state.headerData.isFetching
+    }
+}
+const mapDispatchToProps = (dispatch) =>{
     return{
         addNewUserData(data){
             dispatch(createNewUser(data))
@@ -142,4 +149,4 @@ const mapDispatchToProps = dispatch =>{
     }
 }
 
-export default connect(null, mapDispatchToProps)(Registration);
+export default compose(onceLoggedInRedirect, connect(mapStateToProps, mapDispatchToProps)) (Registration);

@@ -1,11 +1,14 @@
 import { Redirect } from "react-router-dom";
 import { usersAPI } from "../API/api";
+import { onLoginActionCreator, onLogOutActionCreator } from "./loginReducer";
 
-const GET_USER_DATA = 'header/GET_USER_DATA'
+const GET_USER_DATA = 'header/GET_USER_DATA';
+const IS_FETCHING = 'login/IS_FETCHING';
 
 const initialState={
     userData:{},
-    avatar:''
+    avatar:'',
+    isFetching: false
 }
 
 const headerReducer = (state=initialState, action)=>{
@@ -13,11 +16,15 @@ const headerReducer = (state=initialState, action)=>{
         case GET_USER_DATA:{
             return{...state, userData:action.userData, avatar:action.userData.photos.avatar}
         }
+        case IS_FETCHING:{
+            return {...state, isFetching:!state.isFetching}
+        }
         default: return state;
     }
 }
 
-export const getUserDataActionCreator = userData => ({type: GET_USER_DATA, userData})
+export const getUserDataActionCreator = userData => ({type: GET_USER_DATA, userData});
+export const isFetchingActionCreator = () => ({type: IS_FETCHING});
 
 export const getUserDataThunk = id =>{
     return async dispatch =>{
@@ -42,6 +49,7 @@ export const updateDataThunk = (previousData, newData) =>{
 
 export const createNewUser = (data) =>{
     return async dispatch=>{
+        dispatch(isFetchingActionCreator())
         const newUser={
                 id: Number(new Date()),
                 email: data.email,
@@ -69,7 +77,7 @@ export const createNewUser = (data) =>{
               await usersAPI.addUser(newUser);
               localStorage.setItem('VReacte', newUser.id);
               dispatch(getUserDataActionCreator(newUser));
-              <Redirect to={"/profile"}/>
+              dispatch(onLoginActionCreator())
         }
     }
 

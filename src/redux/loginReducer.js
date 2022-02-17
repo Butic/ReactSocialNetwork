@@ -13,6 +13,7 @@ const initialState = {
 const loginReducer = (state = initialState, action) => {
     switch (action.type) {
         case ON_LOGIN: {
+            console.log(state.isAuth, state.loggedID)
             return { ...state, isAuth: true, isLoginError: false }
         }
         case ON_LOGOUT: {
@@ -28,9 +29,9 @@ const loginReducer = (state = initialState, action) => {
 
 export default loginReducer;
 
-const onLoginActionCreator = () => ({ type: ON_LOGIN });
+export const onLoginActionCreator = () => ({ type: ON_LOGIN });
 export const onLogOutActionCreator = () => ({ type: ON_LOGOUT });
-const loginErrorActionCreator = () => ({ type: LOGIN_ERROR });
+export const loginErrorActionCreator = () => ({ type: LOGIN_ERROR });
 
 export const onLoginThunk = (email, password) => {
     return async (dispatch) => {

@@ -82,11 +82,7 @@
     background-color: rgba(255, 2, 2, 0.95);
     color:white;
 }
-.User__follow__button:disabled{
-    color:lightskyblue;
-    background-color: rgba(49, 49, 49, 0.95);
-}
-.User__unfollow__button:disabled{
+.User__follow__button:disabled, .User__unfollow__button:disabled{
     color:lightskyblue;
     background-color: rgba(49, 49, 49, 0.95);
 }
