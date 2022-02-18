@@ -71,8 +71,8 @@ const PhotosContainer = (props) => {
 
                 {props.photos&&props.photos.map(el=>{
                     return idPhotoEdition==el.id&&props.usersData.id==myID
-                    ?<PhotoEditor el={el} closePhotoEditMode={closePhotoEditMode} deletePhoto={deletePhoto} changeAvatar={changeAvatar}/>
-                    :<Photos photo={el} openPhotoEditMode={openPhotoEditMode}/>
+                    ?<PhotoEditor key={el.id} el={el} closePhotoEditMode={closePhotoEditMode} deletePhoto={deletePhoto} changeAvatar={changeAvatar}/>
+                    :<Photos key={el.id} photo={el} openPhotoEditMode={openPhotoEditMode}/>
                 })}
             </div>
         </>

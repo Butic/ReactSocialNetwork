@@ -10,7 +10,7 @@ const PostItem = props =>{
     return(
         props.posts.map(el=>{
             return(
-                <div className={classes.Post}>
+                <div key={el.id} className={classes.Post}>
                     <NavLink to={`/profile/${el.senderID}`} >
                         <img src={el.senderAvatar ? el.senderAvatar : plug} alt="Avatar" className={classes.Post__avatar} />
                         <h4 className={classes.Post__sender}>{el.senderName}</h4>

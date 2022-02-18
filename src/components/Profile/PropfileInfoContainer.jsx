@@ -29,7 +29,7 @@ const ProfileInfoContainer = (props)=> {
         props.followUser(props.myData, props.id)
     }
 
-    return <ProfileInfo id={props.id} followUser={followUser} isDisabled={props.isDisabled} myID={props.myID} isSubscribed={props.isSubscribed} editMode={editMode} stateStatus={status} activateEditMode={activateEditMode} setStatusValue={setStatusValue} deactivateEditMode={deactivateEditMode} name={props.name} status={props.status} DOB={props.DOB} location={props.location} status={props.status} links={props.links} avatar={props.avatar} />
+    return <ProfileInfo key={props.id} id={props.id} followUser={followUser} isDisabled={props.isDisabled} myID={props.myID} isSubscribed={props.isSubscribed} editMode={editMode} stateStatus={status} activateEditMode={activateEditMode} setStatusValue={setStatusValue} deactivateEditMode={deactivateEditMode} name={props.name} status={props.status} DOB={props.DOB} location={props.location} status={props.status} links={props.links} avatar={props.avatar} />
 };
 
 const mapStateToProps=(state)=>{

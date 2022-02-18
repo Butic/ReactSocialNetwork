@@ -35,6 +35,7 @@ export const getUserDataThunk = id =>{
 
 export const updateDataThunk = (previousData, newData) =>{
     return async dispatch=>{
+        dispatch(isFetchingActionCreator())
         const newUsersData={...previousData};
         newUsersData.email=newData.email;
         newUsersData.password=newData.password;
@@ -42,8 +43,10 @@ export const updateDataThunk = (previousData, newData) =>{
         newUsersData.DOB=newData.DOB;
         newUsersData.location=newData.location;
         newUsersData.links=newData.links;
-        await usersAPI.updateUser(previousData.id, newUsersData)
-        dispatch(getUserDataActionCreator(newUsersData))
+        await usersAPI.updateUser(previousData.id, newUsersData);
+        dispatch(getUserDataActionCreator(newUsersData));
+        dispatch(isFetchingActionCreator());
+        alert('Your data has been updated')
     }
 }
 

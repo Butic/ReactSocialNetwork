@@ -19,7 +19,7 @@ const Users = (props) => {
         <>
             <div className={classes.pages__cover}>
                 {pages.map(num => {
-                    return <span className={props.currentPage == num ? classes.current__page : classes.__page} onClick={() => {
+                    return <span key={num} className={props.currentPage == num ? classes.current__page : classes.__page} onClick={() => {
                         props.goToPage(num);
                     }}> {num} </span>
                 })}
@@ -27,7 +27,7 @@ const Users = (props) => {
             {props.users.map(el => {
                 if (Number(props.current_id) != Number(el.id)) {
                     return (
-                        <div className={classes.User__container}>
+                        <div className={classes.User__container} key={el.id}>
                             <div className={classes.User__follow}>
                                 <NavLink to={`/profile/${el.id}`}> <Avatar avatar={el.photos.avatar}/> </NavLink>
                                 {Number(localStorage.getItem('VReacte'))

@@ -12,7 +12,7 @@ const FollowersItem = (props) =>{
     return(
         props.followers.map(el=>{   
             return (
-                <NavLink className={classes.NavLink} to={`/profile/${el.id}`}>
+                <NavLink className={classes.NavLink} to={`/profile/${el.id}`} key={el.id}>
                     <li className={classes.FriendItem}><Avatar avatar={el.photos.avatar}/> {el.name} <span className={classes.Status}>{el.status}</span></li>
                 </NavLink>
             )

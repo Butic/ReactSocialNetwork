@@ -7,13 +7,13 @@ const ChartMessages = (props) =>{
             props.targetedDialog.dialog.map(el=>{
                 if(Number(el.sender_id)==Number(props.myID)){
                     return(
-                        <span className={classes.Chart__me}>{el.text} 
+                        <span className={classes.Chart__me} key={el.id}>{el.text} 
                             <span className={classes.Date__me}>{el.id}</span> 
                         </span>);
                 }
                 else{
                     return(
-                        <span className={classes.Chart__oponent}>{el.text} 
+                        <span className={classes.Chart__oponent} key={el.id}>{el.text} 
                             <span className={classes.Date__oponent}>{el.id}</span> 
                         </span>);
                 }

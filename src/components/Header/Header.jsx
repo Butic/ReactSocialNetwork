@@ -17,7 +17,7 @@ const Header = (props) =>{
     return(
         <header className={classes.Header}>
             <img className={classes.Header__logo} src={logo} alt="Header Logo" />
-            <h1 className={classes.Header__title}><h1 className={classes.Header__V}>V</h1>Reacte</h1>
+            <div className={classes.Header__title}><h1 className={classes.Header__V}>V</h1>Reacte</div>
             <div className={classes.Header__profile}>
             <NavLink to={'/profile'}><Avatar avatar={props.avatar}/></NavLink>
             <ul className={classes.Header__profile_list}>

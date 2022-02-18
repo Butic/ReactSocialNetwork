@@ -15,7 +15,7 @@ const DialogMembers = (props) =>{
     }
     return(
         <ul className={classes.Dialog__members}>
-            {props.opponents.map(el=><DialogItems id={el.id} name={el.name} avatar={el.photos.avatar} deleteDialog={deleteDialog}/>)}
+            {props.opponents.map(el=><DialogItems key={el.id} id={el.id} name={el.name} avatar={el.photos.avatar} deleteDialog={deleteDialog}/>)}
           </ul>
     );
 };
