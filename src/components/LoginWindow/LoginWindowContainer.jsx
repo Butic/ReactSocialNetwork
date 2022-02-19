@@ -12,8 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onLogin(email, password) {
-            dispatch(onLoginThunk(email, password))
+        onLogin(email, password, rememberMe) {
+            dispatch(onLoginThunk(email, password, rememberMe))
         }
     }
 }

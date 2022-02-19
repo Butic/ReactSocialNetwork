@@ -20,7 +20,7 @@ const PostItem = props =>{
                         <h3 className={classes.Post__header}>{el.title}</h3>
                         <p className={classes.Post__texts}>{el.text}</p>
                     </div>
-                    <button disabled={Number(el.senderID)==Number(localStorage.getItem('VReacte'))?false:true} onClick={()=>{deletePost(el.id)}} className={classes.Post__remove}>Delete</button>
+                    <button disabled={Number(el.senderID)==Number(localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte'))?false:true} onClick={()=>{deletePost(el.id)}} className={classes.Post__remove}>Delete</button>
                     <span  className={el.likes.includes(props.myID)?classes.Post__liked:classes.Post__unliked} onClick={()=>{props.addLike(el.id, el.senderID)}} ><span className={classes.Post__likesNum}>{el.likes.length}</span>&#9825;</span>
                 </div>
             );

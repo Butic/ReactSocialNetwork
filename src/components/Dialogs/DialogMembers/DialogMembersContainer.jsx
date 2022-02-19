@@ -10,7 +10,7 @@ const DialogMembers = (props) =>{
         props.getOpponentsData(props.opponentsID)
     },[props.opponentsID])
     const deleteDialog=opponentID=>{
-        const dialogID = `${localStorage.getItem('VReacte')}and${opponentID}`;
+        const dialogID = `${localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte')}and${opponentID}`;
         props.deleteDialog(dialogID, opponentID)
     }
     return(

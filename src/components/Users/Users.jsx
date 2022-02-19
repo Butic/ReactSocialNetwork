@@ -30,7 +30,7 @@ const Users = (props) => {
                         <div className={classes.User__container} key={el.id}>
                             <div className={classes.User__follow}>
                                 <NavLink to={`/profile/${el.id}`}> <Avatar avatar={el.photos.avatar}/> </NavLink>
-                                {Number(localStorage.getItem('VReacte'))
+                                {Number(localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte'))
                                     ? subscribes.includes(el.id)
                                         ? <button disabled={props.isFollowing.includes(el.id) ? true : false} id={el.id} onClick={follow} className={classes.User__unfollow__button}>Unfollow</button>
                                         : <button disabled={props.isFollowing.includes(el.id) ? true : false} id={el.id} onClick={follow} className={classes.User__follow__button}>Follow</button>

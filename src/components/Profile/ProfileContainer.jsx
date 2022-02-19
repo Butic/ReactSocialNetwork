@@ -7,7 +7,7 @@ import Profile from './Profile';
 
 const ProfileContainer =(props)=>{
     let userID = props.match.params.userID;
-    const myId = localStorage.getItem('VReacte');
+    const myId = localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte');
     useEffect(()=>{
         if(!userID || Number(userID)==Number(myId)) props.setUserProfile(myId, true)
         else props.setUserProfile(userID, false, myId);

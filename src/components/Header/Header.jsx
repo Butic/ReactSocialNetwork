@@ -12,7 +12,7 @@ import { getUserDataThunk } from "../../redux/headerReducer";
 const Header = (props) =>{
 
     useEffect(()=>{
-        props.getAvatar(localStorage.getItem('VReacte'))
+        props.getAvatar(localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte'))
     },[])
     return(
         <header className={classes.Header}>
@@ -22,7 +22,7 @@ const Header = (props) =>{
             <NavLink to={'/profile'}><Avatar avatar={props.avatar}/></NavLink>
             <ul className={classes.Header__profile_list}>
                 <NavLink to={'/profile'}><li className={classes.Header__MyProfile}>My profile</li></NavLink> 
-                <li className={classes.Header__exit} onClick={()=>{ localStorage.removeItem('VReacte'); props.logOut() }}>Log Out</li>
+                <li className={classes.Header__exit} onClick={()=>{ localStorage.getItem('VReacte')?localStorage.removeItem('VReacte'):sessionStorage.removeItem('VReacte'); props.logOut() }}>Log Out</li>
             </ul>
             </div>
         </header>

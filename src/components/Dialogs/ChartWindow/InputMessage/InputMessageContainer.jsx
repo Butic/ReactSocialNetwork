@@ -5,7 +5,7 @@ import InputMessage from './InputMessage';
 
 const InputMessageContainer=(props)=>{
     const isInputVisible = props.targetedUserId&&props.dialogs.length!=0?true:false;
-    const myID = localStorage.getItem('VReacte');
+    const myID = localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte');
     const myDialogID=`${myID}and${props.targetedUserId}`;
     const opponentsDialogID=`${props.targetedUserId}and${myID}`;
     let isMyDialogExists = false;

@@ -5,8 +5,8 @@ const ON_LOGOUT = 'login/ON_LOGOUT';
 const LOGIN_ERROR = 'login/LOGIN_ERROR';
 
 const initialState = {
-    isAuth: Number(localStorage.getItem('VReacte')) ? true : false,
-    loggedID: localStorage.getItem('VReacte') ? localStorage.getItem('VReacte') : "",
+    isAuth: Number(localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte')) ? true : false,
+    loggedID: localStorage.getItem('VReacte') ? localStorage.getItem('VReacte') : sessionStorage.getItem('VReacte')?sessionStorage.getItem('VReacte'):"",
     isLoginError: false
 }
 
@@ -33,12 +33,12 @@ export const onLoginActionCreator = () => ({ type: ON_LOGIN });
 export const onLogOutActionCreator = () => ({ type: ON_LOGOUT });
 export const loginErrorActionCreator = () => ({ type: LOGIN_ERROR });
 
-export const onLoginThunk = (email, password) => {
+export const onLoginThunk = (email, password, rememberMe) => {
     return async (dispatch) => {
         const responce = await loginAPI.checkEmail(email)
         if (responce.data.length != 0) {
             if (password == responce.data[0].password) {
-                localStorage.setItem('VReacte', responce.data[0].id);
+                rememberMe ? localStorage.setItem('VReacte', responce.data[0].id) : sessionStorage.setItem('VReacte', responce.data[0].id);
                 dispatch(onLoginActionCreator());
             }
             else {

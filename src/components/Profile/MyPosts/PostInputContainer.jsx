@@ -5,13 +5,13 @@ import PostInput from "./PostInput";
 import { withRouter } from "react-router-dom";
 
 const PostInputContainer = (props) => {
-
+    const usersID = localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte')
     useEffect(()=>{
-        props.setSenderName(localStorage.getItem('VReacte'));
+        props.setSenderName(usersID);
     },[props.senderName]);
 
     const addNewPost=(newPost)=>{
-        props.addPost(props.match.params.userID?props.match.params.userID:localStorage.getItem('VReacte'), props.senderName, props.senderAvatar, newPost)
+        props.addPost(props.match.params.userID?props.match.params.userID:usersID, props.senderName, props.senderAvatar, newPost)
     }
         return <PostInput addPost={addNewPost}/>
 }

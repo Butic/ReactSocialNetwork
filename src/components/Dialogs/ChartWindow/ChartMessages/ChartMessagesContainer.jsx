@@ -7,7 +7,7 @@ import ChartMessages from './ChartMessages';
 
 const ChartMessagesConstainer = (props) =>{
     const userID = props.match.params.userID
-    const myID = localStorage.getItem('VReacte')
+    const myID = localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte');
     if(props.targetedUserId!=userID) props.setTargetId(userID);
     const targetedDialogId = `${myID}and${userID}`;
     const targetedDialog = props.dialogs.filter(el=>el.id==targetedDialogId);

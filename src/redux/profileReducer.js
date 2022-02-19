@@ -107,7 +107,7 @@ export const addPostThunk = (targetID, senderName, senderAvatar, newPost) => {
     return async (dispatch) => {
         const newAddedPost = {
             id: new Date(),
-            senderID: localStorage.getItem('VReacte'),
+            senderID: localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte'),
             senderName: senderName,
             senderAvatar: senderAvatar,
             date: new Date().toLocaleString(),

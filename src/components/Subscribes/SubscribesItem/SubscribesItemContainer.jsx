@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 const SubscribesItem = (props) =>{
     useEffect(()=>{
-        props.setSubscribes(localStorage.getItem('VReacte'));
+        props.setSubscribes(localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte'));
     }, [])
     return(
         props.subscribes.map(el=>{

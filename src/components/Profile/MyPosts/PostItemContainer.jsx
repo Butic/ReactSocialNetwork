@@ -5,7 +5,7 @@ import { addPostLikeThunk, deletePostThunk } from '../../../redux/profileReducer
 import PostItem from './PostItem';
 
 const PostItemContainer =(props)=>{
-    const myID = props.match.params.userID?props.match.params.userID:localStorage.getItem('VReacte');
+    const myID = props.match.params.userID?props.match.params.userID:localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte');
     
     const deletePost = (target_post_ID) =>{
         props.deletePost(myID, target_post_ID);

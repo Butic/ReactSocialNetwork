@@ -12,7 +12,7 @@ import classes from './PhotosContainer.module.css'
 
 const PhotosContainer = (props) => {
 
-    const myID = localStorage.getItem('VReacte');
+    const myID = localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte');
     const currentID = props.match.params.userID?props.match.params.userID:myID;
 
     const [addPhotoMode, setAddPhotoMode] = useState(false);

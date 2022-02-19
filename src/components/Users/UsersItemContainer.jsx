@@ -7,7 +7,7 @@ import Users from "./Users";
 const UsersItem = (props)=> {
 
     useEffect(()=>{
-        props.getUsers(localStorage.getItem('VReacte'), props.currentPage);
+        props.getUsers(localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte'), props.currentPage);
     },[]);
 
     const followUser=(target_id)=>{

@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 const FollowersItem = (props) =>{
     useEffect(()=>{
-        props.setFollowers(localStorage.getItem('VReacte'));
+        props.setFollowers(localStorage.getItem('VReacte')?localStorage.getItem('VReacte'):sessionStorage.getItem('VReacte'));
     }, [])
     return(
         props.followers.map(el=>{   
