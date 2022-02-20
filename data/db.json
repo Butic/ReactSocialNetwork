@@ -1542,11 +1542,11 @@
         3,
         44,
         10,
-        20,
         13,
         4,
         6,
-        17
+        17,
+        20
       ],
       "posts": [
         {
@@ -1701,8 +1701,18 @@
     },
     {
       "id": "1and4",
-      "lastMessageDate": 1644611202180,
+      "lastMessageDate": 1645391162050,
       "dialog": [
+        {
+          "id": "21/02/2022, 00:06:02",
+          "sender_id": "1",
+          "text": "Successed!)"
+        },
+        {
+          "id": "21/02/2022, 00:03:14",
+          "sender_id": "1",
+          "text": "Updated on \"PUT\" request"
+        },
         {
           "id": "11/02/2022, 23:26:42",
           "sender_id": "1",
@@ -1737,8 +1747,18 @@
     },
     {
       "id": "4and1",
-      "lastMessageDate": 1644611202180,
+      "lastMessageDate": 1645391162050,
       "dialog": [
+        {
+          "id": "21/02/2022, 00:06:02",
+          "sender_id": "1",
+          "text": "Successed!)"
+        },
+        {
+          "id": "21/02/2022, 00:03:14",
+          "sender_id": "1",
+          "text": "Updated on \"PUT\" request"
+        },
         {
           "id": "11/02/2022, 23:26:42",
           "sender_id": "1",
@@ -1939,6 +1959,28 @@
           "id": "10/02/2022, 17:00:23",
           "sender_id": 1,
           "text": "Hello, are you deveoper?"
+        }
+      ]
+    },
+    {
+      "id": "1and44",
+      "lastMessageDate": 1645391212362,
+      "dialog": [
+        {
+          "id": "21/02/2022, 00:06:52",
+          "sender_id": "1",
+          "text": "Alife?)"
+        }
+      ]
+    },
+    {
+      "id": "44and1",
+      "lastMessageDate": 1645391212362,
+      "dialog": [
+        {
+          "id": "21/02/2022, 00:06:52",
+          "sender_id": "1",
+          "text": "Alife?)"
         }
       ]
     }
