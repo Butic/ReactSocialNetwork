@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import withAuthRedirect from '../../hoc/withAuthRedirect';
 import { updateDataThunk } from '../../redux/headerReducer';
 import Settings from './Settings';
 
@@ -26,4 +28,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsContainer);
+export default compose(connect(mapStateToProps, mapDispatchToProps), withAuthRedirect)(SettingsContainer);

@@ -35,8 +35,8 @@ const LoginWindow = ({isAuth, isLoginError, onLogin}) => {
 const LoginWindowForm = ({handleSubmit, changeRememberMe}) => {
     return (
         <form action="" className={classes.LoginWindow__form} onSubmit={handleSubmit}>
-            <Field name="email" component={Input} type="email" className={classes.LoginWindow__email} placeholder='E-mail' validate={[required]} />
-            <Field name="password" component={Input} type="password" className={classes.LoginWindow__password} placeholder='Password' validate={[required]}/>
+            <Field name="email" component={Input} type="email" placeholder='E-mail' validate={[required]} />
+            <Field name="password" component={Input} type="password" placeholder='Password' validate={[required]}/>
             <Field name="rememberMe" component="input" type="checkbox" onClick={changeRememberMe} className={classes.LoginWindow__remember} />
             <button className={classes.LoginWindow__button}>Log In</button>
             <NavLink className={classes.LoginWindow__register} to={'/registration'}>Register</NavLink>

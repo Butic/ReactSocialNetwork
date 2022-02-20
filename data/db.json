@@ -1,53 +1,6 @@
 {
   "users": [
     {
-      "id": 18,
-      "email": "testEmail18@mail.ru",
-      "password": "1234218",
-      "name": "Shimura Danzo",
-      "DOB": {
-        "date": 11,
-        "month": "January",
-        "year": 2001
-      },
-      "location": {
-        "country": "Country11",
-        "sity": "Sity11"
-      },
-      "status": "Some Status",
-      "links": {
-        "vk": "vk.com/some",
-        "instagram": "some"
-      },
-      "followers": [
-        1
-      ],
-      "subscribes": [
-        1
-      ],
-      "posts": [
-        {
-          "id": "2022-01-15T03:48:00.774Z",
-          "senderID": "1",
-          "senderName": "Butikov Andrey",
-          "date": "15.01.2022, 06:48:00",
-          "title": "Andrey",
-          "text": "Web Developer",
-          "likes": []
-        }
-      ],
-      "photos": {
-        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTxWhncGdmwbV9t05znrVCVA1gbaaYZkE52dfiA7Rz9oH9Wl3HSGzw1Os0xBT_mDL7GZk&usqp=CAU",
-        "postedPhotos": [
-          {
-            "id": 845153248741,
-            "date": 845153248741,
-            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTxWhncGdmwbV9t05znrVCVA1gbaaYZkE52dfiA7Rz9oH9Wl3HSGzw1Os0xBT_mDL7GZk&usqp=CAU"
-          }
-        ]
-      }
-    },
-    {
       "id": 17,
       "email": "testEmail17@mail.ru",
       "password": "1234217",
@@ -1510,6 +1463,54 @@
       }
     },
     {
+      "id": 18,
+      "email": "testEmail18@mail.ru",
+      "password": "1234218",
+      "name": "Shimura Danzo",
+      "DOB": {
+        "date": 11,
+        "month": "January",
+        "year": 2001
+      },
+      "location": {
+        "country": "Country11",
+        "sity": "Sity11"
+      },
+      "status": "Some Status",
+      "links": {
+        "vk": "vk.com/some",
+        "instagram": "some"
+      },
+      "followers": [
+        1
+      ],
+      "subscribes": [
+        1
+      ],
+      "posts": [
+        {
+          "id": "2022-02-19T19:18:51.829Z",
+          "senderID": "1",
+          "senderName": "Butikov Andrey",
+          "senderAvatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5iw2u4ji5ROOJhNtuz9H71y8k0qdHxe1B3ikwsqQYGw5gRz5deegM9RzoL9I-OpUGKTY&usqp=CAU",
+          "date": "19/02/2022, 22:18:51",
+          "title": "I am",
+          "text": "Web Developer",
+          "likes": []
+        }
+      ],
+      "photos": {
+        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTxWhncGdmwbV9t05znrVCVA1gbaaYZkE52dfiA7Rz9oH9Wl3HSGzw1Os0xBT_mDL7GZk&usqp=CAU",
+        "postedPhotos": [
+          {
+            "id": 845153248741,
+            "date": 845153248741,
+            "src": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTxWhncGdmwbV9t05znrVCVA1gbaaYZkE52dfiA7Rz9oH9Wl3HSGzw1Os0xBT_mDL7GZk&usqp=CAU"
+          }
+        ]
+      }
+    },
+    {
       "id": 1,
       "email": "test@test.test",
       "password": "test",
@@ -1523,7 +1524,7 @@
         "country": "Russia",
         "sity": "Novorossiysk"
       },
-      "status": "-> Click here to change your status <-",
+      "status": "Interviewing",
       "links": {
         "vk": "vk.com/butic_off",
         "instagram": "just_simple_name"
